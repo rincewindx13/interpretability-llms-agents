@@ -1,0 +1,81 @@
+{
+  "schema_version": "cep.v1",
+  "run_id": "be094cd0-932d-42ab-9645-7beba42ee0a6",
+  "config": {
+    "planner_backend": "gemini",
+    "evaluator_backend": "gemini",
+    "judge_backend": "gemini",
+    "config_name": "gemini_gemini",
+    "planner_model": "gemini-2.5-flash",
+    "evaluator_model": "gemini-2.5-flash"
+  },
+  "sample": {
+    "vendor": "2021 09 13 Google Cloud ePU7 52O DACUG964",
+    "sample_id": "2021_09_13_Google_Cloud_ePU7_52O_DACUG964_AIS-06.1",
+    "question_id": "AIS-06.1",
+    "control_id": "AIS-06",
+    "domain_id": "AIS",
+    "question_text": "Are strategies and capabilities established and implemented to deploy \napplication code in a secure, standardized, and compliant manner?",
+    "vendor_answer": "yes",
+    "vendor_comment": "Google follows a structured code development and release process that includes considerations for security defects and all code is peer reviewed. Google makes purpose built code analysis tools available for engineers to deploy against application code.",
+    "caiq_version": "4.0.1",
+    "metadata": {
+      "SSRM Control Ownership": "CSP-owned",
+      "CCM Control Specification": "Establish and implement strategies and capabilities for secure, standardized, \nand compliant application deployment. Automate where possible.",
+      "CCM Control Title": "Automated Secure \nApplication Deployment"
+    }
+  },
+  "plan": {
+    "prompt": "You are a cloud security compliance expert specialising in the CSA Cloud Controls Matrix (CCM).\n\nYour task is to produce a structured evaluation plan for assessing a vendor's compliance response to a CAIQ question.\n\nCAIQ Question ID : AIS-06.1\nCCM Control ID   : AIS-06\nCCM Domain       : AIS\nQuestion Text    : Are strategies and capabilities established and implemented to deploy \napplication code in a secure, standardized, and compliant manner?\nVendor Answer    : yes\n\nProduce a JSON evaluation plan with the following keys:\n\n{\n  \"steps\": [\n    \"Step 1: ...\",\n    \"Step 2: ...\",\n    \"Step 3: ...\"\n  ],\n  \"expected_evidence_type\": \"<what good evidence looks like, e.g. policy doc, certification, process description>\",\n  \"compliance_risk_level\": \"<low | medium | high> \u2014 how critical is a No answer here>\",\n  \"evaluation_focus\": \"<what the evaluator should specifically look for in the vendor comment>\",\n  \"nist_mapping_hint\": \"<relevant NIST 800-53 control family, e.g. AC, SA, SC>\",\n  \"answerability_check\": \"<answerable | needs_clarification | not_applicable>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"steps\": [\n    \"Step 1: Verify the existence of a documented secure application deployment strategy or policy that outlines secure, standardized, and compliant deployment practices.\",\n    \"Step 2: Confirm the implementation of standardized deployment processes, such as automated CI/CD pipelines, change management procedures, and version control for application code.\",\n    \"Step 3: Assess the integration of security controls and testing (e.g., SAST, DAST, SCA, vulnerability scanning) within the deployment pipeline to ensure code security prior to and during deployment.\",\n    \"Step 4: Review evidence demonstrating adherence to regulatory requirements and internal security policies throughout the application deployment lifecycle.\"\n  ],\n  \"expected_evidence_type\": \"Secure Software Development Life Cycle (SSDLC) policy, deployment procedures/runbooks, CI/CD pipeline configurations, change management records, security testing reports (SAST/DAST/SCA) integrated into deployment, compliance audit reports related to deployment.\",\n  \"compliance_risk_level\": \"high\",\n  \"evaluation_focus\": \"The evaluator should specifically look for detailed descriptions of automated security gates, standardized deployment environments, segregation of duties in deployment, and evidence of continuous compliance checks within the deployment process.\",\n  \"nist_mapping_hint\": \"SA (System and Services Acquisition), CM (Configuration Management), SI (System and Information Integrity)\",\n  \"answerability_check\": \"answerable\"\n}",
+    "parsed": {
+      "steps": [
+        "Step 1: Verify the existence of a documented secure application deployment strategy or policy that outlines secure, standardized, and compliant deployment practices.",
+        "Step 2: Confirm the implementation of standardized deployment processes, such as automated CI/CD pipelines, change management procedures, and version control for application code.",
+        "Step 3: Assess the integration of security controls and testing (e.g., SAST, DAST, SCA, vulnerability scanning) within the deployment pipeline to ensure code security prior to and during deployment.",
+        "Step 4: Review evidence demonstrating adherence to regulatory requirements and internal security policies throughout the application deployment lifecycle."
+      ],
+      "expected_evidence_type": "Secure Software Development Life Cycle (SSDLC) policy, deployment procedures/runbooks, CI/CD pipeline configurations, change management records, security testing reports (SAST/DAST/SCA) integrated into deployment, compliance audit reports related to deployment.",
+      "compliance_risk_level": "high",
+      "evaluation_focus": "The evaluator should specifically look for detailed descriptions of automated security gates, standardized deployment environments, segregation of duties in deployment, and evidence of continuous compliance checks within the deployment process.",
+      "nist_mapping_hint": "SA (System and Services Acquisition), CM (Configuration Management), SI (System and Information Integrity)",
+      "answerability_check": "answerable"
+    },
+    "parse_error": false
+  },
+  "evaluation": {
+    "prompt": "You are a cloud security compliance auditor evaluating a vendor's CAIQ response.\n\nCAIQ Question ID : AIS-06.1\nCCM Control ID   : AIS-06\nQuestion Text    : Are strategies and capabilities established and implemented to deploy \napplication code in a secure, standardized, and compliant manner?\nVendor Answer    : yes\nVendor Evidence  : Google follows a structured code development and release process that includes considerations for security defects and all code is peer reviewed. Google makes purpose built code analysis tools available for engineers to deploy against application code.\n\nEvaluation Plan:\n  1. Step 1: Verify the existence of a documented secure application deployment strategy or policy that outlines secure, standardized, and compliant deployment practices.\n  2. Step 2: Confirm the implementation of standardized deployment processes, such as automated CI/CD pipelines, change management procedures, and version control for application code.\n  3. Step 3: Assess the integration of security controls and testing (e.g., SAST, DAST, SCA, vulnerability scanning) within the deployment pipeline to ensure code security prior to and during deployment.\n  4. Step 4: Review evidence demonstrating adherence to regulatory requirements and internal security policies throughout the application deployment lifecycle.\n\nExpected evidence type : Secure Software Development Life Cycle (SSDLC) policy, deployment procedures/runbooks, CI/CD pipeline configurations, change management records, security testing reports (SAST/DAST/SCA) integrated into deployment, compliance audit reports related to deployment.\nEvaluation focus       : The evaluator should specifically look for detailed descriptions of automated security gates, standardized deployment environments, segregation of duties in deployment, and evidence of continuous compliance checks within the deployment process.\n\n\n\nEvaluate the vendor's compliance and produce a JSON verdict:\n\n{\n  \"verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"confidence\": <0.0 to 1.0>,\n  \"evidence_quality\": \"<strong | adequate | weak | absent>\",\n  \"gap_description\": \"<what is missing or insufficient \u2014 empty string if compliant>\",\n  \"evidence_citation\": \"<exact quote from vendor comment that supports the verdict \u2014 empty string if none>\",\n  \"recommended_followup\": \"<suggested clarification question for procurement team \u2014 empty string if none>\",\n  \"reasoning\": \"<one concise sentence explaining the verdict>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"verdict\": \"partial\",\n  \"confidence\": 0.6,\n  \"evidence_quality\": \"weak\",\n  \"gap_description\": \"The vendor's evidence describes a structured development process and the availability of code analysis tools, but lacks specific details on documented secure deployment strategies, standardized deployment processes (e.g., CI/CD pipelines, change management), the integration of security controls (e.g., DAST, SCA, vulnerability scanning) as mandatory gates within the deployment pipeline, and explicit adherence to regulatory requirements during the application deployment lifecycle.\",\n  \"evidence_citation\": \"Google follows a structured code development and release process that includes considerations for security defects and all code is peer reviewed. Google makes purpose built code analysis tools available for engineers to deploy against application code.\",\n  \"recommended_followup\": \"Please provide documentation outlining your secure application deployment strategy, including details on standardized deployment processes (e.g., CI/CD pipelines, change management), integrated security gates (e.g., SAST/DAST/SCA within the pipeline), and how compliance with regulatory requirements is ensured throughout the deployment lifecycle.\",\n  \"reasoning\": \"The vendor provides general statements about secure development and code analysis tools, but lacks specific evidence for established strategies, standardized processes, integrated security controls within the deployment pipeline, and compliance adherence for application code deployment.\"\n}",
+    "parsed": {
+      "verdict": "partial",
+      "confidence": 0.6,
+      "evidence_quality": "weak",
+      "gap_description": "The vendor's evidence describes a structured development process and the availability of code analysis tools, but lacks specific details on documented secure deployment strategies, standardized deployment processes (e.g., CI/CD pipelines, change management), the integration of security controls (e.g., DAST, SCA, vulnerability scanning) as mandatory gates within the deployment pipeline, and explicit adherence to regulatory requirements during the application deployment lifecycle.",
+      "evidence_citation": "Google follows a structured code development and release process that includes considerations for security defects and all code is peer reviewed. Google makes purpose built code analysis tools available for engineers to deploy against application code.",
+      "recommended_followup": "Please provide documentation outlining your secure application deployment strategy, including details on standardized deployment processes (e.g., CI/CD pipelines, change management), integrated security gates (e.g., SAST/DAST/SCA within the pipeline), and how compliance with regulatory requirements is ensured throughout the deployment lifecycle.",
+      "reasoning": "The vendor provides general statements about secure development and code analysis tools, but lacks specific evidence for established strategies, standardized processes, integrated security controls within the deployment pipeline, and compliance adherence for application code deployment."
+    },
+    "parse_error": false,
+    "tool_trace": []
+  },
+  "verifier": {
+    "prompt": "You are an independent cloud security compliance reviewer.\n\nA compliance evaluator has assessed the following vendor CAIQ response and produced a draft verdict.\nYour job is to independently re-examine the evidence and either CONFIRM or REVISE the verdict.\n\nCAIQ Question ID : AIS-06.1\nCCM Control ID   : AIS-06\nQuestion Text    : Are strategies and capabilities established and implemented to deploy \napplication code in a secure, standardized, and compliant manner?\nVendor Answer    : yes\nVendor Evidence  : Google follows a structured code development and release process that includes considerations for security defects and all code is peer reviewed. Google makes purpose built code analysis tools available for engineers to deploy against application code.\n\nDraft Verdict    : partial\nDraft Reasoning  : The vendor provides general statements about secure development and code analysis tools, but lacks specific evidence for established strategies, standardized processes, integrated security controls within the deployment pipeline, and compliance adherence for application code deployment.\nEvidence Quality : weak\n\nRe-examine the vendor's evidence independently. Then produce a JSON response:\n\n{\n  \"verdict\": \"<confirmed | revised>\",\n  \"final_verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"reasoning\": \"<one sentence: why you confirmed or what you changed and why>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"verdict\": \"confirmed\",\n  \"final_verdict\": \"partial\",\n  \"reasoning\": \"The vendor's evidence generally addresses secure and standardized deployment through a structured process, peer review, and code analysis tools, but entirely lacks specific information or evidence regarding adherence to a 'compliant manner' for application code deployment.\"\n}",
+    "parsed": {
+      "verdict": "confirmed",
+      "final_verdict": "partial",
+      "reasoning": "The vendor's evidence generally addresses secure and standardized deployment through a structured process, peer review, and code analysis tools, but entirely lacks specific information or evidence regarding adherence to a 'compliant manner' for application code deployment."
+    },
+    "parse_error": false,
+    "verdict": "confirmed"
+  },
+  "timestamps": {
+    "start": "2026-04-28T17:19:24.792078+00:00",
+    "end": "2026-04-28T17:19:57.043555+00:00",
+    "planner_ms": 8976.21774673462,
+    "evaluator_ms": 13525.872468948364,
+    "verifier_ms": 9748.51942062378
+  },
+  "errors": [],
+  "lf_trace_id": "d14ad261576b5e3d9b1a7fd98f831894"
+}

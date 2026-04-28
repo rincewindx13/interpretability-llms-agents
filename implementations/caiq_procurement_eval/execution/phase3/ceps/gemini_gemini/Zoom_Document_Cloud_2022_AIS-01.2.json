@@ -1,0 +1,79 @@
+{
+  "schema_version": "cep.v1",
+  "run_id": "be094cd0-932d-42ab-9645-7beba42ee0a6",
+  "config": {
+    "planner_backend": "gemini",
+    "evaluator_backend": "gemini",
+    "judge_backend": "gemini",
+    "config_name": "gemini_gemini",
+    "planner_model": "gemini-2.5-flash",
+    "evaluator_model": "gemini-2.5-flash"
+  },
+  "sample": {
+    "vendor": "Zoom Document Cloud 2022",
+    "sample_id": "Zoom_Document_Cloud_2022_AIS-01.2",
+    "question_id": "AIS-01.2",
+    "control_id": "AIS-01",
+    "domain_id": "AIS",
+    "question_text": "Are application security policies and procedures reviewed and updated at least\nannually?",
+    "vendor_answer": "yes",
+    "vendor_comment": "Information security standards governing application security including the secure software development lifecycle (SDLC) and other relevant policies are documented, approved, communicated, and reviewed on at least an annual basis. Standards are updated as significant changes occur.",
+    "caiq_version": "4.0.2",
+    "metadata": {
+      "SSRM Control Ownership": "CSP-owned"
+    }
+  },
+  "plan": {
+    "prompt": "You are a cloud security compliance expert specialising in the CSA Cloud Controls Matrix (CCM).\n\nYour task is to produce a structured evaluation plan for assessing a vendor's compliance response to a CAIQ question.\n\nCAIQ Question ID : AIS-01.2\nCCM Control ID   : AIS-01\nCCM Domain       : AIS\nQuestion Text    : Are application security policies and procedures reviewed and updated at least\nannually?\nVendor Answer    : yes\n\nProduce a JSON evaluation plan with the following keys:\n\n{\n  \"steps\": [\n    \"Step 1: ...\",\n    \"Step 2: ...\",\n    \"Step 3: ...\"\n  ],\n  \"expected_evidence_type\": \"<what good evidence looks like, e.g. policy doc, certification, process description>\",\n  \"compliance_risk_level\": \"<low | medium | high> \u2014 how critical is a No answer here>\",\n  \"evaluation_focus\": \"<what the evaluator should specifically look for in the vendor comment>\",\n  \"nist_mapping_hint\": \"<relevant NIST 800-53 control family, e.g. AC, SA, SC>\",\n  \"answerability_check\": \"<answerable | needs_clarification | not_applicable>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"steps\": [\n    \"Step 1: Request the vendor's formal application security policies and associated procedures.\",\n    \"Step 2: Review the provided documents to confirm they explicitly state a requirement for review and update at least annually.\",\n    \"Step 3: Request evidence of the most recent review and update, such as version control logs, change management records, or meeting minutes, to verify it occurred within the last 12 months.\",\n    \"Step 4: Confirm that the review process includes documentation of changes made or confirmation that no changes were required, along with approval by relevant stakeholders.\"\n  ],\n  \"expected_evidence_type\": \"Formal policy document, procedure document, version control logs, change management records, meeting minutes, internal audit reports.\",\n  \"compliance_risk_level\": \"medium\",\n  \"evaluation_focus\": \"Verification of a formal policy/procedure, explicit mention of annual review frequency, and documented evidence of actual reviews and updates occurring within the last 12 months.\",\n  \"nist_mapping_hint\": \"PL (Planning), PM (Program Management)\",\n  \"answerability_check\": \"answerable\"\n}",
+    "parsed": {
+      "steps": [
+        "Step 1: Request the vendor's formal application security policies and associated procedures.",
+        "Step 2: Review the provided documents to confirm they explicitly state a requirement for review and update at least annually.",
+        "Step 3: Request evidence of the most recent review and update, such as version control logs, change management records, or meeting minutes, to verify it occurred within the last 12 months.",
+        "Step 4: Confirm that the review process includes documentation of changes made or confirmation that no changes were required, along with approval by relevant stakeholders."
+      ],
+      "expected_evidence_type": "Formal policy document, procedure document, version control logs, change management records, meeting minutes, internal audit reports.",
+      "compliance_risk_level": "medium",
+      "evaluation_focus": "Verification of a formal policy/procedure, explicit mention of annual review frequency, and documented evidence of actual reviews and updates occurring within the last 12 months.",
+      "nist_mapping_hint": "PL (Planning), PM (Program Management)",
+      "answerability_check": "answerable"
+    },
+    "parse_error": false
+  },
+  "evaluation": {
+    "prompt": "You are a cloud security compliance auditor evaluating a vendor's CAIQ response.\n\nCAIQ Question ID : AIS-01.2\nCCM Control ID   : AIS-01\nQuestion Text    : Are application security policies and procedures reviewed and updated at least\nannually?\nVendor Answer    : yes\nVendor Evidence  : Information security standards governing application security including the secure software development lifecycle (SDLC) and other relevant policies are documented, approved, communicated, and reviewed on at least an annual basis. Standards are updated as significant changes occur.\n\nEvaluation Plan:\n  1. Step 1: Request the vendor's formal application security policies and associated procedures.\n  2. Step 2: Review the provided documents to confirm they explicitly state a requirement for review and update at least annually.\n  3. Step 3: Request evidence of the most recent review and update, such as version control logs, change management records, or meeting minutes, to verify it occurred within the last 12 months.\n  4. Step 4: Confirm that the review process includes documentation of changes made or confirmation that no changes were required, along with approval by relevant stakeholders.\n\nExpected evidence type : Formal policy document, procedure document, version control logs, change management records, meeting minutes, internal audit reports.\nEvaluation focus       : Verification of a formal policy/procedure, explicit mention of annual review frequency, and documented evidence of actual reviews and updates occurring within the last 12 months.\n\n\n\nEvaluate the vendor's compliance and produce a JSON verdict:\n\n{\n  \"verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"confidence\": <0.0 to 1.0>,\n  \"evidence_quality\": \"<strong | adequate | weak | absent>\",\n  \"gap_description\": \"<what is missing or insufficient \u2014 empty string if compliant>\",\n  \"evidence_citation\": \"<exact quote from vendor comment that supports the verdict \u2014 empty string if none>\",\n  \"recommended_followup\": \"<suggested clarification question for procurement team \u2014 empty string if none>\",\n  \"reasoning\": \"<one concise sentence explaining the verdict>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"verdict\": \"partial\",\n  \"confidence\": 0.7,\n  \"evidence_quality\": \"weak\",\n  \"gap_description\": \"The vendor has not provided the formal application security policies and procedures, nor has it provided verifiable evidence (e.g., version control logs, change management records, or meeting minutes) of the most recent annual review and update to confirm it occurred within the last 12 months.\",\n  \"evidence_citation\": \"Information security standards governing application security including the secure software development lifecycle (SDLC) and other relevant policies are documented, approved, communicated, and reviewed on at least an annual basis. Standards are updated as significant changes occur.\",\n  \"recommended_followup\": \"Please provide copies of the formal application security policies and procedures. Additionally, provide evidence of the most recent annual review and update, such as version control logs, change management records, or meeting minutes, demonstrating the review occurred within the last 12 months.\",\n  \"reasoning\": \"The vendor's evidence describes a process for annual review and update of application security policies, but lacks the actual policy documents and verifiable records of recent reviews to substantiate the claim.\"\n}",
+    "parsed": {
+      "verdict": "partial",
+      "confidence": 0.7,
+      "evidence_quality": "weak",
+      "gap_description": "The vendor has not provided the formal application security policies and procedures, nor has it provided verifiable evidence (e.g., version control logs, change management records, or meeting minutes) of the most recent annual review and update to confirm it occurred within the last 12 months.",
+      "evidence_citation": "Information security standards governing application security including the secure software development lifecycle (SDLC) and other relevant policies are documented, approved, communicated, and reviewed on at least an annual basis. Standards are updated as significant changes occur.",
+      "recommended_followup": "Please provide copies of the formal application security policies and procedures. Additionally, provide evidence of the most recent annual review and update, such as version control logs, change management records, or meeting minutes, demonstrating the review occurred within the last 12 months.",
+      "reasoning": "The vendor's evidence describes a process for annual review and update of application security policies, but lacks the actual policy documents and verifiable records of recent reviews to substantiate the claim."
+    },
+    "parse_error": false,
+    "tool_trace": []
+  },
+  "verifier": {
+    "prompt": "You are an independent cloud security compliance reviewer.\n\nA compliance evaluator has assessed the following vendor CAIQ response and produced a draft verdict.\nYour job is to independently re-examine the evidence and either CONFIRM or REVISE the verdict.\n\nCAIQ Question ID : AIS-01.2\nCCM Control ID   : AIS-01\nQuestion Text    : Are application security policies and procedures reviewed and updated at least\nannually?\nVendor Answer    : yes\nVendor Evidence  : Information security standards governing application security including the secure software development lifecycle (SDLC) and other relevant policies are documented, approved, communicated, and reviewed on at least an annual basis. Standards are updated as significant changes occur.\n\nDraft Verdict    : partial\nDraft Reasoning  : The vendor's evidence describes a process for annual review and update of application security policies, but lacks the actual policy documents and verifiable records of recent reviews to substantiate the claim.\nEvidence Quality : weak\n\nRe-examine the vendor's evidence independently. Then produce a JSON response:\n\n{\n  \"verdict\": \"<confirmed | revised>\",\n  \"final_verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"reasoning\": \"<one sentence: why you confirmed or what you changed and why>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\"verdict\": \"confirmed\", \"final_verdict\": \"partial\", \"reasoning\": \"The draft verdict is confirmed because the vendor's evidence describes the process for annual review and update but does not provide verifiable records or actual policy documents to substantiate the claim.\"}",
+    "parsed": {
+      "verdict": "confirmed",
+      "final_verdict": "partial",
+      "reasoning": "The draft verdict is confirmed because the vendor's evidence describes the process for annual review and update but does not provide verifiable records or actual policy documents to substantiate the claim."
+    },
+    "parse_error": false,
+    "verdict": "confirmed"
+  },
+  "timestamps": {
+    "start": "2026-04-28T17:53:03.781210+00:00",
+    "end": "2026-04-28T17:53:31.562200+00:00",
+    "planner_ms": 7986.029624938965,
+    "evaluator_ms": 11599.563598632812,
+    "verifier_ms": 8194.697380065918
+  },
+  "errors": [],
+  "lf_trace_id": "8d85b04ee361f7928b7b9a09136c4b76"
+}

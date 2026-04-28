@@ -1,0 +1,81 @@
+{
+  "schema_version": "cep.v1",
+  "run_id": "be094cd0-932d-42ab-9645-7beba42ee0a6",
+  "config": {
+    "planner_backend": "gemini",
+    "evaluator_backend": "gemini",
+    "judge_backend": "gemini",
+    "config_name": "gemini_gemini",
+    "planner_model": "gemini-2.5-flash",
+    "evaluator_model": "gemini-2.5-flash"
+  },
+  "sample": {
+    "vendor": "IBM    07222025",
+    "sample_id": "IBM____07222025_AIS-05.1",
+    "question_id": "AIS-05.1",
+    "control_id": "AIS-05",
+    "domain_id": "AIS",
+    "question_text": "Does the testing strategy outline criteria to accept new information systems,\nupgrades, and new versions while ensuring application security, compliance adherence,\nand organizational speed of delivery goals?",
+    "vendor_answer": "yes",
+    "vendor_comment": "The IBM Cloud IaaS system development lifecycle is built on the foundation of NIST 800-53 with special consideration of other relevant standards such as ISO27001. Including best practices of rule implementation for the development of software and systems, formal change control, utilization of test environments to conduct rigorous testing prior to release.\n\nTesting and release is automated using a JIRA workflow",
+    "caiq_version": "4.0.2",
+    "metadata": {
+      "SSRM Control Ownership": "CSP-owned",
+      "CCM Control Specification": "Implement a testing strategy, including criteria for acceptance of\nnew information systems, upgrades and new versions, which provides application\nsecurity assurance and maintains compliance while enabling organizational speed\nof delivery goals. Automate when applicable and possible.",
+      "CCM Control Title": "Automated Application Security Testing"
+    }
+  },
+  "plan": {
+    "prompt": "You are a cloud security compliance expert specialising in the CSA Cloud Controls Matrix (CCM).\n\nYour task is to produce a structured evaluation plan for assessing a vendor's compliance response to a CAIQ question.\n\nCAIQ Question ID : AIS-05.1\nCCM Control ID   : AIS-05\nCCM Domain       : AIS\nQuestion Text    : Does the testing strategy outline criteria to accept new information systems,\nupgrades, and new versions while ensuring application security, compliance adherence,\nand organizational speed of delivery goals?\nVendor Answer    : yes\n\nProduce a JSON evaluation plan with the following keys:\n\n{\n  \"steps\": [\n    \"Step 1: ...\",\n    \"Step 2: ...\",\n    \"Step 3: ...\"\n  ],\n  \"expected_evidence_type\": \"<what good evidence looks like, e.g. policy doc, certification, process description>\",\n  \"compliance_risk_level\": \"<low | medium | high> \u2014 how critical is a No answer here>\",\n  \"evaluation_focus\": \"<what the evaluator should specifically look for in the vendor comment>\",\n  \"nist_mapping_hint\": \"<relevant NIST 800-53 control family, e.g. AC, SA, SC>\",\n  \"answerability_check\": \"<answerable | needs_clarification | not_applicable>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"steps\": [\n    \"Step 1: Request the formal 'Testing Strategy' document or equivalent policy/procedure that outlines the criteria for accepting new information systems, upgrades, and new versions.\",\n    \"Step 2: Verify that the provided strategy explicitly defines acceptance criteria for new information systems, upgrades, and new versions.\",\n    \"Step 3: Examine the strategy for specific clauses or sections that address how application security is ensured during the acceptance process (e.g., security testing requirements, vulnerability assessment criteria).\",\n    \"Step 4: Confirm that the strategy includes criteria for compliance adherence (e.g., regulatory requirements, internal policy checks) and demonstrates how organizational speed of delivery goals are balanced with security and compliance.\"\n  ],\n  \"expected_evidence_type\": \"Formal 'Testing Strategy' document, System Acceptance Policy, Software Development Life Cycle (SDLC) documentation, Release Management Policy.\",\n  \"compliance_risk_level\": \"high\",\n  \"evaluation_focus\": \"Look for explicit, documented criteria covering security testing, compliance checks, and a clear process for accepting changes. Pay attention to how 'speed of delivery' is integrated without compromising security or compliance.\",\n  \"nist_mapping_hint\": \"SA (System and Services Acquisition), CA (Security Assessment and Authorization), CM (Configuration Management)\",\n  \"answerability_check\": \"needs_clarification\"\n}",
+    "parsed": {
+      "steps": [
+        "Step 1: Request the formal 'Testing Strategy' document or equivalent policy/procedure that outlines the criteria for accepting new information systems, upgrades, and new versions.",
+        "Step 2: Verify that the provided strategy explicitly defines acceptance criteria for new information systems, upgrades, and new versions.",
+        "Step 3: Examine the strategy for specific clauses or sections that address how application security is ensured during the acceptance process (e.g., security testing requirements, vulnerability assessment criteria).",
+        "Step 4: Confirm that the strategy includes criteria for compliance adherence (e.g., regulatory requirements, internal policy checks) and demonstrates how organizational speed of delivery goals are balanced with security and compliance."
+      ],
+      "expected_evidence_type": "Formal 'Testing Strategy' document, System Acceptance Policy, Software Development Life Cycle (SDLC) documentation, Release Management Policy.",
+      "compliance_risk_level": "high",
+      "evaluation_focus": "Look for explicit, documented criteria covering security testing, compliance checks, and a clear process for accepting changes. Pay attention to how 'speed of delivery' is integrated without compromising security or compliance.",
+      "nist_mapping_hint": "SA (System and Services Acquisition), CA (Security Assessment and Authorization), CM (Configuration Management)",
+      "answerability_check": "needs_clarification"
+    },
+    "parse_error": false
+  },
+  "evaluation": {
+    "prompt": "You are a cloud security compliance auditor evaluating a vendor's CAIQ response.\n\nCAIQ Question ID : AIS-05.1\nCCM Control ID   : AIS-05\nQuestion Text    : Does the testing strategy outline criteria to accept new information systems,\nupgrades, and new versions while ensuring application security, compliance adherence,\nand organizational speed of delivery goals?\nVendor Answer    : yes\nVendor Evidence  : The IBM Cloud IaaS system development lifecycle is built on the foundation of NIST 800-53 with special consideration of other relevant standards such as ISO27001. Including best practices of rule implementation for the development of software and systems, formal change control, utilization of test environments to conduct rigorous testing prior to release.\n\nTesting and release is automated using a JIRA workflow\n\nEvaluation Plan:\n  1. Step 1: Request the formal 'Testing Strategy' document or equivalent policy/procedure that outlines the criteria for accepting new information systems, upgrades, and new versions.\n  2. Step 2: Verify that the provided strategy explicitly defines acceptance criteria for new information systems, upgrades, and new versions.\n  3. Step 3: Examine the strategy for specific clauses or sections that address how application security is ensured during the acceptance process (e.g., security testing requirements, vulnerability assessment criteria).\n  4. Step 4: Confirm that the strategy includes criteria for compliance adherence (e.g., regulatory requirements, internal policy checks) and demonstrates how organizational speed of delivery goals are balanced with security and compliance.\n\nExpected evidence type : Formal 'Testing Strategy' document, System Acceptance Policy, Software Development Life Cycle (SDLC) documentation, Release Management Policy.\nEvaluation focus       : Look for explicit, documented criteria covering security testing, compliance checks, and a clear process for accepting changes. Pay attention to how 'speed of delivery' is integrated without compromising security or compliance.\n\n\n\nEvaluate the vendor's compliance and produce a JSON verdict:\n\n{\n  \"verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"confidence\": <0.0 to 1.0>,\n  \"evidence_quality\": \"<strong | adequate | weak | absent>\",\n  \"gap_description\": \"<what is missing or insufficient \u2014 empty string if compliant>\",\n  \"evidence_citation\": \"<exact quote from vendor comment that supports the verdict \u2014 empty string if none>\",\n  \"recommended_followup\": \"<suggested clarification question for procurement team \u2014 empty string if none>\",\n  \"reasoning\": \"<one concise sentence explaining the verdict>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"verdict\": \"needs_clarification\",\n  \"confidence\": 0.7,\n  \"evidence_quality\": \"weak\",\n  \"gap_description\": \"The vendor's evidence describes a general SDLC and testing process but does not explicitly outline the criteria for accepting new information systems, upgrades, and new versions, particularly concerning specific requirements for application security, compliance adherence, and how speed of delivery goals are balanced with these.\",\n  \"evidence_citation\": \"The IBM Cloud IaaS system development lifecycle is built on the foundation of NIST 800-53 with special consideration of other relevant standards such as ISO27001. Including best practices of rule implementation for the development of software and systems, formal change control, utilization of test environments to conduct rigorous testing prior to release. Testing and release is automated using a JIRA workflow\",\n  \"recommended_followup\": \"Please provide the formal 'Testing Strategy' document, System Acceptance Policy, or relevant SDLC documentation that explicitly outlines the acceptance criteria for new information systems, upgrades, and new versions, detailing how application security, compliance adherence, and the balance with organizational speed of delivery goals are addressed.\",\n  \"reasoning\": \"The provided evidence describes a general SDLC and testing process but lacks explicit, documented criteria for accepting new systems, upgrades, or versions, specifically regarding application security, compliance adherence, and the balance with speed of delivery goals as requested by the question.\"\n}",
+    "parsed": {
+      "verdict": "needs_clarification",
+      "confidence": 0.7,
+      "evidence_quality": "weak",
+      "gap_description": "The vendor's evidence describes a general SDLC and testing process but does not explicitly outline the criteria for accepting new information systems, upgrades, and new versions, particularly concerning specific requirements for application security, compliance adherence, and how speed of delivery goals are balanced with these.",
+      "evidence_citation": "The IBM Cloud IaaS system development lifecycle is built on the foundation of NIST 800-53 with special consideration of other relevant standards such as ISO27001. Including best practices of rule implementation for the development of software and systems, formal change control, utilization of test environments to conduct rigorous testing prior to release. Testing and release is automated using a JIRA workflow",
+      "recommended_followup": "Please provide the formal 'Testing Strategy' document, System Acceptance Policy, or relevant SDLC documentation that explicitly outlines the acceptance criteria for new information systems, upgrades, and new versions, detailing how application security, compliance adherence, and the balance with organizational speed of delivery goals are addressed.",
+      "reasoning": "The provided evidence describes a general SDLC and testing process but lacks explicit, documented criteria for accepting new systems, upgrades, or versions, specifically regarding application security, compliance adherence, and the balance with speed of delivery goals as requested by the question."
+    },
+    "parse_error": false,
+    "tool_trace": []
+  },
+  "verifier": {
+    "prompt": "You are an independent cloud security compliance reviewer.\n\nA compliance evaluator has assessed the following vendor CAIQ response and produced a draft verdict.\nYour job is to independently re-examine the evidence and either CONFIRM or REVISE the verdict.\n\nCAIQ Question ID : AIS-05.1\nCCM Control ID   : AIS-05\nQuestion Text    : Does the testing strategy outline criteria to accept new information systems,\nupgrades, and new versions while ensuring application security, compliance adherence,\nand organizational speed of delivery goals?\nVendor Answer    : yes\nVendor Evidence  : The IBM Cloud IaaS system development lifecycle is built on the foundation of NIST 800-53 with special consideration of other relevant standards such as ISO27001. Including best practices of rule implementation for the development of software and systems, formal change control, utilization of test environments to conduct rigorous testing prior to release.\n\nTesting and release is automated using a JIRA workflow\n\nDraft Verdict    : needs_clarification\nDraft Reasoning  : The provided evidence describes a general SDLC and testing process but lacks explicit, documented criteria for accepting new systems, upgrades, or versions, specifically regarding application security, compliance adherence, and the balance with speed of delivery goals as requested by the question.\nEvidence Quality : weak\n\nRe-examine the vendor's evidence independently. Then produce a JSON response:\n\n{\n  \"verdict\": \"<confirmed | revised>\",\n  \"final_verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"reasoning\": \"<one sentence: why you confirmed or what you changed and why>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\"verdict\": \"confirmed\", \"final_verdict\": \"needs_clarification\", \"reasoning\": \"The draft verdict is confirmed because the evidence describes a general SDLC and testing process but does not explicitly outline the specific criteria for accepting new systems, upgrades, or versions, particularly concerning application security, compliance adherence, and speed of delivery goals as requested by the question.\"}",
+    "parsed": {
+      "verdict": "confirmed",
+      "final_verdict": "needs_clarification",
+      "reasoning": "The draft verdict is confirmed because the evidence describes a general SDLC and testing process but does not explicitly outline the specific criteria for accepting new systems, upgrades, or versions, particularly concerning application security, compliance adherence, and speed of delivery goals as requested by the question."
+    },
+    "parse_error": false,
+    "verdict": "confirmed"
+  },
+  "timestamps": {
+    "start": "2026-04-28T18:49:19.198763+00:00",
+    "end": "2026-04-28T18:49:47.496063+00:00",
+    "planner_ms": 9659.41333770752,
+    "evaluator_ms": 11303.151369094849,
+    "verifier_ms": 7334.053516387939
+  },
+  "errors": [],
+  "lf_trace_id": "972331e741e0a7fef21b8f87fb37f494"
+}

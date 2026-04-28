@@ -1,0 +1,81 @@
+{
+  "schema_version": "cep.v1",
+  "run_id": "be094cd0-932d-42ab-9645-7beba42ee0a6",
+  "config": {
+    "planner_backend": "gemini",
+    "evaluator_backend": "gemini",
+    "judge_backend": "gemini",
+    "config_name": "gemini_gemini",
+    "planner_model": "gemini-2.5-flash",
+    "evaluator_model": "gemini-2.5-flash"
+  },
+  "sample": {
+    "vendor": "Camunda",
+    "sample_id": "Camunda_AIS-05.1",
+    "question_id": "AIS-05.1",
+    "control_id": "AIS-05",
+    "domain_id": "AIS",
+    "question_text": "Does the testing strategy outline criteria to accept new information systems,\nupgrades, and new versions while ensuring application security, compliance adherence,\nand organizational speed of delivery goals?",
+    "vendor_answer": "yes",
+    "vendor_comment": "This is outlined our Operations Policies and Procedures (section P10).",
+    "caiq_version": "4.0.2",
+    "metadata": {
+      "SSRM Control Ownership": "CSP-owned",
+      "CCM Control Specification": "Implement a testing strategy, including criteria for acceptance of\nnew information systems, upgrades and new versions, which provides application\nsecurity assurance and maintains compliance while enabling organizational speed\nof delivery goals. Automate when applicable and possible.",
+      "CCM Control Title": "Automated Application Security Testing"
+    }
+  },
+  "plan": {
+    "prompt": "You are a cloud security compliance expert specialising in the CSA Cloud Controls Matrix (CCM).\n\nYour task is to produce a structured evaluation plan for assessing a vendor's compliance response to a CAIQ question.\n\nCAIQ Question ID : AIS-05.1\nCCM Control ID   : AIS-05\nCCM Domain       : AIS\nQuestion Text    : Does the testing strategy outline criteria to accept new information systems,\nupgrades, and new versions while ensuring application security, compliance adherence,\nand organizational speed of delivery goals?\nVendor Answer    : yes\n\nProduce a JSON evaluation plan with the following keys:\n\n{\n  \"steps\": [\n    \"Step 1: ...\",\n    \"Step 2: ...\",\n    \"Step 3: ...\"\n  ],\n  \"expected_evidence_type\": \"<what good evidence looks like, e.g. policy doc, certification, process description>\",\n  \"compliance_risk_level\": \"<low | medium | high> \u2014 how critical is a No answer here>\",\n  \"evaluation_focus\": \"<what the evaluator should specifically look for in the vendor comment>\",\n  \"nist_mapping_hint\": \"<relevant NIST 800-53 control family, e.g. AC, SA, SC>\",\n  \"answerability_check\": \"<answerable | needs_clarification | not_applicable>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"steps\": [\n    \"Step 1: Request the vendor's formal 'Testing Strategy' document or relevant SDLC/Release Management policies that describe the process for accepting new information systems, upgrades, and new versions.\",\n    \"Step 2: Verify that the provided documentation explicitly outlines acceptance criteria for new information systems, upgrades, and new versions.\",\n    \"Step 3: Confirm that these acceptance criteria specifically address application security requirements (e.g., security testing, vulnerability assessment thresholds).\",\n    \"Step 4: Confirm that these acceptance criteria specifically address compliance adherence requirements (e.g., adherence to regulatory standards, internal policies) and consider organizational speed of delivery goals (e.g., efficiency, automation, minimal disruption).\"\n  ],\n  \"expected_evidence_type\": \"Testing Strategy Document, Software Development Life Cycle (SDLC) Policy, Release Management Policy, Acceptance Testing Procedures, Security Testing Guidelines\",\n  \"compliance_risk_level\": \"high\",\n  \"evaluation_focus\": \"Explicit mention of acceptance criteria for new systems/upgrades/versions; specific inclusion of application security testing (e.g., SAST, DAST, penetration testing) and compliance checks; consideration of efficiency and automation to meet delivery goals.\",\n  \"nist_mapping_hint\": \"SA (System and Services Acquisition), CA (Security Assessment and Authorization), SI (System and Information Integrity)\",\n  \"answerability_check\": \"answerable\"\n}",
+    "parsed": {
+      "steps": [
+        "Step 1: Request the vendor's formal 'Testing Strategy' document or relevant SDLC/Release Management policies that describe the process for accepting new information systems, upgrades, and new versions.",
+        "Step 2: Verify that the provided documentation explicitly outlines acceptance criteria for new information systems, upgrades, and new versions.",
+        "Step 3: Confirm that these acceptance criteria specifically address application security requirements (e.g., security testing, vulnerability assessment thresholds).",
+        "Step 4: Confirm that these acceptance criteria specifically address compliance adherence requirements (e.g., adherence to regulatory standards, internal policies) and consider organizational speed of delivery goals (e.g., efficiency, automation, minimal disruption)."
+      ],
+      "expected_evidence_type": "Testing Strategy Document, Software Development Life Cycle (SDLC) Policy, Release Management Policy, Acceptance Testing Procedures, Security Testing Guidelines",
+      "compliance_risk_level": "high",
+      "evaluation_focus": "Explicit mention of acceptance criteria for new systems/upgrades/versions; specific inclusion of application security testing (e.g., SAST, DAST, penetration testing) and compliance checks; consideration of efficiency and automation to meet delivery goals.",
+      "nist_mapping_hint": "SA (System and Services Acquisition), CA (Security Assessment and Authorization), SI (System and Information Integrity)",
+      "answerability_check": "answerable"
+    },
+    "parse_error": false
+  },
+  "evaluation": {
+    "prompt": "You are a cloud security compliance auditor evaluating a vendor's CAIQ response.\n\nCAIQ Question ID : AIS-05.1\nCCM Control ID   : AIS-05\nQuestion Text    : Does the testing strategy outline criteria to accept new information systems,\nupgrades, and new versions while ensuring application security, compliance adherence,\nand organizational speed of delivery goals?\nVendor Answer    : yes\nVendor Evidence  : This is outlined our Operations Policies and Procedures (section P10).\n\nEvaluation Plan:\n  1. Step 1: Request the vendor's formal 'Testing Strategy' document or relevant SDLC/Release Management policies that describe the process for accepting new information systems, upgrades, and new versions.\n  2. Step 2: Verify that the provided documentation explicitly outlines acceptance criteria for new information systems, upgrades, and new versions.\n  3. Step 3: Confirm that these acceptance criteria specifically address application security requirements (e.g., security testing, vulnerability assessment thresholds).\n  4. Step 4: Confirm that these acceptance criteria specifically address compliance adherence requirements (e.g., adherence to regulatory standards, internal policies) and consider organizational speed of delivery goals (e.g., efficiency, automation, minimal disruption).\n\nExpected evidence type : Testing Strategy Document, Software Development Life Cycle (SDLC) Policy, Release Management Policy, Acceptance Testing Procedures, Security Testing Guidelines\nEvaluation focus       : Explicit mention of acceptance criteria for new systems/upgrades/versions; specific inclusion of application security testing (e.g., SAST, DAST, penetration testing) and compliance checks; consideration of efficiency and automation to meet delivery goals.\n\n\n\nEvaluate the vendor's compliance and produce a JSON verdict:\n\n{\n  \"verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"confidence\": <0.0 to 1.0>,\n  \"evidence_quality\": \"<strong | adequate | weak | absent>\",\n  \"gap_description\": \"<what is missing or insufficient \u2014 empty string if compliant>\",\n  \"evidence_citation\": \"<exact quote from vendor comment that supports the verdict \u2014 empty string if none>\",\n  \"recommended_followup\": \"<suggested clarification question for procurement team \u2014 empty string if none>\",\n  \"reasoning\": \"<one concise sentence explaining the verdict>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"verdict\": \"needs_clarification\",\n  \"confidence\": 0.9,\n  \"evidence_quality\": \"weak\",\n  \"gap_description\": \"The vendor has not provided the 'Operations Policies and Procedures (section P10)' document or any specific details from it to verify the existence and content of the testing strategy and acceptance criteria as per the evaluation plan.\",\n  \"evidence_citation\": \"This is outlined our Operations Policies and Procedures (section P10).\",\n  \"recommended_followup\": \"Please provide the 'Operations Policies and Procedures (section P10)' document or relevant extracts that explicitly outline the testing strategy and acceptance criteria for new information systems, upgrades, and new versions, specifically addressing application security, compliance adherence, and organizational speed of delivery goals.\",\n  \"reasoning\": \"The vendor claims compliance and references a policy document, but the actual document or its relevant content was not provided for verification against the evaluation criteria.\"\n}",
+    "parsed": {
+      "verdict": "needs_clarification",
+      "confidence": 0.9,
+      "evidence_quality": "weak",
+      "gap_description": "The vendor has not provided the 'Operations Policies and Procedures (section P10)' document or any specific details from it to verify the existence and content of the testing strategy and acceptance criteria as per the evaluation plan.",
+      "evidence_citation": "This is outlined our Operations Policies and Procedures (section P10).",
+      "recommended_followup": "Please provide the 'Operations Policies and Procedures (section P10)' document or relevant extracts that explicitly outline the testing strategy and acceptance criteria for new information systems, upgrades, and new versions, specifically addressing application security, compliance adherence, and organizational speed of delivery goals.",
+      "reasoning": "The vendor claims compliance and references a policy document, but the actual document or its relevant content was not provided for verification against the evaluation criteria."
+    },
+    "parse_error": false,
+    "tool_trace": []
+  },
+  "verifier": {
+    "prompt": "You are an independent cloud security compliance reviewer.\n\nA compliance evaluator has assessed the following vendor CAIQ response and produced a draft verdict.\nYour job is to independently re-examine the evidence and either CONFIRM or REVISE the verdict.\n\nCAIQ Question ID : AIS-05.1\nCCM Control ID   : AIS-05\nQuestion Text    : Does the testing strategy outline criteria to accept new information systems,\nupgrades, and new versions while ensuring application security, compliance adherence,\nand organizational speed of delivery goals?\nVendor Answer    : yes\nVendor Evidence  : This is outlined our Operations Policies and Procedures (section P10).\n\nDraft Verdict    : needs_clarification\nDraft Reasoning  : The vendor claims compliance and references a policy document, but the actual document or its relevant content was not provided for verification against the evaluation criteria.\nEvidence Quality : weak\n\nRe-examine the vendor's evidence independently. Then produce a JSON response:\n\n{\n  \"verdict\": \"<confirmed | revised>\",\n  \"final_verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"reasoning\": \"<one sentence: why you confirmed or what you changed and why>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"verdict\": \"confirmed\",\n  \"final_verdict\": \"needs_clarification\",\n  \"reasoning\": \"The draft verdict is confirmed because the vendor's evidence only references a document without providing its content, making it impossible to verify if the testing strategy meets the outlined criteria.\"\n}",
+    "parsed": {
+      "verdict": "confirmed",
+      "final_verdict": "needs_clarification",
+      "reasoning": "The draft verdict is confirmed because the vendor's evidence only references a document without providing its content, making it impossible to verify if the testing strategy meets the outlined criteria."
+    },
+    "parse_error": false,
+    "verdict": "confirmed"
+  },
+  "timestamps": {
+    "start": "2026-04-28T18:12:16.672937+00:00",
+    "end": "2026-04-28T18:12:38.935247+00:00",
+    "planner_ms": 9644.701719284058,
+    "evaluator_ms": 8654.367208480835,
+    "verifier_ms": 3957.693576812744
+  },
+  "errors": [],
+  "lf_trace_id": "bf24b6004f75a9a351fe73733cb48c0f"
+}

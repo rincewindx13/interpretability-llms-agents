@@ -1,0 +1,79 @@
+{
+  "schema_version": "cep.v1",
+  "run_id": "be094cd0-932d-42ab-9645-7beba42ee0a6",
+  "config": {
+    "planner_backend": "gemini",
+    "evaluator_backend": "gemini",
+    "judge_backend": "gemini",
+    "config_name": "gemini_gemini",
+    "planner_model": "gemini-2.5-flash",
+    "evaluator_model": "gemini-2.5-flash"
+  },
+  "sample": {
+    "vendor": "Zoom Document Cloud 2022",
+    "sample_id": "Zoom_Document_Cloud_2022_A&A-01.2",
+    "question_id": "A&A-01.2",
+    "control_id": "A&A-01",
+    "domain_id": "A&A",
+    "question_text": "Are audit and assurance policies, procedures, and standards reviewed and updated\nat least annually?",
+    "vendor_answer": "yes",
+    "vendor_comment": "Zoom information security policies and standards are reviewed on an annual basis and approved by the CISO.",
+    "caiq_version": "4.0.2",
+    "metadata": {
+      "SSRM Control Ownership": "CSP-owned"
+    }
+  },
+  "plan": {
+    "prompt": "You are a cloud security compliance expert specialising in the CSA Cloud Controls Matrix (CCM).\n\nYour task is to produce a structured evaluation plan for assessing a vendor's compliance response to a CAIQ question.\n\nCAIQ Question ID : A&A-01.2\nCCM Control ID   : A&A-01\nCCM Domain       : A&A\nQuestion Text    : Are audit and assurance policies, procedures, and standards reviewed and updated\nat least annually?\nVendor Answer    : yes\n\nProduce a JSON evaluation plan with the following keys:\n\n{\n  \"steps\": [\n    \"Step 1: ...\",\n    \"Step 2: ...\",\n    \"Step 3: ...\"\n  ],\n  \"expected_evidence_type\": \"<what good evidence looks like, e.g. policy doc, certification, process description>\",\n  \"compliance_risk_level\": \"<low | medium | high> \u2014 how critical is a No answer here>\",\n  \"evaluation_focus\": \"<what the evaluator should specifically look for in the vendor comment>\",\n  \"nist_mapping_hint\": \"<relevant NIST 800-53 control family, e.g. AC, SA, SC>\",\n  \"answerability_check\": \"<answerable | needs_clarification | not_applicable>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"steps\": [\n    \"Step 1: Request copies of the vendor's audit and assurance policies, procedures, and standards documents.\",\n    \"Step 2: Examine each provided document for a version control history, review log, or similar metadata indicating review dates.\",\n    \"Step 3: Verify that the review dates demonstrate that each document has undergone a formal review and update process at least annually.\",\n    \"Step 4: Look for evidence of approval (e.g., signatures, approval dates, change management records) associated with the annual reviews and updates.\"\n  ],\n  \"expected_evidence_type\": \"Policy documents (e.g., Audit Policy, Information Security Policy), Procedure documents (e.g., Internal Audit Procedure), Standards documents (e.g., Security Standards), Version control logs, Document review records, Change management records, Meeting minutes related to policy reviews.\",\n  \"compliance_risk_level\": \"high\",\n  \"evaluation_focus\": \"Confirmation of annual review frequency for *all* relevant policies, procedures, and standards. Evidence of formal approval for reviews and updates. Clear dates demonstrating 'at least annually' compliance.\",\n  \"nist_mapping_hint\": \"AU (Audit and Accountability), PL (Planning), PM (Program Management)\",\n  \"answerability_check\": \"answerable\"\n}",
+    "parsed": {
+      "steps": [
+        "Step 1: Request copies of the vendor's audit and assurance policies, procedures, and standards documents.",
+        "Step 2: Examine each provided document for a version control history, review log, or similar metadata indicating review dates.",
+        "Step 3: Verify that the review dates demonstrate that each document has undergone a formal review and update process at least annually.",
+        "Step 4: Look for evidence of approval (e.g., signatures, approval dates, change management records) associated with the annual reviews and updates."
+      ],
+      "expected_evidence_type": "Policy documents (e.g., Audit Policy, Information Security Policy), Procedure documents (e.g., Internal Audit Procedure), Standards documents (e.g., Security Standards), Version control logs, Document review records, Change management records, Meeting minutes related to policy reviews.",
+      "compliance_risk_level": "high",
+      "evaluation_focus": "Confirmation of annual review frequency for *all* relevant policies, procedures, and standards. Evidence of formal approval for reviews and updates. Clear dates demonstrating 'at least annually' compliance.",
+      "nist_mapping_hint": "AU (Audit and Accountability), PL (Planning), PM (Program Management)",
+      "answerability_check": "answerable"
+    },
+    "parse_error": false
+  },
+  "evaluation": {
+    "prompt": "You are a cloud security compliance auditor evaluating a vendor's CAIQ response.\n\nCAIQ Question ID : A&A-01.2\nCCM Control ID   : A&A-01\nQuestion Text    : Are audit and assurance policies, procedures, and standards reviewed and updated\nat least annually?\nVendor Answer    : yes\nVendor Evidence  : Zoom information security policies and standards are reviewed on an annual basis and approved by the CISO.\n\nEvaluation Plan:\n  1. Step 1: Request copies of the vendor's audit and assurance policies, procedures, and standards documents.\n  2. Step 2: Examine each provided document for a version control history, review log, or similar metadata indicating review dates.\n  3. Step 3: Verify that the review dates demonstrate that each document has undergone a formal review and update process at least annually.\n  4. Step 4: Look for evidence of approval (e.g., signatures, approval dates, change management records) associated with the annual reviews and updates.\n\nExpected evidence type : Policy documents (e.g., Audit Policy, Information Security Policy), Procedure documents (e.g., Internal Audit Procedure), Standards documents (e.g., Security Standards), Version control logs, Document review records, Change management records, Meeting minutes related to policy reviews.\nEvaluation focus       : Confirmation of annual review frequency for *all* relevant policies, procedures, and standards. Evidence of formal approval for reviews and updates. Clear dates demonstrating 'at least annually' compliance.\n\n\n\nEvaluate the vendor's compliance and produce a JSON verdict:\n\n{\n  \"verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"confidence\": <0.0 to 1.0>,\n  \"evidence_quality\": \"<strong | adequate | weak | absent>\",\n  \"gap_description\": \"<what is missing or insufficient \u2014 empty string if compliant>\",\n  \"evidence_citation\": \"<exact quote from vendor comment that supports the verdict \u2014 empty string if none>\",\n  \"recommended_followup\": \"<suggested clarification question for procurement team \u2014 empty string if none>\",\n  \"reasoning\": \"<one concise sentence explaining the verdict>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"verdict\": \"needs_clarification\",\n  \"confidence\": 0.7,\n  \"evidence_quality\": \"weak\",\n  \"gap_description\": \"The vendor's evidence is a descriptive statement about their process rather than verifiable documentation (e.g., policy documents, review logs, or version control history). The scope of the vendor's statement also omits 'procedures' and does not explicitly confirm coverage for 'audit and assurance policies'.\",\n  \"evidence_citation\": \"Zoom information security policies and standards are reviewed on an annual basis and approved by the CISO.\",\n  \"recommended_followup\": \"Please provide copies of your audit and assurance policies, procedures, and standards, along with their version control logs or review records, demonstrating annual review and CISO approval for each document.\",\n  \"reasoning\": \"The vendor claims annual review and CISO approval for information security policies and standards, but actual verifiable evidence and full scope coverage (including procedures and specific audit/assurance policies) are missing.\"\n}",
+    "parsed": {
+      "verdict": "needs_clarification",
+      "confidence": 0.7,
+      "evidence_quality": "weak",
+      "gap_description": "The vendor's evidence is a descriptive statement about their process rather than verifiable documentation (e.g., policy documents, review logs, or version control history). The scope of the vendor's statement also omits 'procedures' and does not explicitly confirm coverage for 'audit and assurance policies'.",
+      "evidence_citation": "Zoom information security policies and standards are reviewed on an annual basis and approved by the CISO.",
+      "recommended_followup": "Please provide copies of your audit and assurance policies, procedures, and standards, along with their version control logs or review records, demonstrating annual review and CISO approval for each document.",
+      "reasoning": "The vendor claims annual review and CISO approval for information security policies and standards, but actual verifiable evidence and full scope coverage (including procedures and specific audit/assurance policies) are missing."
+    },
+    "parse_error": false,
+    "tool_trace": []
+  },
+  "verifier": {
+    "prompt": "You are an independent cloud security compliance reviewer.\n\nA compliance evaluator has assessed the following vendor CAIQ response and produced a draft verdict.\nYour job is to independently re-examine the evidence and either CONFIRM or REVISE the verdict.\n\nCAIQ Question ID : A&A-01.2\nCCM Control ID   : A&A-01\nQuestion Text    : Are audit and assurance policies, procedures, and standards reviewed and updated\nat least annually?\nVendor Answer    : yes\nVendor Evidence  : Zoom information security policies and standards are reviewed on an annual basis and approved by the CISO.\n\nDraft Verdict    : needs_clarification\nDraft Reasoning  : The vendor claims annual review and CISO approval for information security policies and standards, but actual verifiable evidence and full scope coverage (including procedures and specific audit/assurance policies) are missing.\nEvidence Quality : weak\n\nRe-examine the vendor's evidence independently. Then produce a JSON response:\n\n{\n  \"verdict\": \"<confirmed | revised>\",\n  \"final_verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"reasoning\": \"<one sentence: why you confirmed or what you changed and why>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"verdict\": \"confirmed\",\n  \"final_verdict\": \"needs_clarification\",\n  \"reasoning\": \"The draft verdict is confirmed because the vendor's evidence is a statement of practice rather than verifiable proof, and it does not explicitly cover 'procedures' or specifically 'audit and assurance' policies as requested by the question.\"\n}",
+    "parsed": {
+      "verdict": "confirmed",
+      "final_verdict": "needs_clarification",
+      "reasoning": "The draft verdict is confirmed because the vendor's evidence is a statement of practice rather than verifiable proof, and it does not explicitly cover 'procedures' or specifically 'audit and assurance' policies as requested by the question."
+    },
+    "parse_error": false,
+    "verdict": "confirmed"
+  },
+  "timestamps": {
+    "start": "2026-04-28T17:49:36.138825+00:00",
+    "end": "2026-04-28T17:50:00.465048+00:00",
+    "planner_ms": 9014.949560165405,
+    "evaluator_ms": 8976.818799972534,
+    "verifier_ms": 6333.71376991272
+  },
+  "errors": [],
+  "lf_trace_id": "4bfd40fe51bf8fc105d1d98e3c860bab"
+}

@@ -1,0 +1,79 @@
+{
+  "schema_version": "cep.v1",
+  "run_id": "be094cd0-932d-42ab-9645-7beba42ee0a6",
+  "config": {
+    "planner_backend": "gemini",
+    "evaluator_backend": "gemini",
+    "judge_backend": "gemini",
+    "config_name": "gemini_gemini",
+    "planner_model": "gemini-2.5-flash",
+    "evaluator_model": "gemini-2.5-flash"
+  },
+  "sample": {
+    "vendor": "Adobe Creative Cloud 2025",
+    "sample_id": "Adobe_Creative_Cloud_2025_AIS-05.2",
+    "question_id": "AIS-05.2",
+    "control_id": "AIS-05",
+    "domain_id": "AIS",
+    "question_text": "Is testing automated when applicable and possible?",
+    "vendor_answer": "yes",
+    "vendor_comment": "Adobe's internal Secure Product Lifecycle (SPLC) and vulnerability management processes include manual and automated source code analysis periodically. Additionally, all new customer facing services are required to complete security and compliance reviews prior to production, and applications are reviewed for security vulnerabilities as part of these reviews. \n\nAdditionally where applicable and feasible, changes applied to infrastructure or application code are tested automatically, Adobe practices secured build life cycle which includes automation around CI/CD.",
+    "caiq_version": "4.0.2",
+    "metadata": {
+      "SSRM Control Ownership": "CSP-owned"
+    }
+  },
+  "plan": {
+    "prompt": "You are a cloud security compliance expert specialising in the CSA Cloud Controls Matrix (CCM).\n\nYour task is to produce a structured evaluation plan for assessing a vendor's compliance response to a CAIQ question.\n\nCAIQ Question ID : AIS-05.2\nCCM Control ID   : AIS-05\nCCM Domain       : AIS\nQuestion Text    : Is testing automated when applicable and possible?\nVendor Answer    : yes\n\nProduce a JSON evaluation plan with the following keys:\n\n{\n  \"steps\": [\n    \"Step 1: ...\",\n    \"Step 2: ...\",\n    \"Step 3: ...\"\n  ],\n  \"expected_evidence_type\": \"<what good evidence looks like, e.g. policy doc, certification, process description>\",\n  \"compliance_risk_level\": \"<low | medium | high> \u2014 how critical is a No answer here>\",\n  \"evaluation_focus\": \"<what the evaluator should specifically look for in the vendor comment>\",\n  \"nist_mapping_hint\": \"<relevant NIST 800-53 control family, e.g. AC, SA, SC>\",\n  \"answerability_check\": \"<answerable | needs_clarification | not_applicable>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"steps\": [\n    \"Step 1: Request documentation outlining the vendor's Software Development Lifecycle (SDLC) and testing methodologies, specifically detailing the integration of automated testing.\",\n    \"Step 2: Request evidence of automated testing implementation, such as CI/CD pipeline configurations, test automation scripts, test execution logs, or reports demonstrating automated test coverage and results.\",\n    \"Step 3: Inquire about the criteria and processes used by the vendor to determine when testing is 'applicable and possible' for automation, and how these criteria are applied in practice.\",\n    \"Step 4: Verify that automated testing encompasses relevant security aspects, including but not limited to unit tests, integration tests, regression tests, and security-specific tests (e.g., SAST, DAST, dependency scanning).\"\n  ],\n  \"expected_evidence_type\": \"SDLC documentation, CI/CD pipeline configurations, test automation framework details, test scripts, test execution logs/reports, security testing policies/procedures.\",\n  \"compliance_risk_level\": \"high\",\n  \"evaluation_focus\": \"The extent and scope of automated testing, the types of tests automated (especially security-related), the criteria for determining automation applicability, and evidence of consistent execution and remediation based on automated test results.\",\n  \"nist_mapping_hint\": \"SA (System and Services Acquisition), RA (Risk Assessment), CM (Configuration Management)\",\n  \"answerability_check\": \"answerable\"\n}",
+    "parsed": {
+      "steps": [
+        "Step 1: Request documentation outlining the vendor's Software Development Lifecycle (SDLC) and testing methodologies, specifically detailing the integration of automated testing.",
+        "Step 2: Request evidence of automated testing implementation, such as CI/CD pipeline configurations, test automation scripts, test execution logs, or reports demonstrating automated test coverage and results.",
+        "Step 3: Inquire about the criteria and processes used by the vendor to determine when testing is 'applicable and possible' for automation, and how these criteria are applied in practice.",
+        "Step 4: Verify that automated testing encompasses relevant security aspects, including but not limited to unit tests, integration tests, regression tests, and security-specific tests (e.g., SAST, DAST, dependency scanning)."
+      ],
+      "expected_evidence_type": "SDLC documentation, CI/CD pipeline configurations, test automation framework details, test scripts, test execution logs/reports, security testing policies/procedures.",
+      "compliance_risk_level": "high",
+      "evaluation_focus": "The extent and scope of automated testing, the types of tests automated (especially security-related), the criteria for determining automation applicability, and evidence of consistent execution and remediation based on automated test results.",
+      "nist_mapping_hint": "SA (System and Services Acquisition), RA (Risk Assessment), CM (Configuration Management)",
+      "answerability_check": "answerable"
+    },
+    "parse_error": false
+  },
+  "evaluation": {
+    "prompt": "You are a cloud security compliance auditor evaluating a vendor's CAIQ response.\n\nCAIQ Question ID : AIS-05.2\nCCM Control ID   : AIS-05\nQuestion Text    : Is testing automated when applicable and possible?\nVendor Answer    : yes\nVendor Evidence  : Adobe's internal Secure Product Lifecycle (SPLC) and vulnerability management processes include manual and automated source code analysis periodically. Additionally, all new customer facing services are required to complete security and compliance reviews prior to production, and applications are reviewed for security vulnerabilities as part of these reviews. \n\nAdditionally where applicable and feasible, changes applied to infrastructure or application code are tested automatically, Adobe practices secured build life cycle which includes automation around CI/CD.\n\nEvaluation Plan:\n  1. Step 1: Request documentation outlining the vendor's Software Development Lifecycle (SDLC) and testing methodologies, specifically detailing the integration of automated testing.\n  2. Step 2: Request evidence of automated testing implementation, such as CI/CD pipeline configurations, test automation scripts, test execution logs, or reports demonstrating automated test coverage and results.\n  3. Step 3: Inquire about the criteria and processes used by the vendor to determine when testing is 'applicable and possible' for automation, and how these criteria are applied in practice.\n  4. Step 4: Verify that automated testing encompasses relevant security aspects, including but not limited to unit tests, integration tests, regression tests, and security-specific tests (e.g., SAST, DAST, dependency scanning).\n\nExpected evidence type : SDLC documentation, CI/CD pipeline configurations, test automation framework details, test scripts, test execution logs/reports, security testing policies/procedures.\nEvaluation focus       : The extent and scope of automated testing, the types of tests automated (especially security-related), the criteria for determining automation applicability, and evidence of consistent execution and remediation based on automated test results.\n\n\n\nEvaluate the vendor's compliance and produce a JSON verdict:\n\n{\n  \"verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"confidence\": <0.0 to 1.0>,\n  \"evidence_quality\": \"<strong | adequate | weak | absent>\",\n  \"gap_description\": \"<what is missing or insufficient \u2014 empty string if compliant>\",\n  \"evidence_citation\": \"<exact quote from vendor comment that supports the verdict \u2014 empty string if none>\",\n  \"recommended_followup\": \"<suggested clarification question for procurement team \u2014 empty string if none>\",\n  \"reasoning\": \"<one concise sentence explaining the verdict>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"verdict\": \"partial\",\n  \"confidence\": 0.8,\n  \"evidence_quality\": \"weak\",\n  \"gap_description\": \"The vendor's evidence is descriptive and lacks specific documentation (e.g., SDLC, CI/CD configurations, test reports) to demonstrate the extent, scope, and consistent application of automated testing. Criteria for determining when testing is 'applicable and possible' for automation are not detailed, and the types of automated tests beyond source code analysis are not explicitly mentioned.\",\n  \"evidence_citation\": \"Adobe's internal Secure Product Lifecycle (SPLC) and vulnerability management processes include manual and automated source code analysis periodically. Additionally where applicable and feasible, changes applied to infrastructure or application code are tested automatically, Adobe practices secured build life cycle which includes automation around CI/CD.\",\n  \"recommended_followup\": \"Please provide documentation outlining the SDLC and testing methodologies, specifically detailing the integration of automated testing. Provide evidence of automated testing implementation, such as CI/CD pipeline configurations, test execution logs, or reports demonstrating automated test coverage and results. Clarify the criteria and processes used to determine when testing is 'applicable and possible' for automation, and confirm if automated testing encompasses relevant security aspects beyond SAST (e.g., DAST, dependency scanning, unit, integration, regression tests).\",\n  \"reasoning\": \"The vendor states automated testing is performed, including source code analysis and CI/CD automation, but lacks specific documentation and detailed evidence to fully substantiate the claim and scope of automation 'when applicable and possible'.\"\n}",
+    "parsed": {
+      "verdict": "partial",
+      "confidence": 0.8,
+      "evidence_quality": "weak",
+      "gap_description": "The vendor's evidence is descriptive and lacks specific documentation (e.g., SDLC, CI/CD configurations, test reports) to demonstrate the extent, scope, and consistent application of automated testing. Criteria for determining when testing is 'applicable and possible' for automation are not detailed, and the types of automated tests beyond source code analysis are not explicitly mentioned.",
+      "evidence_citation": "Adobe's internal Secure Product Lifecycle (SPLC) and vulnerability management processes include manual and automated source code analysis periodically. Additionally where applicable and feasible, changes applied to infrastructure or application code are tested automatically, Adobe practices secured build life cycle which includes automation around CI/CD.",
+      "recommended_followup": "Please provide documentation outlining the SDLC and testing methodologies, specifically detailing the integration of automated testing. Provide evidence of automated testing implementation, such as CI/CD pipeline configurations, test execution logs, or reports demonstrating automated test coverage and results. Clarify the criteria and processes used to determine when testing is 'applicable and possible' for automation, and confirm if automated testing encompasses relevant security aspects beyond SAST (e.g., DAST, dependency scanning, unit, integration, regression tests).",
+      "reasoning": "The vendor states automated testing is performed, including source code analysis and CI/CD automation, but lacks specific documentation and detailed evidence to fully substantiate the claim and scope of automation 'when applicable and possible'."
+    },
+    "parse_error": false,
+    "tool_trace": []
+  },
+  "verifier": {
+    "prompt": "You are an independent cloud security compliance reviewer.\n\nA compliance evaluator has assessed the following vendor CAIQ response and produced a draft verdict.\nYour job is to independently re-examine the evidence and either CONFIRM or REVISE the verdict.\n\nCAIQ Question ID : AIS-05.2\nCCM Control ID   : AIS-05\nQuestion Text    : Is testing automated when applicable and possible?\nVendor Answer    : yes\nVendor Evidence  : Adobe's internal Secure Product Lifecycle (SPLC) and vulnerability management processes include manual and automated source code analysis periodically. Additionally, all new customer facing services are required to complete security and compliance reviews prior to production, and applications are reviewed for security vulnerabilities as part of these reviews. \n\nAdditionally where applicable and feasible, changes applied to infrastructure or application code are tested automatically, Adobe practices secured build life cycle which includes automation around CI/CD.\n\nDraft Verdict    : partial\nDraft Reasoning  : The vendor states automated testing is performed, including source code analysis and CI/CD automation, but lacks specific documentation and detailed evidence to fully substantiate the claim and scope of automation 'when applicable and possible'.\nEvidence Quality : weak\n\nRe-examine the vendor's evidence independently. Then produce a JSON response:\n\n{\n  \"verdict\": \"<confirmed | revised>\",\n  \"final_verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"reasoning\": \"<one sentence: why you confirmed or what you changed and why>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"verdict\": \"confirmed\",\n  \"final_verdict\": \"partial\",\n  \"reasoning\": \"The vendor states automated testing is performed for source code analysis and CI/CD, but the evidence lacks sufficient detail to fully substantiate the comprehensive scope of automation 'when applicable and possible'.\"\n}",
+    "parsed": {
+      "verdict": "confirmed",
+      "final_verdict": "partial",
+      "reasoning": "The vendor states automated testing is performed for source code analysis and CI/CD, but the evidence lacks sufficient detail to fully substantiate the comprehensive scope of automation 'when applicable and possible'."
+    },
+    "parse_error": false,
+    "verdict": "confirmed"
+  },
+  "timestamps": {
+    "start": "2026-04-28T17:46:01.109235+00:00",
+    "end": "2026-04-28T17:46:37.463091+00:00",
+    "planner_ms": 8456.160306930542,
+    "evaluator_ms": 11306.011199951172,
+    "verifier_ms": 16590.903759002686
+  },
+  "errors": [],
+  "lf_trace_id": "d8da656ba0f70767be7ff1b60b29d1d0"
+}

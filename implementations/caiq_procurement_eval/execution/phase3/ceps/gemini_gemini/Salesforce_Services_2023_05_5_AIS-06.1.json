@@ -1,0 +1,81 @@
+{
+  "schema_version": "cep.v1",
+  "run_id": "be094cd0-932d-42ab-9645-7beba42ee0a6",
+  "config": {
+    "planner_backend": "gemini",
+    "evaluator_backend": "gemini",
+    "judge_backend": "gemini",
+    "config_name": "gemini_gemini",
+    "planner_model": "gemini-2.5-flash",
+    "evaluator_model": "gemini-2.5-flash"
+  },
+  "sample": {
+    "vendor": "Salesforce Services 2023 05 5",
+    "sample_id": "Salesforce_Services_2023_05_5_AIS-06.1",
+    "question_id": "AIS-06.1",
+    "control_id": "AIS-06",
+    "domain_id": "AIS",
+    "question_text": "Are strategies and capabilities established and implemented to deploy \napplication code in a secure, standardized, and compliant manner?",
+    "vendor_answer": "yes",
+    "vendor_comment": "",
+    "caiq_version": "4.0.2",
+    "metadata": {
+      "SSRM Control Ownership": "CSP-owned",
+      "CCM Control Specification": "Establish and implement strategies and capabilities for secure, standardized, \nand compliant application deployment. Automate where possible.",
+      "CCM Control Title": "Automated Secure \nApplication Deployment"
+    }
+  },
+  "plan": {
+    "prompt": "You are a cloud security compliance expert specialising in the CSA Cloud Controls Matrix (CCM).\n\nYour task is to produce a structured evaluation plan for assessing a vendor's compliance response to a CAIQ question.\n\nCAIQ Question ID : AIS-06.1\nCCM Control ID   : AIS-06\nCCM Domain       : AIS\nQuestion Text    : Are strategies and capabilities established and implemented to deploy \napplication code in a secure, standardized, and compliant manner?\nVendor Answer    : yes\n\nProduce a JSON evaluation plan with the following keys:\n\n{\n  \"steps\": [\n    \"Step 1: ...\",\n    \"Step 2: ...\",\n    \"Step 3: ...\"\n  ],\n  \"expected_evidence_type\": \"<what good evidence looks like, e.g. policy doc, certification, process description>\",\n  \"compliance_risk_level\": \"<low | medium | high> \u2014 how critical is a No answer here>\",\n  \"evaluation_focus\": \"<what the evaluator should specifically look for in the vendor comment>\",\n  \"nist_mapping_hint\": \"<relevant NIST 800-53 control family, e.g. AC, SA, SC>\",\n  \"answerability_check\": \"<answerable | needs_clarification | not_applicable>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"steps\": [\n    \"Step 1: Request documentation outlining the secure application deployment strategy, including policies, standards, and procedures for code deployment.\",\n    \"Step 2: Examine evidence of automated deployment pipelines (CI/CD) that integrate security controls, such as static application security testing (SAST), dynamic application security testing (DAST), and vulnerability scanning, prior to deployment.\",\n    \"Step 3: Verify the use of standardized deployment templates, scripts, or infrastructure-as-code (IaC) to ensure consistent, secure, and compliant application deployments across environments.\",\n    \"Step 4: Look for evidence of access controls, segregation of duties, and change management processes applied to the deployment environment and code promotion activities.\"\n  ],\n  \"expected_evidence_type\": \"Secure SDLC policy, CI/CD pipeline documentation, configuration management plans, deployment scripts/templates, security testing reports integrated into pipelines, audit logs of deployments, change management records.\",\n  \"compliance_risk_level\": \"high\",\n  \"evaluation_focus\": \"The existence and enforcement of documented secure deployment strategies, the integration of security into automated deployment pipelines, the standardization of deployment processes, and adherence to compliance requirements throughout the application lifecycle.\",\n  \"nist_mapping_hint\": \"SA (System and Services Acquisition), SC (System and Communications Protection), CM (Configuration Management)\",\n  \"answerability_check\": \"answerable\"\n}",
+    "parsed": {
+      "steps": [
+        "Step 1: Request documentation outlining the secure application deployment strategy, including policies, standards, and procedures for code deployment.",
+        "Step 2: Examine evidence of automated deployment pipelines (CI/CD) that integrate security controls, such as static application security testing (SAST), dynamic application security testing (DAST), and vulnerability scanning, prior to deployment.",
+        "Step 3: Verify the use of standardized deployment templates, scripts, or infrastructure-as-code (IaC) to ensure consistent, secure, and compliant application deployments across environments.",
+        "Step 4: Look for evidence of access controls, segregation of duties, and change management processes applied to the deployment environment and code promotion activities."
+      ],
+      "expected_evidence_type": "Secure SDLC policy, CI/CD pipeline documentation, configuration management plans, deployment scripts/templates, security testing reports integrated into pipelines, audit logs of deployments, change management records.",
+      "compliance_risk_level": "high",
+      "evaluation_focus": "The existence and enforcement of documented secure deployment strategies, the integration of security into automated deployment pipelines, the standardization of deployment processes, and adherence to compliance requirements throughout the application lifecycle.",
+      "nist_mapping_hint": "SA (System and Services Acquisition), SC (System and Communications Protection), CM (Configuration Management)",
+      "answerability_check": "answerable"
+    },
+    "parse_error": false
+  },
+  "evaluation": {
+    "prompt": "You are a cloud security compliance auditor evaluating a vendor's CAIQ response.\n\nCAIQ Question ID : AIS-06.1\nCCM Control ID   : AIS-06\nQuestion Text    : Are strategies and capabilities established and implemented to deploy \napplication code in a secure, standardized, and compliant manner?\nVendor Answer    : yes\nVendor Evidence  : (no evidence provided)\n\nEvaluation Plan:\n  1. Step 1: Request documentation outlining the secure application deployment strategy, including policies, standards, and procedures for code deployment.\n  2. Step 2: Examine evidence of automated deployment pipelines (CI/CD) that integrate security controls, such as static application security testing (SAST), dynamic application security testing (DAST), and vulnerability scanning, prior to deployment.\n  3. Step 3: Verify the use of standardized deployment templates, scripts, or infrastructure-as-code (IaC) to ensure consistent, secure, and compliant application deployments across environments.\n  4. Step 4: Look for evidence of access controls, segregation of duties, and change management processes applied to the deployment environment and code promotion activities.\n\nExpected evidence type : Secure SDLC policy, CI/CD pipeline documentation, configuration management plans, deployment scripts/templates, security testing reports integrated into pipelines, audit logs of deployments, change management records.\nEvaluation focus       : The existence and enforcement of documented secure deployment strategies, the integration of security into automated deployment pipelines, the standardization of deployment processes, and adherence to compliance requirements throughout the application lifecycle.\n\n\n\nEvaluate the vendor's compliance and produce a JSON verdict:\n\n{\n  \"verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"confidence\": <0.0 to 1.0>,\n  \"evidence_quality\": \"<strong | adequate | weak | absent>\",\n  \"gap_description\": \"<what is missing or insufficient \u2014 empty string if compliant>\",\n  \"evidence_citation\": \"<exact quote from vendor comment that supports the verdict \u2014 empty string if none>\",\n  \"recommended_followup\": \"<suggested clarification question for procurement team \u2014 empty string if none>\",\n  \"reasoning\": \"<one concise sentence explaining the verdict>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"verdict\": \"needs_clarification\",\n  \"confidence\": 1.0,\n  \"evidence_quality\": \"absent\",\n  \"gap_description\": \"No evidence was provided to support the vendor's claim of having established and implemented strategies and capabilities for secure, standardized, and compliant application code deployment.\",\n  \"evidence_citation\": \"(no evidence provided)\",\n  \"recommended_followup\": \"Please provide comprehensive documentation outlining your secure application deployment strategy, including policies, standards, procedures, CI/CD pipeline documentation, configuration management plans, deployment scripts/templates, security testing reports integrated into pipelines, audit logs of deployments, and change management records as per the expected evidence types.\",\n  \"reasoning\": \"The vendor stated 'yes' but provided no evidence, making it impossible to evaluate the existence and implementation of secure, standardized, and compliant application code deployment strategies and capabilities.\"\n}",
+    "parsed": {
+      "verdict": "needs_clarification",
+      "confidence": 1.0,
+      "evidence_quality": "absent",
+      "gap_description": "No evidence was provided to support the vendor's claim of having established and implemented strategies and capabilities for secure, standardized, and compliant application code deployment.",
+      "evidence_citation": "(no evidence provided)",
+      "recommended_followup": "Please provide comprehensive documentation outlining your secure application deployment strategy, including policies, standards, procedures, CI/CD pipeline documentation, configuration management plans, deployment scripts/templates, security testing reports integrated into pipelines, audit logs of deployments, and change management records as per the expected evidence types.",
+      "reasoning": "The vendor stated 'yes' but provided no evidence, making it impossible to evaluate the existence and implementation of secure, standardized, and compliant application code deployment strategies and capabilities."
+    },
+    "parse_error": false,
+    "tool_trace": []
+  },
+  "verifier": {
+    "prompt": "You are an independent cloud security compliance reviewer.\n\nA compliance evaluator has assessed the following vendor CAIQ response and produced a draft verdict.\nYour job is to independently re-examine the evidence and either CONFIRM or REVISE the verdict.\n\nCAIQ Question ID : AIS-06.1\nCCM Control ID   : AIS-06\nQuestion Text    : Are strategies and capabilities established and implemented to deploy \napplication code in a secure, standardized, and compliant manner?\nVendor Answer    : yes\nVendor Evidence  : (no evidence provided)\n\nDraft Verdict    : needs_clarification\nDraft Reasoning  : The vendor stated 'yes' but provided no evidence, making it impossible to evaluate the existence and implementation of secure, standardized, and compliant application code deployment strategies and capabilities.\nEvidence Quality : absent\n\nRe-examine the vendor's evidence independently. Then produce a JSON response:\n\n{\n  \"verdict\": \"<confirmed | revised>\",\n  \"final_verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"reasoning\": \"<one sentence: why you confirmed or what you changed and why>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"verdict\": \"confirmed\",\n  \"final_verdict\": \"needs_clarification\",\n  \"reasoning\": \"The draft verdict is confirmed because the vendor provided no evidence to support their 'yes' answer, making it impossible to assess the implementation of secure application code deployment strategies.\"\n}",
+    "parsed": {
+      "verdict": "confirmed",
+      "final_verdict": "needs_clarification",
+      "reasoning": "The draft verdict is confirmed because the vendor provided no evidence to support their 'yes' answer, making it impossible to assess the implementation of secure application code deployment strategies."
+    },
+    "parse_error": false,
+    "verdict": "confirmed"
+  },
+  "timestamps": {
+    "start": "2026-04-28T18:04:36.052558+00:00",
+    "end": "2026-04-28T18:04:59.157589+00:00",
+    "planner_ms": 8397.745132446289,
+    "evaluator_ms": 9888.888359069824,
+    "verifier_ms": 4817.774534225464
+  },
+  "errors": [],
+  "lf_trace_id": "fd4922ce88e3b325d89215bf04e7a343"
+}

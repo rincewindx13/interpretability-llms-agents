@@ -1,0 +1,81 @@
+{
+  "schema_version": "cep.v1",
+  "run_id": "be094cd0-932d-42ab-9645-7beba42ee0a6",
+  "config": {
+    "planner_backend": "gemini",
+    "evaluator_backend": "gemini",
+    "judge_backend": "gemini",
+    "config_name": "gemini_gemini",
+    "planner_model": "gemini-2.5-flash",
+    "evaluator_model": "gemini-2.5-flash"
+  },
+  "sample": {
+    "vendor": "Adobe Creative Cloud 2025",
+    "sample_id": "Adobe_Creative_Cloud_2025_A&A-06.1",
+    "question_id": "A&A-06.1",
+    "control_id": "A&A-06",
+    "domain_id": "A&A",
+    "question_text": "Is a risk-based corrective action plan to remediate audit findings \nestablished, documented, approved, communicated, applied, evaluated, and \nmaintained?",
+    "vendor_answer": "yes",
+    "vendor_comment": "Adobe has defined a Security Risk Management Framework based on industry best practices and guidance including, but not limited to, NIST 800-30 Revision 1, NIST 800-39, NIST Risk Management Framework, ISO 27005, and Open Factor Analysis of Information Risk (FAIR).\n\nAdobe performs internal readiness assessment audits on an annual basis, and internal quarter compliance review (QCR) activities to verify ongoing operating effectiveness with Adobe's Common Control Framework (CCF) controls. Additionally, Adobe engages in external audits that address the efficiency and effectiveness of implemented Adobe (CCF) controls against industry standard frameworks.\n\nRisk based corrective action plans are developed to remediate findings resulting from Adobe's Risk Assessments, including QCR, Internal Readiness Assessments and External Audits.",
+    "caiq_version": "4.0.2",
+    "metadata": {
+      "SSRM Control Ownership": "CSP-owned",
+      "CCM Control Specification": "Establish, document, approve, communicate, apply, evaluate and maintain a \nrisk-based corrective action plan to remediate audit findings, review and \nreport remediation status to relevant stakeholders.",
+      "CCM Control Title": "Remediation"
+    }
+  },
+  "plan": {
+    "prompt": "You are a cloud security compliance expert specialising in the CSA Cloud Controls Matrix (CCM).\n\nYour task is to produce a structured evaluation plan for assessing a vendor's compliance response to a CAIQ question.\n\nCAIQ Question ID : A&A-06.1\nCCM Control ID   : A&A-06\nCCM Domain       : A&A\nQuestion Text    : Is a risk-based corrective action plan to remediate audit findings \nestablished, documented, approved, communicated, applied, evaluated, and \nmaintained?\nVendor Answer    : yes\n\nProduce a JSON evaluation plan with the following keys:\n\n{\n  \"steps\": [\n    \"Step 1: ...\",\n    \"Step 2: ...\",\n    \"Step 3: ...\"\n  ],\n  \"expected_evidence_type\": \"<what good evidence looks like, e.g. policy doc, certification, process description>\",\n  \"compliance_risk_level\": \"<low | medium | high> \u2014 how critical is a No answer here>\",\n  \"evaluation_focus\": \"<what the evaluator should specifically look for in the vendor comment>\",\n  \"nist_mapping_hint\": \"<relevant NIST 800-53 control family, e.g. AC, SA, SC>\",\n  \"answerability_check\": \"<answerable | needs_clarification | not_applicable>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"steps\": [\n    \"Step 1: Request the documented policy or procedure for managing audit findings and implementing corrective actions. Verify that it addresses the full lifecycle: establishment, documentation, approval, communication, application, evaluation, and maintenance.\",\n    \"Step 2: Request evidence of a risk assessment methodology applied to audit findings to prioritize and determine the scope of corrective actions. Look for examples of how 'risk-based' decisions are made.\",\n    \"Step 3: Review a sample of recent audit reports and their corresponding Corrective Action Plans (CAPs). Verify that CAPs are formally documented, include assigned responsibilities, target dates, and evidence of approval by relevant stakeholders.\",\n    \"Step 4: Seek evidence demonstrating the communication of CAPs to responsible parties, the application of the corrective actions, and subsequent evaluation of their effectiveness. Look for records of follow-up, status updates, and closure.\"\n  ],\n  \"expected_evidence_type\": \"Corrective Action Plan (CAP) policy/procedure, audit reports with findings, sample Corrective Action Plans (CAPs) with risk assessments, approval records, communication logs, evidence of remediation, and effectiveness review reports.\",\n  \"compliance_risk_level\": \"high\",\n  \"evaluation_focus\": \"The evaluator should specifically look for comprehensive documentation covering the entire lifecycle of corrective action plans (established, documented, approved, communicated, applied, evaluated, maintained) and concrete evidence that these plans are indeed 'risk-based' and effectively remediated.\",\n  \"nist_mapping_hint\": \"AU (Audit and Accountability), PM (Program Management), CA (Security Assessment and Authorization)\",\n  \"answerability_check\": \"answerable\"\n}",
+    "parsed": {
+      "steps": [
+        "Step 1: Request the documented policy or procedure for managing audit findings and implementing corrective actions. Verify that it addresses the full lifecycle: establishment, documentation, approval, communication, application, evaluation, and maintenance.",
+        "Step 2: Request evidence of a risk assessment methodology applied to audit findings to prioritize and determine the scope of corrective actions. Look for examples of how 'risk-based' decisions are made.",
+        "Step 3: Review a sample of recent audit reports and their corresponding Corrective Action Plans (CAPs). Verify that CAPs are formally documented, include assigned responsibilities, target dates, and evidence of approval by relevant stakeholders.",
+        "Step 4: Seek evidence demonstrating the communication of CAPs to responsible parties, the application of the corrective actions, and subsequent evaluation of their effectiveness. Look for records of follow-up, status updates, and closure."
+      ],
+      "expected_evidence_type": "Corrective Action Plan (CAP) policy/procedure, audit reports with findings, sample Corrective Action Plans (CAPs) with risk assessments, approval records, communication logs, evidence of remediation, and effectiveness review reports.",
+      "compliance_risk_level": "high",
+      "evaluation_focus": "The evaluator should specifically look for comprehensive documentation covering the entire lifecycle of corrective action plans (established, documented, approved, communicated, applied, evaluated, maintained) and concrete evidence that these plans are indeed 'risk-based' and effectively remediated.",
+      "nist_mapping_hint": "AU (Audit and Accountability), PM (Program Management), CA (Security Assessment and Authorization)",
+      "answerability_check": "answerable"
+    },
+    "parse_error": false
+  },
+  "evaluation": {
+    "prompt": "You are a cloud security compliance auditor evaluating a vendor's CAIQ response.\n\nCAIQ Question ID : A&A-06.1\nCCM Control ID   : A&A-06\nQuestion Text    : Is a risk-based corrective action plan to remediate audit findings \nestablished, documented, approved, communicated, applied, evaluated, and \nmaintained?\nVendor Answer    : yes\nVendor Evidence  : Adobe has defined a Security Risk Management Framework based on industry best practices and guidance including, but not limited to, NIST 800-30 Revision 1, NIST 800-39, NIST Risk Management Framework, ISO 27005, and Open Factor Analysis of Information Risk (FAIR).\n\nAdobe performs internal readiness assessment audits on an annual basis, and internal quarter compliance review (QCR) activities to verify ongoing operating effectiveness with Adobe's Common Control Framework (CCF) controls. Additionally, Adobe engages in external audits that address the efficiency and effectiveness of implemented Adobe (CCF) controls against industry standard frameworks.\n\nRisk based corrective action plans are developed to remediate findings resulting from Adobe's Risk Assessments, including QCR, Internal Readiness Assessments and External Audits.\n\nEvaluation Plan:\n  1. Step 1: Request the documented policy or procedure for managing audit findings and implementing corrective actions. Verify that it addresses the full lifecycle: establishment, documentation, approval, communication, application, evaluation, and maintenance.\n  2. Step 2: Request evidence of a risk assessment methodology applied to audit findings to prioritize and determine the scope of corrective actions. Look for examples of how 'risk-based' decisions are made.\n  3. Step 3: Review a sample of recent audit reports and their corresponding Corrective Action Plans (CAPs). Verify that CAPs are formally documented, include assigned responsibilities, target dates, and evidence of approval by relevant stakeholders.\n  4. Step 4: Seek evidence demonstrating the communication of CAPs to responsible parties, the application of the corrective actions, and subsequent evaluation of their effectiveness. Look for records of follow-up, status updates, and closure.\n\nExpected evidence type : Corrective Action Plan (CAP) policy/procedure, audit reports with findings, sample Corrective Action Plans (CAPs) with risk assessments, approval records, communication logs, evidence of remediation, and effectiveness review reports.\nEvaluation focus       : The evaluator should specifically look for comprehensive documentation covering the entire lifecycle of corrective action plans (established, documented, approved, communicated, applied, evaluated, maintained) and concrete evidence that these plans are indeed 'risk-based' and effectively remediated.\n\n\n\nEvaluate the vendor's compliance and produce a JSON verdict:\n\n{\n  \"verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"confidence\": <0.0 to 1.0>,\n  \"evidence_quality\": \"<strong | adequate | weak | absent>\",\n  \"gap_description\": \"<what is missing or insufficient \u2014 empty string if compliant>\",\n  \"evidence_citation\": \"<exact quote from vendor comment that supports the verdict \u2014 empty string if none>\",\n  \"recommended_followup\": \"<suggested clarification question for procurement team \u2014 empty string if none>\",\n  \"reasoning\": \"<one concise sentence explaining the verdict>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"verdict\": \"partial\",\n  \"confidence\": 0.9,\n  \"evidence_quality\": \"weak\",\n  \"gap_description\": \"The vendor's evidence confirms the development of risk-based corrective action plans but does not explicitly address their approval, communication, application, evaluation, or maintenance.\",\n  \"evidence_citation\": \"Risk based corrective action plans are developed to remediate findings resulting from Adobe's Risk Assessments, including QCR, Internal Readiness Assessments and External Audits.\",\n  \"recommended_followup\": \"Please provide documentation or a description of the process for the approval, communication, application, evaluation, and ongoing maintenance of corrective action plans, including how their effectiveness is measured and reviewed.\",\n  \"reasoning\": \"The vendor's evidence confirms the development of risk-based corrective action plans but lacks details on their full lifecycle, specifically approval, communication, application, evaluation, and maintenance.\"\n}",
+    "parsed": {
+      "verdict": "partial",
+      "confidence": 0.9,
+      "evidence_quality": "weak",
+      "gap_description": "The vendor's evidence confirms the development of risk-based corrective action plans but does not explicitly address their approval, communication, application, evaluation, or maintenance.",
+      "evidence_citation": "Risk based corrective action plans are developed to remediate findings resulting from Adobe's Risk Assessments, including QCR, Internal Readiness Assessments and External Audits.",
+      "recommended_followup": "Please provide documentation or a description of the process for the approval, communication, application, evaluation, and ongoing maintenance of corrective action plans, including how their effectiveness is measured and reviewed.",
+      "reasoning": "The vendor's evidence confirms the development of risk-based corrective action plans but lacks details on their full lifecycle, specifically approval, communication, application, evaluation, and maintenance."
+    },
+    "parse_error": false,
+    "tool_trace": []
+  },
+  "verifier": {
+    "prompt": "You are an independent cloud security compliance reviewer.\n\nA compliance evaluator has assessed the following vendor CAIQ response and produced a draft verdict.\nYour job is to independently re-examine the evidence and either CONFIRM or REVISE the verdict.\n\nCAIQ Question ID : A&A-06.1\nCCM Control ID   : A&A-06\nQuestion Text    : Is a risk-based corrective action plan to remediate audit findings \nestablished, documented, approved, communicated, applied, evaluated, and \nmaintained?\nVendor Answer    : yes\nVendor Evidence  : Adobe has defined a Security Risk Management Framework based on industry best practices and guidance including, but not limited to, NIST 800-30 Revision 1, NIST 800-39, NIST Risk Management Framework, ISO 27005, and Open Factor Analysis of Information Risk (FAIR).\n\nAdobe performs internal readiness assessment audits on an annual basis, and internal quarter compliance review (QCR) activities to verify ongoing operating effectiveness with Adobe's Common Control Framework (CCF) controls. Additionally, Adobe engages in external audits that address the efficiency and effectiveness of implemented Adobe (CCF) controls against industry standard frameworks.\n\nRisk based corrective action plans are developed to remediate findings resulting from Adobe's Risk Assessments, including QCR, Internal Readiness Assessments and External Audits.\n\nDraft Verdict    : partial\nDraft Reasoning  : The vendor's evidence confirms the development of risk-based corrective action plans but lacks details on their full lifecycle, specifically approval, communication, application, evaluation, and maintenance.\nEvidence Quality : weak\n\nRe-examine the vendor's evidence independently. Then produce a JSON response:\n\n{\n  \"verdict\": \"<confirmed | revised>\",\n  \"final_verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"reasoning\": \"<one sentence: why you confirmed or what you changed and why>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\"verdict\": \"confirmed\", \"final_verdict\": \"partial\", \"reasoning\": \"The vendor's evidence confirms the development of risk-based corrective action plans but lacks details on their full lifecycle, specifically approval, communication, application, evaluation, and maintenance, thus confirming the partial verdict.\"}",
+    "parsed": {
+      "verdict": "confirmed",
+      "final_verdict": "partial",
+      "reasoning": "The vendor's evidence confirms the development of risk-based corrective action plans but lacks details on their full lifecycle, specifically approval, communication, application, evaluation, and maintenance, thus confirming the partial verdict."
+    },
+    "parse_error": false,
+    "verdict": "confirmed"
+  },
+  "timestamps": {
+    "start": "2026-04-28T17:42:37.524852+00:00",
+    "end": "2026-04-28T17:43:03.575136+00:00",
+    "planner_ms": 8605.123519897461,
+    "evaluator_ms": 9808.740377426147,
+    "verifier_ms": 7635.811567306519
+  },
+  "errors": [],
+  "lf_trace_id": "92c11cf084bb88ced668c9f60e4ba64f"
+}

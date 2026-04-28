@@ -1,0 +1,79 @@
+{
+  "schema_version": "cep.v1",
+  "run_id": "be094cd0-932d-42ab-9645-7beba42ee0a6",
+  "config": {
+    "planner_backend": "gemini",
+    "evaluator_backend": "gemini",
+    "judge_backend": "gemini",
+    "config_name": "gemini_gemini",
+    "planner_model": "gemini-2.5-flash",
+    "evaluator_model": "gemini-2.5-flash"
+  },
+  "sample": {
+    "vendor": "Zoom Document Cloud 2022",
+    "sample_id": "Zoom_Document_Cloud_2022_AIS-06.2",
+    "question_id": "AIS-06.2",
+    "control_id": "AIS-06",
+    "domain_id": "AIS",
+    "question_text": "Is the deployment and integration of application code automated where possible?",
+    "vendor_answer": "no",
+    "vendor_comment": "While certain elements of the integration and deployment pipeline are automated, deployments are performed manually by authorized users with enforced segregation of duties.",
+    "caiq_version": "4.0.2",
+    "metadata": {
+      "SSRM Control Ownership": "CSP-owned"
+    }
+  },
+  "plan": {
+    "prompt": "You are a cloud security compliance expert specialising in the CSA Cloud Controls Matrix (CCM).\n\nYour task is to produce a structured evaluation plan for assessing a vendor's compliance response to a CAIQ question.\n\nCAIQ Question ID : AIS-06.2\nCCM Control ID   : AIS-06\nCCM Domain       : AIS\nQuestion Text    : Is the deployment and integration of application code automated where possible?\nVendor Answer    : no\n\nProduce a JSON evaluation plan with the following keys:\n\n{\n  \"steps\": [\n    \"Step 1: ...\",\n    \"Step 2: ...\",\n    \"Step 3: ...\"\n  ],\n  \"expected_evidence_type\": \"<what good evidence looks like, e.g. policy doc, certification, process description>\",\n  \"compliance_risk_level\": \"<low | medium | high> \u2014 how critical is a No answer here>\",\n  \"evaluation_focus\": \"<what the evaluator should specifically look for in the vendor comment>\",\n  \"nist_mapping_hint\": \"<relevant NIST 800-53 control family, e.g. AC, SA, SC>\",\n  \"answerability_check\": \"<answerable | needs_clarification | not_applicable>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"steps\": [\n    \"Step 1: Request a detailed explanation from the vendor regarding the specific reasons why application code deployment and integration are not automated, including any technical, operational, or business constraints.\",\n    \"Step 2: Obtain documentation of the current manual deployment and integration processes, focusing on the steps involved, human touchpoints, approval workflows, and any existing compensating controls (e.g., peer review, segregation of duties).\",\n    \"Step 3: Evaluate the documented manual processes for potential security risks, inconsistencies, human error vulnerabilities, and the impact on the integrity and availability of application code.\",\n    \"Step 4: Inquire about the vendor's plans, timelines, and roadmap for implementing automation for application code deployment and integration, if any.\"\n  ],\n  \"expected_evidence_type\": \"Process description for manual deployment/integration, change management records, incident reports related to manual deployments, risk assessments of manual processes, future automation roadmap (if available).\",\n  \"compliance_risk_level\": \"high\",\n  \"evaluation_focus\": \"Vendor's justification for the lack of automation, the robustness and security of the manual processes, the presence of compensating controls to mitigate risks, and any strategic plans for future automation.\",\n  \"nist_mapping_hint\": \"CM, SA, SI\",\n  \"answerability_check\": \"answerable\"\n}",
+    "parsed": {
+      "steps": [
+        "Step 1: Request a detailed explanation from the vendor regarding the specific reasons why application code deployment and integration are not automated, including any technical, operational, or business constraints.",
+        "Step 2: Obtain documentation of the current manual deployment and integration processes, focusing on the steps involved, human touchpoints, approval workflows, and any existing compensating controls (e.g., peer review, segregation of duties).",
+        "Step 3: Evaluate the documented manual processes for potential security risks, inconsistencies, human error vulnerabilities, and the impact on the integrity and availability of application code.",
+        "Step 4: Inquire about the vendor's plans, timelines, and roadmap for implementing automation for application code deployment and integration, if any."
+      ],
+      "expected_evidence_type": "Process description for manual deployment/integration, change management records, incident reports related to manual deployments, risk assessments of manual processes, future automation roadmap (if available).",
+      "compliance_risk_level": "high",
+      "evaluation_focus": "Vendor's justification for the lack of automation, the robustness and security of the manual processes, the presence of compensating controls to mitigate risks, and any strategic plans for future automation.",
+      "nist_mapping_hint": "CM, SA, SI",
+      "answerability_check": "answerable"
+    },
+    "parse_error": false
+  },
+  "evaluation": {
+    "prompt": "You are a cloud security compliance auditor evaluating a vendor's CAIQ response.\n\nCAIQ Question ID : AIS-06.2\nCCM Control ID   : AIS-06\nQuestion Text    : Is the deployment and integration of application code automated where possible?\nVendor Answer    : no\nVendor Evidence  : While certain elements of the integration and deployment pipeline are automated, deployments are performed manually by authorized users with enforced segregation of duties.\n\nEvaluation Plan:\n  1. Step 1: Request a detailed explanation from the vendor regarding the specific reasons why application code deployment and integration are not automated, including any technical, operational, or business constraints.\n  2. Step 2: Obtain documentation of the current manual deployment and integration processes, focusing on the steps involved, human touchpoints, approval workflows, and any existing compensating controls (e.g., peer review, segregation of duties).\n  3. Step 3: Evaluate the documented manual processes for potential security risks, inconsistencies, human error vulnerabilities, and the impact on the integrity and availability of application code.\n  4. Step 4: Inquire about the vendor's plans, timelines, and roadmap for implementing automation for application code deployment and integration, if any.\n\nExpected evidence type : Process description for manual deployment/integration, change management records, incident reports related to manual deployments, risk assessments of manual processes, future automation roadmap (if available).\nEvaluation focus       : Vendor's justification for the lack of automation, the robustness and security of the manual processes, the presence of compensating controls to mitigate risks, and any strategic plans for future automation.\n\n\n\nEvaluate the vendor's compliance and produce a JSON verdict:\n\n{\n  \"verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"confidence\": <0.0 to 1.0>,\n  \"evidence_quality\": \"<strong | adequate | weak | absent>\",\n  \"gap_description\": \"<what is missing or insufficient \u2014 empty string if compliant>\",\n  \"evidence_citation\": \"<exact quote from vendor comment that supports the verdict \u2014 empty string if none>\",\n  \"recommended_followup\": \"<suggested clarification question for procurement team \u2014 empty string if none>\",\n  \"reasoning\": \"<one concise sentence explaining the verdict>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"verdict\": \"non_compliant\",\n  \"confidence\": 0.9,\n  \"evidence_quality\": \"weak\",\n  \"gap_description\": \"The vendor explicitly states that application code deployments are performed manually, indicating a lack of full automation. The evidence does not provide a detailed explanation for this, documentation of the manual processes, an evaluation of potential security risks, or any plans for future automation, as requested in the evaluation plan. While segregation of duties is mentioned as a compensating control, its implementation details and effectiveness are not substantiated.\",\n  \"evidence_citation\": \"While certain elements of the integration and deployment pipeline are automated, deployments are performed manually by authorized users with enforced segregation of duties.\",\n  \"recommended_followup\": \"Please provide a detailed explanation for why application code deployments are not fully automated, including any technical, operational, or business constraints. Additionally, provide documentation of the current manual deployment processes, including steps, human touchpoints, approval workflows, and specific details of compensating controls like segregation of duties. Please also include any risk assessments related to manual deployments and a roadmap for future automation efforts.\",\n  \"reasoning\": \"The vendor explicitly states that deployments are performed manually, indicating a lack of full automation for application code deployment, despite some pipeline elements being automated, and the provided evidence is insufficient to assess the security and robustness of these manual processes.\"\n}",
+    "parsed": {
+      "verdict": "non_compliant",
+      "confidence": 0.9,
+      "evidence_quality": "weak",
+      "gap_description": "The vendor explicitly states that application code deployments are performed manually, indicating a lack of full automation. The evidence does not provide a detailed explanation for this, documentation of the manual processes, an evaluation of potential security risks, or any plans for future automation, as requested in the evaluation plan. While segregation of duties is mentioned as a compensating control, its implementation details and effectiveness are not substantiated.",
+      "evidence_citation": "While certain elements of the integration and deployment pipeline are automated, deployments are performed manually by authorized users with enforced segregation of duties.",
+      "recommended_followup": "Please provide a detailed explanation for why application code deployments are not fully automated, including any technical, operational, or business constraints. Additionally, provide documentation of the current manual deployment processes, including steps, human touchpoints, approval workflows, and specific details of compensating controls like segregation of duties. Please also include any risk assessments related to manual deployments and a roadmap for future automation efforts.",
+      "reasoning": "The vendor explicitly states that deployments are performed manually, indicating a lack of full automation for application code deployment, despite some pipeline elements being automated, and the provided evidence is insufficient to assess the security and robustness of these manual processes."
+    },
+    "parse_error": false,
+    "tool_trace": []
+  },
+  "verifier": {
+    "prompt": "You are an independent cloud security compliance reviewer.\n\nA compliance evaluator has assessed the following vendor CAIQ response and produced a draft verdict.\nYour job is to independently re-examine the evidence and either CONFIRM or REVISE the verdict.\n\nCAIQ Question ID : AIS-06.2\nCCM Control ID   : AIS-06\nQuestion Text    : Is the deployment and integration of application code automated where possible?\nVendor Answer    : no\nVendor Evidence  : While certain elements of the integration and deployment pipeline are automated, deployments are performed manually by authorized users with enforced segregation of duties.\n\nDraft Verdict    : non_compliant\nDraft Reasoning  : The vendor explicitly states that deployments are performed manually, indicating a lack of full automation for application code deployment, despite some pipeline elements being automated, and the provided evidence is insufficient to assess the security and robustness of these manual processes.\nEvidence Quality : weak\n\nRe-examine the vendor's evidence independently. Then produce a JSON response:\n\n{\n  \"verdict\": \"<confirmed | revised>\",\n  \"final_verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"reasoning\": \"<one sentence: why you confirmed or what you changed and why>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\"verdict\": \"confirmed\", \"final_verdict\": \"non_compliant\", \"reasoning\": \"The vendor explicitly states that deployments are performed manually, directly indicating a lack of automation for application code deployment as per the question, thus confirming the non-compliant verdict.\"}",
+    "parsed": {
+      "verdict": "confirmed",
+      "final_verdict": "non_compliant",
+      "reasoning": "The vendor explicitly states that deployments are performed manually, directly indicating a lack of automation for application code deployment as per the question, thus confirming the non-compliant verdict."
+    },
+    "parse_error": false,
+    "verdict": "confirmed"
+  },
+  "timestamps": {
+    "start": "2026-04-28T17:56:28.204270+00:00",
+    "end": "2026-04-28T17:56:54.053660+00:00",
+    "planner_ms": 8875.93960762024,
+    "evaluator_ms": 11017.887592315674,
+    "verifier_ms": 5954.837083816528
+  },
+  "errors": [],
+  "lf_trace_id": "b0b2b02ae603d67a529cf4072df9197b"
+}

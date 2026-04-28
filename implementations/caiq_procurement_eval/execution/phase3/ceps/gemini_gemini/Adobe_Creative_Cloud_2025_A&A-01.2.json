@@ -1,0 +1,79 @@
+{
+  "schema_version": "cep.v1",
+  "run_id": "be094cd0-932d-42ab-9645-7beba42ee0a6",
+  "config": {
+    "planner_backend": "gemini",
+    "evaluator_backend": "gemini",
+    "judge_backend": "gemini",
+    "config_name": "gemini_gemini",
+    "planner_model": "gemini-2.5-flash",
+    "evaluator_model": "gemini-2.5-flash"
+  },
+  "sample": {
+    "vendor": "Adobe Creative Cloud 2025",
+    "sample_id": "Adobe_Creative_Cloud_2025_A&A-01.2",
+    "question_id": "A&A-01.2",
+    "control_id": "A&A-01",
+    "domain_id": "A&A",
+    "question_text": "Are audit and assurance policies, procedures, and standards reviewed and \nupdated at least annually?",
+    "vendor_answer": "yes",
+    "vendor_comment": "The policies and standards (including the Technology Risk Management Standard and the Information Security Management Standard) are reviewed by relevant stakeholders and approved by document owners at least annually.",
+    "caiq_version": "4.0.2",
+    "metadata": {
+      "SSRM Control Ownership": "CSP-owned"
+    }
+  },
+  "plan": {
+    "prompt": "You are a cloud security compliance expert specialising in the CSA Cloud Controls Matrix (CCM).\n\nYour task is to produce a structured evaluation plan for assessing a vendor's compliance response to a CAIQ question.\n\nCAIQ Question ID : A&A-01.2\nCCM Control ID   : A&A-01\nCCM Domain       : A&A\nQuestion Text    : Are audit and assurance policies, procedures, and standards reviewed and \nupdated at least annually?\nVendor Answer    : yes\n\nProduce a JSON evaluation plan with the following keys:\n\n{\n  \"steps\": [\n    \"Step 1: ...\",\n    \"Step 2: ...\",\n    \"Step 3: ...\"\n  ],\n  \"expected_evidence_type\": \"<what good evidence looks like, e.g. policy doc, certification, process description>\",\n  \"compliance_risk_level\": \"<low | medium | high> \u2014 how critical is a No answer here>\",\n  \"evaluation_focus\": \"<what the evaluator should specifically look for in the vendor comment>\",\n  \"nist_mapping_hint\": \"<relevant NIST 800-53 control family, e.g. AC, SA, SC>\",\n  \"answerability_check\": \"<answerable | needs_clarification | not_applicable>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"steps\": [\n    \"Step 1: Request copies of the vendor's Audit and Assurance Policy, relevant procedures, and any associated standards documents.\",\n    \"Step 2: Review the requested documents to identify explicit statements or clauses mandating an annual review and update cycle for these policies, procedures, and standards.\",\n    \"Step 3: Examine document version control logs, change management records, or review meeting minutes for the past 12-24 months to verify that the stated annual review and update process has been consistently followed and documented.\",\n    \"Step 4: Confirm that any identified updates or revisions to these documents have been formally approved and communicated to relevant stakeholders.\"\n  ],\n  \"expected_evidence_type\": \"Audit and Assurance Policy document, Audit and Assurance Procedure documents, Audit and Assurance Standards documents, Document review logs, Change management records, Meeting minutes of policy review committees.\",\n  \"compliance_risk_level\": \"high\",\n  \"evaluation_focus\": \"Verify explicit policy statements requiring annual review. Confirm actual evidence (dates, approvals, version changes) of reviews and updates occurring at least annually for policies, procedures, and standards related to audit and assurance.\",\n  \"nist_mapping_hint\": \"AU (Audit and Accountability), PM (Program Management)\",\n  \"answerability_check\": \"answerable\"\n}",
+    "parsed": {
+      "steps": [
+        "Step 1: Request copies of the vendor's Audit and Assurance Policy, relevant procedures, and any associated standards documents.",
+        "Step 2: Review the requested documents to identify explicit statements or clauses mandating an annual review and update cycle for these policies, procedures, and standards.",
+        "Step 3: Examine document version control logs, change management records, or review meeting minutes for the past 12-24 months to verify that the stated annual review and update process has been consistently followed and documented.",
+        "Step 4: Confirm that any identified updates or revisions to these documents have been formally approved and communicated to relevant stakeholders."
+      ],
+      "expected_evidence_type": "Audit and Assurance Policy document, Audit and Assurance Procedure documents, Audit and Assurance Standards documents, Document review logs, Change management records, Meeting minutes of policy review committees.",
+      "compliance_risk_level": "high",
+      "evaluation_focus": "Verify explicit policy statements requiring annual review. Confirm actual evidence (dates, approvals, version changes) of reviews and updates occurring at least annually for policies, procedures, and standards related to audit and assurance.",
+      "nist_mapping_hint": "AU (Audit and Accountability), PM (Program Management)",
+      "answerability_check": "answerable"
+    },
+    "parse_error": false
+  },
+  "evaluation": {
+    "prompt": "You are a cloud security compliance auditor evaluating a vendor's CAIQ response.\n\nCAIQ Question ID : A&A-01.2\nCCM Control ID   : A&A-01\nQuestion Text    : Are audit and assurance policies, procedures, and standards reviewed and \nupdated at least annually?\nVendor Answer    : yes\nVendor Evidence  : The policies and standards (including the Technology Risk Management Standard and the Information Security Management Standard) are reviewed by relevant stakeholders and approved by document owners at least annually.\n\nEvaluation Plan:\n  1. Step 1: Request copies of the vendor's Audit and Assurance Policy, relevant procedures, and any associated standards documents.\n  2. Step 2: Review the requested documents to identify explicit statements or clauses mandating an annual review and update cycle for these policies, procedures, and standards.\n  3. Step 3: Examine document version control logs, change management records, or review meeting minutes for the past 12-24 months to verify that the stated annual review and update process has been consistently followed and documented.\n  4. Step 4: Confirm that any identified updates or revisions to these documents have been formally approved and communicated to relevant stakeholders.\n\nExpected evidence type : Audit and Assurance Policy document, Audit and Assurance Procedure documents, Audit and Assurance Standards documents, Document review logs, Change management records, Meeting minutes of policy review committees.\nEvaluation focus       : Verify explicit policy statements requiring annual review. Confirm actual evidence (dates, approvals, version changes) of reviews and updates occurring at least annually for policies, procedures, and standards related to audit and assurance.\n\n\n\nEvaluate the vendor's compliance and produce a JSON verdict:\n\n{\n  \"verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"confidence\": <0.0 to 1.0>,\n  \"evidence_quality\": \"<strong | adequate | weak | absent>\",\n  \"gap_description\": \"<what is missing or insufficient \u2014 empty string if compliant>\",\n  \"evidence_citation\": \"<exact quote from vendor comment that supports the verdict \u2014 empty string if none>\",\n  \"recommended_followup\": \"<suggested clarification question for procurement team \u2014 empty string if none>\",\n  \"reasoning\": \"<one concise sentence explaining the verdict>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"verdict\": \"needs_clarification\",\n  \"confidence\": 0.7,\n  \"evidence_quality\": \"weak\",\n  \"gap_description\": \"The vendor's evidence is a declarative statement about their process but does not include the actual policy documents, review logs, or change management records required to verify that audit and assurance policies, procedures, and standards are indeed reviewed and updated annually.\",\n  \"evidence_citation\": \"The policies and standards (including the Technology Risk Management Standard and the Information Security Management Standard) are reviewed by relevant stakeholders and approved by document owners at least annually.\",\n  \"recommended_followup\": \"Please provide copies of your Audit and Assurance Policy, relevant procedures, and associated standards documents. Additionally, provide document version control logs or change management records for these documents from the past 12-24 months to demonstrate annual review and approval.\",\n  \"reasoning\": \"The vendor states that policies and standards are reviewed annually, but provides no verifiable documentation to substantiate this claim, requiring further evidence.\"\n}",
+    "parsed": {
+      "verdict": "needs_clarification",
+      "confidence": 0.7,
+      "evidence_quality": "weak",
+      "gap_description": "The vendor's evidence is a declarative statement about their process but does not include the actual policy documents, review logs, or change management records required to verify that audit and assurance policies, procedures, and standards are indeed reviewed and updated annually.",
+      "evidence_citation": "The policies and standards (including the Technology Risk Management Standard and the Information Security Management Standard) are reviewed by relevant stakeholders and approved by document owners at least annually.",
+      "recommended_followup": "Please provide copies of your Audit and Assurance Policy, relevant procedures, and associated standards documents. Additionally, provide document version control logs or change management records for these documents from the past 12-24 months to demonstrate annual review and approval.",
+      "reasoning": "The vendor states that policies and standards are reviewed annually, but provides no verifiable documentation to substantiate this claim, requiring further evidence."
+    },
+    "parse_error": false,
+    "tool_trace": []
+  },
+  "verifier": {
+    "prompt": "You are an independent cloud security compliance reviewer.\n\nA compliance evaluator has assessed the following vendor CAIQ response and produced a draft verdict.\nYour job is to independently re-examine the evidence and either CONFIRM or REVISE the verdict.\n\nCAIQ Question ID : A&A-01.2\nCCM Control ID   : A&A-01\nQuestion Text    : Are audit and assurance policies, procedures, and standards reviewed and \nupdated at least annually?\nVendor Answer    : yes\nVendor Evidence  : The policies and standards (including the Technology Risk Management Standard and the Information Security Management Standard) are reviewed by relevant stakeholders and approved by document owners at least annually.\n\nDraft Verdict    : needs_clarification\nDraft Reasoning  : The vendor states that policies and standards are reviewed annually, but provides no verifiable documentation to substantiate this claim, requiring further evidence.\nEvidence Quality : weak\n\nRe-examine the vendor's evidence independently. Then produce a JSON response:\n\n{\n  \"verdict\": \"<confirmed | revised>\",\n  \"final_verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"reasoning\": \"<one sentence: why you confirmed or what you changed and why>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"verdict\": \"confirmed\",\n  \"final_verdict\": \"needs_clarification\",\n  \"reasoning\": \"The draft verdict is confirmed because the vendor's evidence is a statement of practice without providing verifiable documentation or artifacts to substantiate the annual review claim.\"\n}",
+    "parsed": {
+      "verdict": "confirmed",
+      "final_verdict": "needs_clarification",
+      "reasoning": "The draft verdict is confirmed because the vendor's evidence is a statement of practice without providing verifiable documentation or artifacts to substantiate the annual review claim."
+    },
+    "parse_error": false,
+    "verdict": "confirmed"
+  },
+  "timestamps": {
+    "start": "2026-04-28T17:40:10.481846+00:00",
+    "end": "2026-04-28T17:40:33.533677+00:00",
+    "planner_ms": 8937.20269203186,
+    "evaluator_ms": 9321.781873703003,
+    "verifier_ms": 4791.737794876099
+  },
+  "errors": [],
+  "lf_trace_id": "485d0b7ab0ef151bddcb7f20db24e67a"
+}

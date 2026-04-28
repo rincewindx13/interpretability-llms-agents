@@ -1,0 +1,81 @@
+{
+  "schema_version": "cep.v1",
+  "run_id": "be094cd0-932d-42ab-9645-7beba42ee0a6",
+  "config": {
+    "planner_backend": "gemini",
+    "evaluator_backend": "gemini",
+    "judge_backend": "gemini",
+    "config_name": "gemini_gemini",
+    "planner_model": "gemini-2.5-flash",
+    "evaluator_model": "gemini-2.5-flash"
+  },
+  "sample": {
+    "vendor": "Salesforce Services 2023 05 5",
+    "sample_id": "Salesforce_Services_2023_05_5_AIS-07.1",
+    "question_id": "AIS-07.1",
+    "control_id": "AIS-07",
+    "domain_id": "AIS",
+    "question_text": "Are application security vulnerabilities remediated following defined \nprocesses?",
+    "vendor_answer": "yes",
+    "vendor_comment": "",
+    "caiq_version": "4.0.2",
+    "metadata": {
+      "SSRM Control Ownership": "CSP-owned",
+      "CCM Control Specification": "Define and implement a process to remediate application security \nvulnerabilities, automating remediation when possible.",
+      "CCM Control Title": "Application \nVulnerability \nRemediation"
+    }
+  },
+  "plan": {
+    "prompt": "You are a cloud security compliance expert specialising in the CSA Cloud Controls Matrix (CCM).\n\nYour task is to produce a structured evaluation plan for assessing a vendor's compliance response to a CAIQ question.\n\nCAIQ Question ID : AIS-07.1\nCCM Control ID   : AIS-07\nCCM Domain       : AIS\nQuestion Text    : Are application security vulnerabilities remediated following defined \nprocesses?\nVendor Answer    : yes\n\nProduce a JSON evaluation plan with the following keys:\n\n{\n  \"steps\": [\n    \"Step 1: ...\",\n    \"Step 2: ...\",\n    \"Step 3: ...\"\n  ],\n  \"expected_evidence_type\": \"<what good evidence looks like, e.g. policy doc, certification, process description>\",\n  \"compliance_risk_level\": \"<low | medium | high> \u2014 how critical is a No answer here>\",\n  \"evaluation_focus\": \"<what the evaluator should specifically look for in the vendor comment>\",\n  \"nist_mapping_hint\": \"<relevant NIST 800-53 control family, e.g. AC, SA, SC>\",\n  \"answerability_check\": \"<answerable | needs_clarification | not_applicable>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"steps\": [\n    \"Step 1: Request the documented policy or procedure for application security vulnerability remediation, including identification, prioritization, remediation, and verification steps.\",\n    \"Step 2: Examine evidence of the remediation process in action, such as vulnerability scan reports, remediation tickets, change management records, or audit logs demonstrating the tracking and resolution of identified vulnerabilities.\",\n    \"Step 3: Verify that remediation activities align with the defined processes and that there are mechanisms for tracking remediation progress and effectiveness.\",\n    \"Step 4: Assess if the remediation process includes defined timelines or service level objectives (SLOs) for different severity levels of vulnerabilities and review evidence of adherence to these timelines.\"\n  ],\n  \"expected_evidence_type\": \"Vulnerability Management Policy/Procedure, Application Security Remediation Process Document, Vulnerability Scan Reports, Remediation Tracking Logs/Tickets, Change Management Records, Audit Reports on Remediation Effectiveness\",\n  \"compliance_risk_level\": \"high\",\n  \"evaluation_focus\": \"The existence, completeness, and operational effectiveness of the defined processes for remediating application security vulnerabilities. Specifically, look for evidence that the process is consistently followed and leads to timely and effective remediation.\",\n  \"nist_mapping_hint\": \"SI-2 (Flaw Remediation), SA-11 (Vulnerability Scanning), RA-5 (Vulnerability Scanning)\",\n  \"answerability_check\": \"answerable\"\n}",
+    "parsed": {
+      "steps": [
+        "Step 1: Request the documented policy or procedure for application security vulnerability remediation, including identification, prioritization, remediation, and verification steps.",
+        "Step 2: Examine evidence of the remediation process in action, such as vulnerability scan reports, remediation tickets, change management records, or audit logs demonstrating the tracking and resolution of identified vulnerabilities.",
+        "Step 3: Verify that remediation activities align with the defined processes and that there are mechanisms for tracking remediation progress and effectiveness.",
+        "Step 4: Assess if the remediation process includes defined timelines or service level objectives (SLOs) for different severity levels of vulnerabilities and review evidence of adherence to these timelines."
+      ],
+      "expected_evidence_type": "Vulnerability Management Policy/Procedure, Application Security Remediation Process Document, Vulnerability Scan Reports, Remediation Tracking Logs/Tickets, Change Management Records, Audit Reports on Remediation Effectiveness",
+      "compliance_risk_level": "high",
+      "evaluation_focus": "The existence, completeness, and operational effectiveness of the defined processes for remediating application security vulnerabilities. Specifically, look for evidence that the process is consistently followed and leads to timely and effective remediation.",
+      "nist_mapping_hint": "SI-2 (Flaw Remediation), SA-11 (Vulnerability Scanning), RA-5 (Vulnerability Scanning)",
+      "answerability_check": "answerable"
+    },
+    "parse_error": false
+  },
+  "evaluation": {
+    "prompt": "You are a cloud security compliance auditor evaluating a vendor's CAIQ response.\n\nCAIQ Question ID : AIS-07.1\nCCM Control ID   : AIS-07\nQuestion Text    : Are application security vulnerabilities remediated following defined \nprocesses?\nVendor Answer    : yes\nVendor Evidence  : (no evidence provided)\n\nEvaluation Plan:\n  1. Step 1: Request the documented policy or procedure for application security vulnerability remediation, including identification, prioritization, remediation, and verification steps.\n  2. Step 2: Examine evidence of the remediation process in action, such as vulnerability scan reports, remediation tickets, change management records, or audit logs demonstrating the tracking and resolution of identified vulnerabilities.\n  3. Step 3: Verify that remediation activities align with the defined processes and that there are mechanisms for tracking remediation progress and effectiveness.\n  4. Step 4: Assess if the remediation process includes defined timelines or service level objectives (SLOs) for different severity levels of vulnerabilities and review evidence of adherence to these timelines.\n\nExpected evidence type : Vulnerability Management Policy/Procedure, Application Security Remediation Process Document, Vulnerability Scan Reports, Remediation Tracking Logs/Tickets, Change Management Records, Audit Reports on Remediation Effectiveness\nEvaluation focus       : The existence, completeness, and operational effectiveness of the defined processes for remediating application security vulnerabilities. Specifically, look for evidence that the process is consistently followed and leads to timely and effective remediation.\n\n\n\nEvaluate the vendor's compliance and produce a JSON verdict:\n\n{\n  \"verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"confidence\": <0.0 to 1.0>,\n  \"evidence_quality\": \"<strong | adequate | weak | absent>\",\n  \"gap_description\": \"<what is missing or insufficient \u2014 empty string if compliant>\",\n  \"evidence_citation\": \"<exact quote from vendor comment that supports the verdict \u2014 empty string if none>\",\n  \"recommended_followup\": \"<suggested clarification question for procurement team \u2014 empty string if none>\",\n  \"reasoning\": \"<one concise sentence explaining the verdict>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"verdict\": \"needs_clarification\",\n  \"confidence\": 1.0,\n  \"evidence_quality\": \"absent\",\n  \"gap_description\": \"No evidence was provided to support the vendor's claim that application security vulnerabilities are remediated following defined processes. Specifically, documentation of the remediation process, vulnerability scan reports, remediation tracking, and evidence of adherence to timelines are missing.\",\n  \"evidence_citation\": \"(no evidence provided)\",\n  \"recommended_followup\": \"Please provide the documented policy or procedure for application security vulnerability remediation, including identification, prioritization, remediation, and verification steps. Additionally, provide evidence of the remediation process in action, such as vulnerability scan reports, remediation tickets, change management records, or audit logs demonstrating the tracking and resolution of identified vulnerabilities.\",\n  \"reasoning\": \"The vendor claims compliance but provides no evidence to substantiate the existence or operational effectiveness of defined application security vulnerability remediation processes.\"\n}",
+    "parsed": {
+      "verdict": "needs_clarification",
+      "confidence": 1.0,
+      "evidence_quality": "absent",
+      "gap_description": "No evidence was provided to support the vendor's claim that application security vulnerabilities are remediated following defined processes. Specifically, documentation of the remediation process, vulnerability scan reports, remediation tracking, and evidence of adherence to timelines are missing.",
+      "evidence_citation": "(no evidence provided)",
+      "recommended_followup": "Please provide the documented policy or procedure for application security vulnerability remediation, including identification, prioritization, remediation, and verification steps. Additionally, provide evidence of the remediation process in action, such as vulnerability scan reports, remediation tickets, change management records, or audit logs demonstrating the tracking and resolution of identified vulnerabilities.",
+      "reasoning": "The vendor claims compliance but provides no evidence to substantiate the existence or operational effectiveness of defined application security vulnerability remediation processes."
+    },
+    "parse_error": false,
+    "tool_trace": []
+  },
+  "verifier": {
+    "prompt": "You are an independent cloud security compliance reviewer.\n\nA compliance evaluator has assessed the following vendor CAIQ response and produced a draft verdict.\nYour job is to independently re-examine the evidence and either CONFIRM or REVISE the verdict.\n\nCAIQ Question ID : AIS-07.1\nCCM Control ID   : AIS-07\nQuestion Text    : Are application security vulnerabilities remediated following defined \nprocesses?\nVendor Answer    : yes\nVendor Evidence  : (no evidence provided)\n\nDraft Verdict    : needs_clarification\nDraft Reasoning  : The vendor claims compliance but provides no evidence to substantiate the existence or operational effectiveness of defined application security vulnerability remediation processes.\nEvidence Quality : absent\n\nRe-examine the vendor's evidence independently. Then produce a JSON response:\n\n{\n  \"verdict\": \"<confirmed | revised>\",\n  \"final_verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"reasoning\": \"<one sentence: why you confirmed or what you changed and why>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"verdict\": \"confirmed\",\n  \"final_verdict\": \"needs_clarification\",\n  \"reasoning\": \"The draft verdict is confirmed as the vendor claims compliance but provides no evidence to substantiate the existence or operational effectiveness of defined application security vulnerability remediation processes.\"\n}",
+    "parsed": {
+      "verdict": "confirmed",
+      "final_verdict": "needs_clarification",
+      "reasoning": "The draft verdict is confirmed as the vendor claims compliance but provides no evidence to substantiate the existence or operational effectiveness of defined application security vulnerability remediation processes."
+    },
+    "parse_error": false,
+    "verdict": "confirmed"
+  },
+  "timestamps": {
+    "start": "2026-04-28T18:05:23.467582+00:00",
+    "end": "2026-04-28T18:05:43.772247+00:00",
+    "planner_ms": 9523.141860961914,
+    "evaluator_ms": 6728.662967681885,
+    "verifier_ms": 4052.098512649536
+  },
+  "errors": [],
+  "lf_trace_id": "7788d018f8819afa761c2df333d24181"
+}

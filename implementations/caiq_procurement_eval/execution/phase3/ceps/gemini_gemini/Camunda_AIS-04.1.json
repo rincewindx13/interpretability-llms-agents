@@ -1,0 +1,81 @@
+{
+  "schema_version": "cep.v1",
+  "run_id": "be094cd0-932d-42ab-9645-7beba42ee0a6",
+  "config": {
+    "planner_backend": "gemini",
+    "evaluator_backend": "gemini",
+    "judge_backend": "gemini",
+    "config_name": "gemini_gemini",
+    "planner_model": "gemini-2.5-flash",
+    "evaluator_model": "gemini-2.5-flash"
+  },
+  "sample": {
+    "vendor": "Camunda",
+    "sample_id": "Camunda_AIS-04.1",
+    "question_id": "AIS-04.1",
+    "control_id": "AIS-04",
+    "domain_id": "AIS",
+    "question_text": "Is an SDLC process defined and implemented for application design, development,\ndeployment, and operation per organizationally designed security requirements?",
+    "vendor_answer": "yes",
+    "vendor_comment": "",
+    "caiq_version": "4.0.2",
+    "metadata": {
+      "SSRM Control Ownership": "CSP-owned",
+      "CCM Control Specification": "Define and implement a SDLC process for application design, development,\ndeployment, and operation in accordance with security requirements defined by\nthe organization.",
+      "CCM Control Title": "Secure Application Design and Development"
+    }
+  },
+  "plan": {
+    "prompt": "You are a cloud security compliance expert specialising in the CSA Cloud Controls Matrix (CCM).\n\nYour task is to produce a structured evaluation plan for assessing a vendor's compliance response to a CAIQ question.\n\nCAIQ Question ID : AIS-04.1\nCCM Control ID   : AIS-04\nCCM Domain       : AIS\nQuestion Text    : Is an SDLC process defined and implemented for application design, development,\ndeployment, and operation per organizationally designed security requirements?\nVendor Answer    : yes\n\nProduce a JSON evaluation plan with the following keys:\n\n{\n  \"steps\": [\n    \"Step 1: ...\",\n    \"Step 2: ...\",\n    \"Step 3: ...\"\n  ],\n  \"expected_evidence_type\": \"<what good evidence looks like, e.g. policy doc, certification, process description>\",\n  \"compliance_risk_level\": \"<low | medium | high> \u2014 how critical is a No answer here>\",\n  \"evaluation_focus\": \"<what the evaluator should specifically look for in the vendor comment>\",\n  \"nist_mapping_hint\": \"<relevant NIST 800-53 control family, e.g. AC, SA, SC>\",\n  \"answerability_check\": \"<answerable | needs_clarification | not_applicable>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"steps\": [\n    \"Step 1: Request the documented SDLC process, policy, or procedure that outlines the stages of application design, development, deployment, and operation.\",\n    \"Step 2: Verify that the requested documentation explicitly defines and integrates security requirements and activities at each stage of the SDLC (design, development, deployment, and operation).\",\n    \"Step 3: Seek evidence demonstrating the implementation and enforcement of the defined secure SDLC, such as security testing reports (SAST, DAST), code review logs, security gate approvals in CI/CD pipelines, or change management records.\",\n    \"Step 4: Review how 'organizationally designed security requirements' are defined, documented, and communicated to development teams, and how their adherence is monitored.\"\n  ],\n  \"expected_evidence_type\": \"SDLC policy/procedure document, secure coding guidelines, security requirements specification, application security testing (AST) reports (SAST, DAST, SCA), code review logs, change management records, deployment checklists, developer training records on secure coding.\",\n  \"compliance_risk_level\": \"high\",\n  \"evaluation_focus\": \"The evaluator should specifically look for explicit integration of security activities and requirements throughout all phases of the SDLC, not just at the end. Verify that security requirements are tailored ('organizationally designed') and that there is demonstrable evidence of their implementation and enforcement.\",\n  \"nist_mapping_hint\": \"SA (System and Services Acquisition), SI (System and Information Integrity), CM (Configuration Management)\",\n  \"answerability_check\": \"answerable\"\n}",
+    "parsed": {
+      "steps": [
+        "Step 1: Request the documented SDLC process, policy, or procedure that outlines the stages of application design, development, deployment, and operation.",
+        "Step 2: Verify that the requested documentation explicitly defines and integrates security requirements and activities at each stage of the SDLC (design, development, deployment, and operation).",
+        "Step 3: Seek evidence demonstrating the implementation and enforcement of the defined secure SDLC, such as security testing reports (SAST, DAST), code review logs, security gate approvals in CI/CD pipelines, or change management records.",
+        "Step 4: Review how 'organizationally designed security requirements' are defined, documented, and communicated to development teams, and how their adherence is monitored."
+      ],
+      "expected_evidence_type": "SDLC policy/procedure document, secure coding guidelines, security requirements specification, application security testing (AST) reports (SAST, DAST, SCA), code review logs, change management records, deployment checklists, developer training records on secure coding.",
+      "compliance_risk_level": "high",
+      "evaluation_focus": "The evaluator should specifically look for explicit integration of security activities and requirements throughout all phases of the SDLC, not just at the end. Verify that security requirements are tailored ('organizationally designed') and that there is demonstrable evidence of their implementation and enforcement.",
+      "nist_mapping_hint": "SA (System and Services Acquisition), SI (System and Information Integrity), CM (Configuration Management)",
+      "answerability_check": "answerable"
+    },
+    "parse_error": false
+  },
+  "evaluation": {
+    "prompt": "You are a cloud security compliance auditor evaluating a vendor's CAIQ response.\n\nCAIQ Question ID : AIS-04.1\nCCM Control ID   : AIS-04\nQuestion Text    : Is an SDLC process defined and implemented for application design, development,\ndeployment, and operation per organizationally designed security requirements?\nVendor Answer    : yes\nVendor Evidence  : (no evidence provided)\n\nEvaluation Plan:\n  1. Step 1: Request the documented SDLC process, policy, or procedure that outlines the stages of application design, development, deployment, and operation.\n  2. Step 2: Verify that the requested documentation explicitly defines and integrates security requirements and activities at each stage of the SDLC (design, development, deployment, and operation).\n  3. Step 3: Seek evidence demonstrating the implementation and enforcement of the defined secure SDLC, such as security testing reports (SAST, DAST), code review logs, security gate approvals in CI/CD pipelines, or change management records.\n  4. Step 4: Review how 'organizationally designed security requirements' are defined, documented, and communicated to development teams, and how their adherence is monitored.\n\nExpected evidence type : SDLC policy/procedure document, secure coding guidelines, security requirements specification, application security testing (AST) reports (SAST, DAST, SCA), code review logs, change management records, deployment checklists, developer training records on secure coding.\nEvaluation focus       : The evaluator should specifically look for explicit integration of security activities and requirements throughout all phases of the SDLC, not just at the end. Verify that security requirements are tailored ('organizationally designed') and that there is demonstrable evidence of their implementation and enforcement.\n\n\n\nEvaluate the vendor's compliance and produce a JSON verdict:\n\n{\n  \"verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"confidence\": <0.0 to 1.0>,\n  \"evidence_quality\": \"<strong | adequate | weak | absent>\",\n  \"gap_description\": \"<what is missing or insufficient \u2014 empty string if compliant>\",\n  \"evidence_citation\": \"<exact quote from vendor comment that supports the verdict \u2014 empty string if none>\",\n  \"recommended_followup\": \"<suggested clarification question for procurement team \u2014 empty string if none>\",\n  \"reasoning\": \"<one concise sentence explaining the verdict>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"verdict\": \"needs_clarification\",\n  \"confidence\": 0.0,\n  \"evidence_quality\": \"absent\",\n  \"gap_description\": \"The vendor claims an SDLC process is defined and implemented with organizationally designed security requirements, but no evidence (documentation, policies, procedures, or implementation records) has been provided to substantiate this claim.\",\n  \"evidence_citation\": \"(no evidence provided)\",\n  \"recommended_followup\": \"Please provide the documented SDLC process, policy, or procedure that outlines the stages of application design, development, deployment, and operation, explicitly detailing how security requirements and activities are integrated at each stage. Additionally, provide evidence demonstrating the implementation and enforcement of the defined secure SDLC, such as security testing reports (SAST, DAST), code review logs, security gate approvals in CI/CD pipelines, or change management records.\",\n  \"reasoning\": \"The vendor claims compliance but provides no evidence to support the existence or implementation of a secure SDLC process, necessitating further clarification and evidence submission.\"\n}",
+    "parsed": {
+      "verdict": "needs_clarification",
+      "confidence": 0.0,
+      "evidence_quality": "absent",
+      "gap_description": "The vendor claims an SDLC process is defined and implemented with organizationally designed security requirements, but no evidence (documentation, policies, procedures, or implementation records) has been provided to substantiate this claim.",
+      "evidence_citation": "(no evidence provided)",
+      "recommended_followup": "Please provide the documented SDLC process, policy, or procedure that outlines the stages of application design, development, deployment, and operation, explicitly detailing how security requirements and activities are integrated at each stage. Additionally, provide evidence demonstrating the implementation and enforcement of the defined secure SDLC, such as security testing reports (SAST, DAST), code review logs, security gate approvals in CI/CD pipelines, or change management records.",
+      "reasoning": "The vendor claims compliance but provides no evidence to support the existence or implementation of a secure SDLC process, necessitating further clarification and evidence submission."
+    },
+    "parse_error": false,
+    "tool_trace": []
+  },
+  "verifier": {
+    "prompt": "You are an independent cloud security compliance reviewer.\n\nA compliance evaluator has assessed the following vendor CAIQ response and produced a draft verdict.\nYour job is to independently re-examine the evidence and either CONFIRM or REVISE the verdict.\n\nCAIQ Question ID : AIS-04.1\nCCM Control ID   : AIS-04\nQuestion Text    : Is an SDLC process defined and implemented for application design, development,\ndeployment, and operation per organizationally designed security requirements?\nVendor Answer    : yes\nVendor Evidence  : (no evidence provided)\n\nDraft Verdict    : needs_clarification\nDraft Reasoning  : The vendor claims compliance but provides no evidence to support the existence or implementation of a secure SDLC process, necessitating further clarification and evidence submission.\nEvidence Quality : absent\n\nRe-examine the vendor's evidence independently. Then produce a JSON response:\n\n{\n  \"verdict\": \"<confirmed | revised>\",\n  \"final_verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"reasoning\": \"<one sentence: why you confirmed or what you changed and why>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"verdict\": \"confirmed\",\n  \"final_verdict\": \"needs_clarification\",\n  \"reasoning\": \"The draft verdict is confirmed because the vendor claims compliance ('yes') but provides no evidence to substantiate the existence or implementation of a secure SDLC process, making verification impossible without further information.\"\n}",
+    "parsed": {
+      "verdict": "confirmed",
+      "final_verdict": "needs_clarification",
+      "reasoning": "The draft verdict is confirmed because the vendor claims compliance ('yes') but provides no evidence to substantiate the existence or implementation of a secure SDLC process, making verification impossible without further information."
+    },
+    "parse_error": false,
+    "verdict": "confirmed"
+  },
+  "timestamps": {
+    "start": "2026-04-28T18:11:56.480396+00:00",
+    "end": "2026-04-28T18:12:16.047593+00:00",
+    "planner_ms": 8101.248979568481,
+    "evaluator_ms": 6918.052434921265,
+    "verifier_ms": 4547.18279838562
+  },
+  "errors": [],
+  "lf_trace_id": "9fe589cae3002636f0e797bf3870153f"
+}

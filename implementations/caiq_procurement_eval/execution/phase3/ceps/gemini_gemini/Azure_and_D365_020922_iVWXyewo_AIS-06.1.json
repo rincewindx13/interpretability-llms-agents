@@ -1,0 +1,82 @@
+{
+  "schema_version": "cep.v1",
+  "run_id": "be094cd0-932d-42ab-9645-7beba42ee0a6",
+  "config": {
+    "planner_backend": "gemini",
+    "evaluator_backend": "gemini",
+    "judge_backend": "gemini",
+    "config_name": "gemini_gemini",
+    "planner_model": "gemini-2.5-flash",
+    "evaluator_model": "gemini-2.5-flash"
+  },
+  "sample": {
+    "vendor": "Azure and D365 020922 iVWXyewo",
+    "sample_id": "Azure_and_D365_020922_iVWXyewo_AIS-06.1",
+    "question_id": "AIS-06.1",
+    "control_id": "AIS-06",
+    "domain_id": "AIS",
+    "question_text": "Are strategies and capabilities established and implemented to deploy application\ncode in a secure, standardized, and compliant manner?",
+    "vendor_answer": "yes",
+    "vendor_comment": "Microsoft Azure has established software development and release management processes to control implementation of major changes including: \n\u2022The identification and documentation of the planned change\n\u2022Identification of business goals, priorities and scenarios during product planning \n\u2022Specification of feature/component design \n\u2022Operational readiness review based on a pre-defined criteria/check-list to assess overall risk/impact\n\u2022Testing, authorization and change management based on entry/exit criteria for DEV (development), INT (Integration Testing), STAGE (Pre-production) and PROD (production) environments as appropriate",
+    "caiq_version": "4.0.2",
+    "metadata": {
+      "SSRM Control Ownership": "Shared CSP and CSC",
+      "CSC Responsibilities  (Optional/Recommended)": "Customers are responsible for developing and following a secure software development program for the customer environment.",
+      "CCM Control Specification": "Establish and implement strategies and capabilities for secure, standardized,\nand compliant application deployment. Automate where possible.",
+      "CCM Control Title": "Automated Secure Application Deployment"
+    }
+  },
+  "plan": {
+    "prompt": "You are a cloud security compliance expert specialising in the CSA Cloud Controls Matrix (CCM).\n\nYour task is to produce a structured evaluation plan for assessing a vendor's compliance response to a CAIQ question.\n\nCAIQ Question ID : AIS-06.1\nCCM Control ID   : AIS-06\nCCM Domain       : AIS\nQuestion Text    : Are strategies and capabilities established and implemented to deploy application\ncode in a secure, standardized, and compliant manner?\nVendor Answer    : yes\n\nProduce a JSON evaluation plan with the following keys:\n\n{\n  \"steps\": [\n    \"Step 1: ...\",\n    \"Step 2: ...\",\n    \"Step 3: ...\"\n  ],\n  \"expected_evidence_type\": \"<what good evidence looks like, e.g. policy doc, certification, process description>\",\n  \"compliance_risk_level\": \"<low | medium | high> \u2014 how critical is a No answer here>\",\n  \"evaluation_focus\": \"<what the evaluator should specifically look for in the vendor comment>\",\n  \"nist_mapping_hint\": \"<relevant NIST 800-53 control family, e.g. AC, SA, SC>\",\n  \"answerability_check\": \"<answerable | needs_clarification | not_applicable>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"steps\": [\n    \"Step 1: Request and review the documented strategy or policy for secure application code deployment, ensuring it addresses security, standardization, and compliance.\",\n    \"Step 2: Examine evidence of implemented capabilities, such as CI/CD pipeline configurations, deployment automation scripts, and security gates (e.g., SAST/DAST integration, vulnerability scanning) within the deployment process.\",\n    \"Step 3: Verify the standardization of deployment procedures across different applications or environments through process documentation, templates, or configuration management records.\",\n    \"Step 4: Assess how compliance requirements (e.g., regulatory, internal policies) are integrated and enforced during the application deployment lifecycle, reviewing relevant audit logs or compliance reports.\"\n  ],\n  \"expected_evidence_type\": \"Secure SDLC Policy, Deployment Procedures, CI/CD Pipeline Configurations, Change Management Records, Security Testing Reports (SAST/DAST), Audit Logs, Compliance Reports.\",\n  \"compliance_risk_level\": \"high\",\n  \"evaluation_focus\": \"The evaluator should specifically look for evidence of automated security checks within the deployment pipeline, clear documentation of standardized deployment processes, and explicit mechanisms for ensuring compliance with internal policies and external regulations during code deployment.\",\n  \"nist_mapping_hint\": \"SA (System and Services Acquisition), CM (Configuration Management), SI (System and Information Integrity)\",\n  \"answerability_check\": \"answerable\"\n}",
+    "parsed": {
+      "steps": [
+        "Step 1: Request and review the documented strategy or policy for secure application code deployment, ensuring it addresses security, standardization, and compliance.",
+        "Step 2: Examine evidence of implemented capabilities, such as CI/CD pipeline configurations, deployment automation scripts, and security gates (e.g., SAST/DAST integration, vulnerability scanning) within the deployment process.",
+        "Step 3: Verify the standardization of deployment procedures across different applications or environments through process documentation, templates, or configuration management records.",
+        "Step 4: Assess how compliance requirements (e.g., regulatory, internal policies) are integrated and enforced during the application deployment lifecycle, reviewing relevant audit logs or compliance reports."
+      ],
+      "expected_evidence_type": "Secure SDLC Policy, Deployment Procedures, CI/CD Pipeline Configurations, Change Management Records, Security Testing Reports (SAST/DAST), Audit Logs, Compliance Reports.",
+      "compliance_risk_level": "high",
+      "evaluation_focus": "The evaluator should specifically look for evidence of automated security checks within the deployment pipeline, clear documentation of standardized deployment processes, and explicit mechanisms for ensuring compliance with internal policies and external regulations during code deployment.",
+      "nist_mapping_hint": "SA (System and Services Acquisition), CM (Configuration Management), SI (System and Information Integrity)",
+      "answerability_check": "answerable"
+    },
+    "parse_error": false
+  },
+  "evaluation": {
+    "prompt": "You are a cloud security compliance auditor evaluating a vendor's CAIQ response.\n\nCAIQ Question ID : AIS-06.1\nCCM Control ID   : AIS-06\nQuestion Text    : Are strategies and capabilities established and implemented to deploy application\ncode in a secure, standardized, and compliant manner?\nVendor Answer    : yes\nVendor Evidence  : Microsoft Azure has established software development and release management processes to control implementation of major changes including: \n\u2022The identification and documentation of the planned change\n\u2022Identification of business goals, priorities and scenarios during product planning \n\u2022Specification of feature/component design \n\u2022Operational readiness review based on a pre-defined criteria/check-list to assess overall risk/impact\n\u2022Testing, authorization and change management based on entry/exit criteria for DEV (development), INT (Integration Testing), STAGE (Pre-production) and PROD (production) environments as appropriate\n\nEvaluation Plan:\n  1. Step 1: Request and review the documented strategy or policy for secure application code deployment, ensuring it addresses security, standardization, and compliance.\n  2. Step 2: Examine evidence of implemented capabilities, such as CI/CD pipeline configurations, deployment automation scripts, and security gates (e.g., SAST/DAST integration, vulnerability scanning) within the deployment process.\n  3. Step 3: Verify the standardization of deployment procedures across different applications or environments through process documentation, templates, or configuration management records.\n  4. Step 4: Assess how compliance requirements (e.g., regulatory, internal policies) are integrated and enforced during the application deployment lifecycle, reviewing relevant audit logs or compliance reports.\n\nExpected evidence type : Secure SDLC Policy, Deployment Procedures, CI/CD Pipeline Configurations, Change Management Records, Security Testing Reports (SAST/DAST), Audit Logs, Compliance Reports.\nEvaluation focus       : The evaluator should specifically look for evidence of automated security checks within the deployment pipeline, clear documentation of standardized deployment processes, and explicit mechanisms for ensuring compliance with internal policies and external regulations during code deployment.\n\n\n\nEvaluate the vendor's compliance and produce a JSON verdict:\n\n{\n  \"verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"confidence\": <0.0 to 1.0>,\n  \"evidence_quality\": \"<strong | adequate | weak | absent>\",\n  \"gap_description\": \"<what is missing or insufficient \u2014 empty string if compliant>\",\n  \"evidence_citation\": \"<exact quote from vendor comment that supports the verdict \u2014 empty string if none>\",\n  \"recommended_followup\": \"<suggested clarification question for procurement team \u2014 empty string if none>\",\n  \"reasoning\": \"<one concise sentence explaining the verdict>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"verdict\": \"partial\",\n  \"confidence\": 0.7,\n  \"evidence_quality\": \"weak\",\n  \"gap_description\": \"The vendor's evidence describes a general software development and release management process, but it lacks specific details on automated security checks (e.g., SAST/DAST integration, vulnerability scanning) within the deployment pipeline. Furthermore, explicit mechanisms for integrating and enforcing compliance requirements (e.g., regulatory, internal policies) during the application deployment lifecycle are not detailed.\",\n  \"evidence_citation\": \"Microsoft Azure has established software development and release management processes to control implementation of major changes including: \\n\u2022The identification and documentation of the planned change\\n\u2022Identification of business goals, priorities and scenarios during product planning \\n\u2022Specification of feature/component design \\n\u2022Operational readiness review based on a pre-defined criteria/check-list to assess overall risk/impact\\n\u2022Testing, authorization and change management based on entry/exit criteria for DEV (development), INT (Integration Testing), STAGE (Pre-production) and PROD (production) environments as appropriate\",\n  \"recommended_followup\": \"Please provide specific evidence of automated security gates (e.g., SAST/DAST integration, vulnerability scanning) within the deployment pipeline and describe how compliance requirements are explicitly integrated and enforced during the application deployment lifecycle.\",\n  \"reasoning\": \"The vendor describes a standardized release management process across environments but lacks specific evidence of automated security checks within the deployment pipeline and explicit mechanisms for ensuring compliance during code deployment.\"\n}",
+    "parsed": {
+      "verdict": "partial",
+      "confidence": 0.7,
+      "evidence_quality": "weak",
+      "gap_description": "The vendor's evidence describes a general software development and release management process, but it lacks specific details on automated security checks (e.g., SAST/DAST integration, vulnerability scanning) within the deployment pipeline. Furthermore, explicit mechanisms for integrating and enforcing compliance requirements (e.g., regulatory, internal policies) during the application deployment lifecycle are not detailed.",
+      "evidence_citation": "Microsoft Azure has established software development and release management processes to control implementation of major changes including: \n\u2022The identification and documentation of the planned change\n\u2022Identification of business goals, priorities and scenarios during product planning \n\u2022Specification of feature/component design \n\u2022Operational readiness review based on a pre-defined criteria/check-list to assess overall risk/impact\n\u2022Testing, authorization and change management based on entry/exit criteria for DEV (development), INT (Integration Testing), STAGE (Pre-production) and PROD (production) environments as appropriate",
+      "recommended_followup": "Please provide specific evidence of automated security gates (e.g., SAST/DAST integration, vulnerability scanning) within the deployment pipeline and describe how compliance requirements are explicitly integrated and enforced during the application deployment lifecycle.",
+      "reasoning": "The vendor describes a standardized release management process across environments but lacks specific evidence of automated security checks within the deployment pipeline and explicit mechanisms for ensuring compliance during code deployment."
+    },
+    "parse_error": false,
+    "tool_trace": []
+  },
+  "verifier": {
+    "prompt": "You are an independent cloud security compliance reviewer.\n\nA compliance evaluator has assessed the following vendor CAIQ response and produced a draft verdict.\nYour job is to independently re-examine the evidence and either CONFIRM or REVISE the verdict.\n\nCAIQ Question ID : AIS-06.1\nCCM Control ID   : AIS-06\nQuestion Text    : Are strategies and capabilities established and implemented to deploy application\ncode in a secure, standardized, and compliant manner?\nVendor Answer    : yes\nVendor Evidence  : Microsoft Azure has established software development and release management processes to control implementation of major changes including: \n\u2022The identification and documentation of the planned change\n\u2022Identification of business goals, priorities and scenarios during product planning \n\u2022Specification of feature/component design \n\u2022Operational readiness review based on a pre-defined criteria/check-list to assess overall risk/impact\n\u2022Testing, authorization and change management based on entry/exit criteria for DEV (development), INT (Integration Testing), STAGE (Pre-production) and PROD (production) environments as appropriate\n\nDraft Verdict    : partial\nDraft Reasoning  : The vendor describes a standardized release management process across environments but lacks specific evidence of automated security checks within the deployment pipeline and explicit mechanisms for ensuring compliance during code deployment.\nEvidence Quality : weak\n\nRe-examine the vendor's evidence independently. Then produce a JSON response:\n\n{\n  \"verdict\": \"<confirmed | revised>\",\n  \"final_verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"reasoning\": \"<one sentence: why you confirmed or what you changed and why>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\"verdict\": \"confirmed\", \"final_verdict\": \"partial\", \"reasoning\": \"The draft verdict is confirmed as the vendor's evidence clearly demonstrates a standardized release management process but lacks explicit details on security checks and compliance mechanisms specifically within the deployment pipeline.\"}",
+    "parsed": {
+      "verdict": "confirmed",
+      "final_verdict": "partial",
+      "reasoning": "The draft verdict is confirmed as the vendor's evidence clearly demonstrates a standardized release management process but lacks explicit details on security checks and compliance mechanisms specifically within the deployment pipeline."
+    },
+    "parse_error": false,
+    "verdict": "confirmed"
+  },
+  "timestamps": {
+    "start": "2026-04-28T17:28:47.024142+00:00",
+    "end": "2026-04-28T17:29:15.523855+00:00",
+    "planner_ms": 7884.1307163238525,
+    "evaluator_ms": 12348.032712936401,
+    "verifier_ms": 8266.642093658447
+  },
+  "errors": [],
+  "lf_trace_id": "6471de7577c8bc74c97911a57ec5a68b"
+}

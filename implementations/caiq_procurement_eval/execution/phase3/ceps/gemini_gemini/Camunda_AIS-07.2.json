@@ -1,0 +1,79 @@
+{
+  "schema_version": "cep.v1",
+  "run_id": "be094cd0-932d-42ab-9645-7beba42ee0a6",
+  "config": {
+    "planner_backend": "gemini",
+    "evaluator_backend": "gemini",
+    "judge_backend": "gemini",
+    "config_name": "gemini_gemini",
+    "planner_model": "gemini-2.5-flash",
+    "evaluator_model": "gemini-2.5-flash"
+  },
+  "sample": {
+    "vendor": "Camunda",
+    "sample_id": "Camunda_AIS-07.2",
+    "question_id": "AIS-07.2",
+    "control_id": "AIS-07",
+    "domain_id": "AIS",
+    "question_text": "Is the remediation of application security vulnerabilities automated when\npossible?",
+    "vendor_answer": "no",
+    "vendor_comment": "Camunda's vulnerability remediation is currently not automated",
+    "caiq_version": "4.0.2",
+    "metadata": {
+      "SSRM Control Ownership": "CSP-owned"
+    }
+  },
+  "plan": {
+    "prompt": "You are a cloud security compliance expert specialising in the CSA Cloud Controls Matrix (CCM).\n\nYour task is to produce a structured evaluation plan for assessing a vendor's compliance response to a CAIQ question.\n\nCAIQ Question ID : AIS-07.2\nCCM Control ID   : AIS-07\nCCM Domain       : AIS\nQuestion Text    : Is the remediation of application security vulnerabilities automated when\npossible?\nVendor Answer    : no\n\nProduce a JSON evaluation plan with the following keys:\n\n{\n  \"steps\": [\n    \"Step 1: ...\",\n    \"Step 2: ...\",\n    \"Step 3: ...\"\n  ],\n  \"expected_evidence_type\": \"<what good evidence looks like, e.g. policy doc, certification, process description>\",\n  \"compliance_risk_level\": \"<low | medium | high> \u2014 how critical is a No answer here>\",\n  \"evaluation_focus\": \"<what the evaluator should specifically look for in the vendor comment>\",\n  \"nist_mapping_hint\": \"<relevant NIST 800-53 control family, e.g. AC, SA, SC>\",\n  \"answerability_check\": \"<answerable | needs_clarification | not_applicable>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"steps\": [\n    \"Step 1: Request a detailed explanation for the 'no' answer, specifically inquiring about the current, non-automated process for application security vulnerability remediation.\",\n    \"Step 2: Examine documentation describing the manual vulnerability remediation process, including roles, responsibilities, timelines, and tools used to ensure consistency and effectiveness.\",\n    \"Step 3: Request evidence of recent vulnerability remediation activities (e.g., ticketing system logs, change management records, audit trails) to verify the process is followed and to assess the average time to remediate.\",\n    \"Step 4: Inquire about any compensating controls in place to mitigate the risks associated with non-automated remediation, and ask for any future plans or a roadmap for implementing automation.\"\n  ],\n  \"expected_evidence_type\": \"Vulnerability management policy, application security procedures, incident response plan, change management records, ticketing system logs, remediation reports, risk assessments, future automation roadmap.\",\n  \"compliance_risk_level\": \"high\",\n  \"evaluation_focus\": \"Given the 'no' answer, the evaluator should focus on understanding the specific reasons for not automating, the robustness and efficiency of the manual remediation process, the potential impact on remediation timelines and consistency, and any compensating controls or future plans for automation.\",\n  \"nist_mapping_hint\": \"SI (System and Information Integrity), SA (System and Services Acquisition)\",\n  \"answerability_check\": \"answerable\"\n}",
+    "parsed": {
+      "steps": [
+        "Step 1: Request a detailed explanation for the 'no' answer, specifically inquiring about the current, non-automated process for application security vulnerability remediation.",
+        "Step 2: Examine documentation describing the manual vulnerability remediation process, including roles, responsibilities, timelines, and tools used to ensure consistency and effectiveness.",
+        "Step 3: Request evidence of recent vulnerability remediation activities (e.g., ticketing system logs, change management records, audit trails) to verify the process is followed and to assess the average time to remediate.",
+        "Step 4: Inquire about any compensating controls in place to mitigate the risks associated with non-automated remediation, and ask for any future plans or a roadmap for implementing automation."
+      ],
+      "expected_evidence_type": "Vulnerability management policy, application security procedures, incident response plan, change management records, ticketing system logs, remediation reports, risk assessments, future automation roadmap.",
+      "compliance_risk_level": "high",
+      "evaluation_focus": "Given the 'no' answer, the evaluator should focus on understanding the specific reasons for not automating, the robustness and efficiency of the manual remediation process, the potential impact on remediation timelines and consistency, and any compensating controls or future plans for automation.",
+      "nist_mapping_hint": "SI (System and Information Integrity), SA (System and Services Acquisition)",
+      "answerability_check": "answerable"
+    },
+    "parse_error": false
+  },
+  "evaluation": {
+    "prompt": "You are a cloud security compliance auditor evaluating a vendor's CAIQ response.\n\nCAIQ Question ID : AIS-07.2\nCCM Control ID   : AIS-07\nQuestion Text    : Is the remediation of application security vulnerabilities automated when\npossible?\nVendor Answer    : no\nVendor Evidence  : Camunda's vulnerability remediation is currently not automated\n\nEvaluation Plan:\n  1. Step 1: Request a detailed explanation for the 'no' answer, specifically inquiring about the current, non-automated process for application security vulnerability remediation.\n  2. Step 2: Examine documentation describing the manual vulnerability remediation process, including roles, responsibilities, timelines, and tools used to ensure consistency and effectiveness.\n  3. Step 3: Request evidence of recent vulnerability remediation activities (e.g., ticketing system logs, change management records, audit trails) to verify the process is followed and to assess the average time to remediate.\n  4. Step 4: Inquire about any compensating controls in place to mitigate the risks associated with non-automated remediation, and ask for any future plans or a roadmap for implementing automation.\n\nExpected evidence type : Vulnerability management policy, application security procedures, incident response plan, change management records, ticketing system logs, remediation reports, risk assessments, future automation roadmap.\nEvaluation focus       : Given the 'no' answer, the evaluator should focus on understanding the specific reasons for not automating, the robustness and efficiency of the manual remediation process, the potential impact on remediation timelines and consistency, and any compensating controls or future plans for automation.\n\n\n\nEvaluate the vendor's compliance and produce a JSON verdict:\n\n{\n  \"verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"confidence\": <0.0 to 1.0>,\n  \"evidence_quality\": \"<strong | adequate | weak | absent>\",\n  \"gap_description\": \"<what is missing or insufficient \u2014 empty string if compliant>\",\n  \"evidence_citation\": \"<exact quote from vendor comment that supports the verdict \u2014 empty string if none>\",\n  \"recommended_followup\": \"<suggested clarification question for procurement team \u2014 empty string if none>\",\n  \"reasoning\": \"<one concise sentence explaining the verdict>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"verdict\": \"non_compliant\",\n  \"confidence\": 1.0,\n  \"evidence_quality\": \"weak\",\n  \"gap_description\": \"The vendor explicitly states that application security vulnerability remediation is not automated, which is a direct gap against the control's objective of automating remediation when possible. Further details on the manual process, compensating controls, and future automation plans are missing.\",\n  \"evidence_citation\": \"Camunda's vulnerability remediation is currently not automated\",\n  \"recommended_followup\": \"Please provide a detailed explanation of the current manual process for application security vulnerability remediation, including roles, responsibilities, timelines, and tools. Additionally, describe any compensating controls in place and outline future plans or a roadmap for implementing automation.\",\n  \"reasoning\": \"The vendor explicitly states that application security vulnerability remediation is not automated, which directly contradicts the control's objective of automating remediation when possible.\"\n}",
+    "parsed": {
+      "verdict": "non_compliant",
+      "confidence": 1.0,
+      "evidence_quality": "weak",
+      "gap_description": "The vendor explicitly states that application security vulnerability remediation is not automated, which is a direct gap against the control's objective of automating remediation when possible. Further details on the manual process, compensating controls, and future automation plans are missing.",
+      "evidence_citation": "Camunda's vulnerability remediation is currently not automated",
+      "recommended_followup": "Please provide a detailed explanation of the current manual process for application security vulnerability remediation, including roles, responsibilities, timelines, and tools. Additionally, describe any compensating controls in place and outline future plans or a roadmap for implementing automation.",
+      "reasoning": "The vendor explicitly states that application security vulnerability remediation is not automated, which directly contradicts the control's objective of automating remediation when possible."
+    },
+    "parse_error": false,
+    "tool_trace": []
+  },
+  "verifier": {
+    "prompt": "You are an independent cloud security compliance reviewer.\n\nA compliance evaluator has assessed the following vendor CAIQ response and produced a draft verdict.\nYour job is to independently re-examine the evidence and either CONFIRM or REVISE the verdict.\n\nCAIQ Question ID : AIS-07.2\nCCM Control ID   : AIS-07\nQuestion Text    : Is the remediation of application security vulnerabilities automated when\npossible?\nVendor Answer    : no\nVendor Evidence  : Camunda's vulnerability remediation is currently not automated\n\nDraft Verdict    : non_compliant\nDraft Reasoning  : The vendor explicitly states that application security vulnerability remediation is not automated, which directly contradicts the control's objective of automating remediation when possible.\nEvidence Quality : weak\n\nRe-examine the vendor's evidence independently. Then produce a JSON response:\n\n{\n  \"verdict\": \"<confirmed | revised>\",\n  \"final_verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"reasoning\": \"<one sentence: why you confirmed or what you changed and why>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"verdict\": \"confirmed\",\n  \"final_verdict\": \"non_compliant\",\n  \"reasoning\": \"The vendor explicitly states that application security vulnerability remediation is not automated, directly answering the question in the negative and confirming non-compliance with the control's objective.\"\n}",
+    "parsed": {
+      "verdict": "confirmed",
+      "final_verdict": "non_compliant",
+      "reasoning": "The vendor explicitly states that application security vulnerability remediation is not automated, directly answering the question in the negative and confirming non-compliance with the control's objective."
+    },
+    "parse_error": false,
+    "verdict": "confirmed"
+  },
+  "timestamps": {
+    "start": "2026-04-28T18:14:19.681095+00:00",
+    "end": "2026-04-28T18:14:42.513688+00:00",
+    "planner_ms": 9158.900260925293,
+    "evaluator_ms": 8859.12823677063,
+    "verifier_ms": 4813.590526580811
+  },
+  "errors": [],
+  "lf_trace_id": "32f4859ec8e936940e5e98d1dddccf0a"
+}

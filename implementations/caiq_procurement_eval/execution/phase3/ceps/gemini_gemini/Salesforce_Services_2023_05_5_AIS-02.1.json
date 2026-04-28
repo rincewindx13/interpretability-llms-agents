@@ -1,0 +1,81 @@
+{
+  "schema_version": "cep.v1",
+  "run_id": "be094cd0-932d-42ab-9645-7beba42ee0a6",
+  "config": {
+    "planner_backend": "gemini",
+    "evaluator_backend": "gemini",
+    "judge_backend": "gemini",
+    "config_name": "gemini_gemini",
+    "planner_model": "gemini-2.5-flash",
+    "evaluator_model": "gemini-2.5-flash"
+  },
+  "sample": {
+    "vendor": "Salesforce Services 2023 05 5",
+    "sample_id": "Salesforce_Services_2023_05_5_AIS-02.1",
+    "question_id": "AIS-02.1",
+    "control_id": "AIS-02",
+    "domain_id": "AIS",
+    "question_text": "Are baseline requirements to secure different applications established, \ndocumented, and maintained?",
+    "vendor_answer": "yes",
+    "vendor_comment": "",
+    "caiq_version": "4.0.2",
+    "metadata": {
+      "SSRM Control Ownership": "CSP-owned",
+      "CCM Control Specification": "Establish, document and maintain baseline requirements for securing different \napplications.",
+      "CCM Control Title": "Application Security \nBaseline Requirements"
+    }
+  },
+  "plan": {
+    "prompt": "You are a cloud security compliance expert specialising in the CSA Cloud Controls Matrix (CCM).\n\nYour task is to produce a structured evaluation plan for assessing a vendor's compliance response to a CAIQ question.\n\nCAIQ Question ID : AIS-02.1\nCCM Control ID   : AIS-02\nCCM Domain       : AIS\nQuestion Text    : Are baseline requirements to secure different applications established, \ndocumented, and maintained?\nVendor Answer    : yes\n\nProduce a JSON evaluation plan with the following keys:\n\n{\n  \"steps\": [\n    \"Step 1: ...\",\n    \"Step 2: ...\",\n    \"Step 3: ...\"\n  ],\n  \"expected_evidence_type\": \"<what good evidence looks like, e.g. policy doc, certification, process description>\",\n  \"compliance_risk_level\": \"<low | medium | high> \u2014 how critical is a No answer here>\",\n  \"evaluation_focus\": \"<what the evaluator should specifically look for in the vendor comment>\",\n  \"nist_mapping_hint\": \"<relevant NIST 800-53 control family, e.g. AC, SA, SC>\",\n  \"answerability_check\": \"<answerable | needs_clarification | not_applicable>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"steps\": [\n    \"Step 1: Request documentation outlining the established baseline security requirements for applications.\",\n    \"Step 2: Verify that these baseline requirements are formally documented (e.g., in an Application Security Policy, Secure Coding Standards, or Configuration Baselines).\",\n    \"Step 3: Confirm that the documentation addresses different application types or classifications, if applicable, and specifies how these baselines are applied.\",\n    \"Step 4: Seek evidence of a defined process for the regular review, update, and maintenance of these application security baseline requirements.\"\n  ],\n  \"expected_evidence_type\": \"Application Security Policy, Secure Coding Standards, Application Configuration Baselines, SDLC documentation, Change Management records for security baselines.\",\n  \"compliance_risk_level\": \"high\",\n  \"evaluation_focus\": \"The evaluator should specifically look for explicit documentation of 'baseline security requirements' for 'applications', evidence of their 'establishment' and 'documentation', and a process for their 'maintenance' and periodic review. Verify if different application types have tailored baselines.\",\n  \"nist_mapping_hint\": \"CM (Configuration Management), SA (System and Services Acquisition), PL (Planning)\",\n  \"answerability_check\": \"answerable\"\n}",
+    "parsed": {
+      "steps": [
+        "Step 1: Request documentation outlining the established baseline security requirements for applications.",
+        "Step 2: Verify that these baseline requirements are formally documented (e.g., in an Application Security Policy, Secure Coding Standards, or Configuration Baselines).",
+        "Step 3: Confirm that the documentation addresses different application types or classifications, if applicable, and specifies how these baselines are applied.",
+        "Step 4: Seek evidence of a defined process for the regular review, update, and maintenance of these application security baseline requirements."
+      ],
+      "expected_evidence_type": "Application Security Policy, Secure Coding Standards, Application Configuration Baselines, SDLC documentation, Change Management records for security baselines.",
+      "compliance_risk_level": "high",
+      "evaluation_focus": "The evaluator should specifically look for explicit documentation of 'baseline security requirements' for 'applications', evidence of their 'establishment' and 'documentation', and a process for their 'maintenance' and periodic review. Verify if different application types have tailored baselines.",
+      "nist_mapping_hint": "CM (Configuration Management), SA (System and Services Acquisition), PL (Planning)",
+      "answerability_check": "answerable"
+    },
+    "parse_error": false
+  },
+  "evaluation": {
+    "prompt": "You are a cloud security compliance auditor evaluating a vendor's CAIQ response.\n\nCAIQ Question ID : AIS-02.1\nCCM Control ID   : AIS-02\nQuestion Text    : Are baseline requirements to secure different applications established, \ndocumented, and maintained?\nVendor Answer    : yes\nVendor Evidence  : (no evidence provided)\n\nEvaluation Plan:\n  1. Step 1: Request documentation outlining the established baseline security requirements for applications.\n  2. Step 2: Verify that these baseline requirements are formally documented (e.g., in an Application Security Policy, Secure Coding Standards, or Configuration Baselines).\n  3. Step 3: Confirm that the documentation addresses different application types or classifications, if applicable, and specifies how these baselines are applied.\n  4. Step 4: Seek evidence of a defined process for the regular review, update, and maintenance of these application security baseline requirements.\n\nExpected evidence type : Application Security Policy, Secure Coding Standards, Application Configuration Baselines, SDLC documentation, Change Management records for security baselines.\nEvaluation focus       : The evaluator should specifically look for explicit documentation of 'baseline security requirements' for 'applications', evidence of their 'establishment' and 'documentation', and a process for their 'maintenance' and periodic review. Verify if different application types have tailored baselines.\n\n\n\nEvaluate the vendor's compliance and produce a JSON verdict:\n\n{\n  \"verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"confidence\": <0.0 to 1.0>,\n  \"evidence_quality\": \"<strong | adequate | weak | absent>\",\n  \"gap_description\": \"<what is missing or insufficient \u2014 empty string if compliant>\",\n  \"evidence_citation\": \"<exact quote from vendor comment that supports the verdict \u2014 empty string if none>\",\n  \"recommended_followup\": \"<suggested clarification question for procurement team \u2014 empty string if none>\",\n  \"reasoning\": \"<one concise sentence explaining the verdict>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\"verdict\": \"needs_clarification\", \"confidence\": 0.8, \"evidence_quality\": \"absent\", \"gap_description\": \"The vendor claims that baseline requirements to secure different applications are established, documented, and maintained, but no evidence was provided to substantiate this claim.\", \"evidence_citation\": \"(no evidence provided)\", \"recommended_followup\": \"Please provide documentation outlining the established baseline security requirements for applications, such as an Application Security Policy, Secure Coding Standards, Application Configuration Baselines, SDLC documentation, or Change Management records for security baselines. Additionally, provide evidence of a defined process for the regular review, update, and maintenance of these requirements.\", \"reasoning\": \"The vendor claims compliance but provides no evidence to substantiate the establishment, documentation, or maintenance of application security baseline requirements.\"}",
+    "parsed": {
+      "verdict": "needs_clarification",
+      "confidence": 0.8,
+      "evidence_quality": "absent",
+      "gap_description": "The vendor claims that baseline requirements to secure different applications are established, documented, and maintained, but no evidence was provided to substantiate this claim.",
+      "evidence_citation": "(no evidence provided)",
+      "recommended_followup": "Please provide documentation outlining the established baseline security requirements for applications, such as an Application Security Policy, Secure Coding Standards, Application Configuration Baselines, SDLC documentation, or Change Management records for security baselines. Additionally, provide evidence of a defined process for the regular review, update, and maintenance of these requirements.",
+      "reasoning": "The vendor claims compliance but provides no evidence to substantiate the establishment, documentation, or maintenance of application security baseline requirements."
+    },
+    "parse_error": false,
+    "tool_trace": []
+  },
+  "verifier": {
+    "prompt": "You are an independent cloud security compliance reviewer.\n\nA compliance evaluator has assessed the following vendor CAIQ response and produced a draft verdict.\nYour job is to independently re-examine the evidence and either CONFIRM or REVISE the verdict.\n\nCAIQ Question ID : AIS-02.1\nCCM Control ID   : AIS-02\nQuestion Text    : Are baseline requirements to secure different applications established, \ndocumented, and maintained?\nVendor Answer    : yes\nVendor Evidence  : (no evidence provided)\n\nDraft Verdict    : needs_clarification\nDraft Reasoning  : The vendor claims compliance but provides no evidence to substantiate the establishment, documentation, or maintenance of application security baseline requirements.\nEvidence Quality : absent\n\nRe-examine the vendor's evidence independently. Then produce a JSON response:\n\n{\n  \"verdict\": \"<confirmed | revised>\",\n  \"final_verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"reasoning\": \"<one sentence: why you confirmed or what you changed and why>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"verdict\": \"confirmed\",\n  \"final_verdict\": \"needs_clarification\",\n  \"reasoning\": \"The draft verdict is confirmed because the vendor claims compliance ('yes') but provides no evidence to support the establishment, documentation, or maintenance of application security baseline requirements, necessitating further clarification.\"\n}",
+    "parsed": {
+      "verdict": "confirmed",
+      "final_verdict": "needs_clarification",
+      "reasoning": "The draft verdict is confirmed because the vendor claims compliance ('yes') but provides no evidence to support the establishment, documentation, or maintenance of application security baseline requirements, necessitating further clarification."
+    },
+    "parse_error": false,
+    "verdict": "confirmed"
+  },
+  "timestamps": {
+    "start": "2026-04-28T18:02:29.981208+00:00",
+    "end": "2026-04-28T18:02:50.572026+00:00",
+    "planner_ms": 8908.71262550354,
+    "evaluator_ms": 7455.019950866699,
+    "verifier_ms": 4226.161003112793
+  },
+  "errors": [],
+  "lf_trace_id": "a33c2ba9b6aaa6c02c48b2832732039a"
+}

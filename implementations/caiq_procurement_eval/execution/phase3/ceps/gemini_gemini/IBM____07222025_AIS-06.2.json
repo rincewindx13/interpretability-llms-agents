@@ -1,0 +1,79 @@
+{
+  "schema_version": "cep.v1",
+  "run_id": "be094cd0-932d-42ab-9645-7beba42ee0a6",
+  "config": {
+    "planner_backend": "gemini",
+    "evaluator_backend": "gemini",
+    "judge_backend": "gemini",
+    "config_name": "gemini_gemini",
+    "planner_model": "gemini-2.5-flash",
+    "evaluator_model": "gemini-2.5-flash"
+  },
+  "sample": {
+    "vendor": "IBM    07222025",
+    "sample_id": "IBM____07222025_AIS-06.2",
+    "question_id": "AIS-06.2",
+    "control_id": "AIS-06",
+    "domain_id": "AIS",
+    "question_text": "Is the deployment and integration of application code automated where possible?",
+    "vendor_answer": "yes",
+    "vendor_comment": "Testing and release is automated using a JIRA workflow",
+    "caiq_version": "4.0.2",
+    "metadata": {
+      "SSRM Control Ownership": "CSP-owned"
+    }
+  },
+  "plan": {
+    "prompt": "You are a cloud security compliance expert specialising in the CSA Cloud Controls Matrix (CCM).\n\nYour task is to produce a structured evaluation plan for assessing a vendor's compliance response to a CAIQ question.\n\nCAIQ Question ID : AIS-06.2\nCCM Control ID   : AIS-06\nCCM Domain       : AIS\nQuestion Text    : Is the deployment and integration of application code automated where possible?\nVendor Answer    : yes\n\nProduce a JSON evaluation plan with the following keys:\n\n{\n  \"steps\": [\n    \"Step 1: ...\",\n    \"Step 2: ...\",\n    \"Step 3: ...\"\n  ],\n  \"expected_evidence_type\": \"<what good evidence looks like, e.g. policy doc, certification, process description>\",\n  \"compliance_risk_level\": \"<low | medium | high> \u2014 how critical is a No answer here>\",\n  \"evaluation_focus\": \"<what the evaluator should specifically look for in the vendor comment>\",\n  \"nist_mapping_hint\": \"<relevant NIST 800-53 control family, e.g. AC, SA, SC>\",\n  \"answerability_check\": \"<answerable | needs_clarification | not_applicable>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"steps\": [\n    \"Step 1: Request documentation outlining the vendor's CI/CD (Continuous Integration/Continuous Deployment) pipeline architecture and processes for application code deployment and integration.\",\n    \"Step 2: Examine evidence of specific tools and platforms used for automation (e.g., source code management, build automation, testing automation, deployment orchestration, configuration management).\",\n    \"Step 3: Review audit logs, deployment reports, or change management records demonstrating successful automated deployments and integrations across various environments (e.g., development, staging, production).\",\n    \"Step 4: Inquire about the scope of automation, specifically identifying any areas where automation is not implemented and the justification for manual processes, along with compensating controls.\"\n  ],\n  \"expected_evidence_type\": \"CI/CD pipeline documentation, architecture diagrams, configuration management scripts (e.g., Terraform, Ansible), deployment logs, build reports, change management records, screenshots/demonstrations of automated workflows, policy documents on deployment automation.\",\n  \"compliance_risk_level\": \"high\",\n  \"evaluation_focus\": \"The extent and consistency of automation across the application lifecycle, the security controls embedded within the automated pipeline, the integrity of the deployment process, and the management of any manual exceptions.\",\n  \"nist_mapping_hint\": \"SA (System and Services Acquisition), CM (Configuration Management), AU (Audit and Accountability)\",\n  \"answerability_check\": \"answerable\"\n}",
+    "parsed": {
+      "steps": [
+        "Step 1: Request documentation outlining the vendor's CI/CD (Continuous Integration/Continuous Deployment) pipeline architecture and processes for application code deployment and integration.",
+        "Step 2: Examine evidence of specific tools and platforms used for automation (e.g., source code management, build automation, testing automation, deployment orchestration, configuration management).",
+        "Step 3: Review audit logs, deployment reports, or change management records demonstrating successful automated deployments and integrations across various environments (e.g., development, staging, production).",
+        "Step 4: Inquire about the scope of automation, specifically identifying any areas where automation is not implemented and the justification for manual processes, along with compensating controls."
+      ],
+      "expected_evidence_type": "CI/CD pipeline documentation, architecture diagrams, configuration management scripts (e.g., Terraform, Ansible), deployment logs, build reports, change management records, screenshots/demonstrations of automated workflows, policy documents on deployment automation.",
+      "compliance_risk_level": "high",
+      "evaluation_focus": "The extent and consistency of automation across the application lifecycle, the security controls embedded within the automated pipeline, the integrity of the deployment process, and the management of any manual exceptions.",
+      "nist_mapping_hint": "SA (System and Services Acquisition), CM (Configuration Management), AU (Audit and Accountability)",
+      "answerability_check": "answerable"
+    },
+    "parse_error": false
+  },
+  "evaluation": {
+    "prompt": "You are a cloud security compliance auditor evaluating a vendor's CAIQ response.\n\nCAIQ Question ID : AIS-06.2\nCCM Control ID   : AIS-06\nQuestion Text    : Is the deployment and integration of application code automated where possible?\nVendor Answer    : yes\nVendor Evidence  : Testing and release is automated using a JIRA workflow\n\nEvaluation Plan:\n  1. Step 1: Request documentation outlining the vendor's CI/CD (Continuous Integration/Continuous Deployment) pipeline architecture and processes for application code deployment and integration.\n  2. Step 2: Examine evidence of specific tools and platforms used for automation (e.g., source code management, build automation, testing automation, deployment orchestration, configuration management).\n  3. Step 3: Review audit logs, deployment reports, or change management records demonstrating successful automated deployments and integrations across various environments (e.g., development, staging, production).\n  4. Step 4: Inquire about the scope of automation, specifically identifying any areas where automation is not implemented and the justification for manual processes, along with compensating controls.\n\nExpected evidence type : CI/CD pipeline documentation, architecture diagrams, configuration management scripts (e.g., Terraform, Ansible), deployment logs, build reports, change management records, screenshots/demonstrations of automated workflows, policy documents on deployment automation.\nEvaluation focus       : The extent and consistency of automation across the application lifecycle, the security controls embedded within the automated pipeline, the integrity of the deployment process, and the management of any manual exceptions.\n\n\n\nEvaluate the vendor's compliance and produce a JSON verdict:\n\n{\n  \"verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"confidence\": <0.0 to 1.0>,\n  \"evidence_quality\": \"<strong | adequate | weak | absent>\",\n  \"gap_description\": \"<what is missing or insufficient \u2014 empty string if compliant>\",\n  \"evidence_citation\": \"<exact quote from vendor comment that supports the verdict \u2014 empty string if none>\",\n  \"recommended_followup\": \"<suggested clarification question for procurement team \u2014 empty string if none>\",\n  \"reasoning\": \"<one concise sentence explaining the verdict>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"verdict\": \"partial\",\n  \"confidence\": 0.4,\n  \"evidence_quality\": \"weak\",\n  \"gap_description\": \"The evidence vaguely mentions automation for 'testing and release' using a JIRA workflow but lacks specific details on the tools, processes, and scope of automation for the entire application code deployment and integration lifecycle, including build, deployment to various environments, and configuration management.\",\n  \"evidence_citation\": \"Testing and release is automated using a JIRA workflow\",\n  \"recommended_followup\": \"Please provide detailed documentation of your CI/CD pipeline, including specific tools used for source code management, build automation, testing, deployment orchestration, and configuration management across all environments. Also, clarify how JIRA workflows directly automate code deployment and integration.\",\n  \"reasoning\": \"The vendor's evidence vaguely claims automation for 'testing and release' via a JIRA workflow but lacks specific details on the full scope of application code deployment and integration automation, including tools and processes.\"\n}",
+    "parsed": {
+      "verdict": "partial",
+      "confidence": 0.4,
+      "evidence_quality": "weak",
+      "gap_description": "The evidence vaguely mentions automation for 'testing and release' using a JIRA workflow but lacks specific details on the tools, processes, and scope of automation for the entire application code deployment and integration lifecycle, including build, deployment to various environments, and configuration management.",
+      "evidence_citation": "Testing and release is automated using a JIRA workflow",
+      "recommended_followup": "Please provide detailed documentation of your CI/CD pipeline, including specific tools used for source code management, build automation, testing, deployment orchestration, and configuration management across all environments. Also, clarify how JIRA workflows directly automate code deployment and integration.",
+      "reasoning": "The vendor's evidence vaguely claims automation for 'testing and release' via a JIRA workflow but lacks specific details on the full scope of application code deployment and integration automation, including tools and processes."
+    },
+    "parse_error": false,
+    "tool_trace": []
+  },
+  "verifier": {
+    "prompt": "You are an independent cloud security compliance reviewer.\n\nA compliance evaluator has assessed the following vendor CAIQ response and produced a draft verdict.\nYour job is to independently re-examine the evidence and either CONFIRM or REVISE the verdict.\n\nCAIQ Question ID : AIS-06.2\nCCM Control ID   : AIS-06\nQuestion Text    : Is the deployment and integration of application code automated where possible?\nVendor Answer    : yes\nVendor Evidence  : Testing and release is automated using a JIRA workflow\n\nDraft Verdict    : partial\nDraft Reasoning  : The vendor's evidence vaguely claims automation for 'testing and release' via a JIRA workflow but lacks specific details on the full scope of application code deployment and integration automation, including tools and processes.\nEvidence Quality : weak\n\nRe-examine the vendor's evidence independently. Then produce a JSON response:\n\n{\n  \"verdict\": \"<confirmed | revised>\",\n  \"final_verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"reasoning\": \"<one sentence: why you confirmed or what you changed and why>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"verdict\": \"confirmed\",\n  \"final_verdict\": \"partial\",\n  \"reasoning\": \"The draft verdict is confirmed as the vendor's evidence for 'testing and release' automation via a JIRA workflow is insufficient to demonstrate full automation of application code deployment and integration, lacking details on specific tools and processes for actual code handling.\"\n}",
+    "parsed": {
+      "verdict": "confirmed",
+      "final_verdict": "partial",
+      "reasoning": "The draft verdict is confirmed as the vendor's evidence for 'testing and release' automation via a JIRA workflow is insufficient to demonstrate full automation of application code deployment and integration, lacking details on specific tools and processes for actual code handling."
+    },
+    "parse_error": false,
+    "verdict": "confirmed"
+  },
+  "timestamps": {
+    "start": "2026-04-28T18:50:44.757142+00:00",
+    "end": "2026-04-28T18:51:11.705828+00:00",
+    "planner_ms": 9159.584999084473,
+    "evaluator_ms": 9283.96224975586,
+    "verifier_ms": 8504.371881484985
+  },
+  "errors": [],
+  "lf_trace_id": "9dd810f86d4277a0ad6c4fe776b52355"
+}

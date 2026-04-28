@@ -1,0 +1,81 @@
+{
+  "schema_version": "cep.v1",
+  "run_id": "be094cd0-932d-42ab-9645-7beba42ee0a6",
+  "config": {
+    "planner_backend": "gemini",
+    "evaluator_backend": "gemini",
+    "judge_backend": "gemini",
+    "config_name": "gemini_gemini",
+    "planner_model": "gemini-2.5-flash",
+    "evaluator_model": "gemini-2.5-flash"
+  },
+  "sample": {
+    "vendor": "deloitte centralsight APR 15 2025",
+    "sample_id": "deloitte_centralsight_APR_15_2025_AIS-03.1",
+    "question_id": "AIS-03.1",
+    "control_id": "AIS-03",
+    "domain_id": "AIS",
+    "question_text": "Are technical and operational metrics defined and implemented according to\nbusiness objectives, security requirements, and compliance obligations?",
+    "vendor_answer": "yes",
+    "vendor_comment": "This is tested and verified annually as part of our SOC 2 Type 2 certification.",
+    "caiq_version": "unknown",
+    "metadata": {
+      "SSRM Control Ownership": "CSP-owned",
+      "CCM Control Specification": "Define and implement technical and operational metrics in alignment\nwith business objectives, security requirements, and compliance obligations.",
+      "CCM Control Title": "Application Security Metrics"
+    }
+  },
+  "plan": {
+    "prompt": "You are a cloud security compliance expert specialising in the CSA Cloud Controls Matrix (CCM).\n\nYour task is to produce a structured evaluation plan for assessing a vendor's compliance response to a CAIQ question.\n\nCAIQ Question ID : AIS-03.1\nCCM Control ID   : AIS-03\nCCM Domain       : AIS\nQuestion Text    : Are technical and operational metrics defined and implemented according to\nbusiness objectives, security requirements, and compliance obligations?\nVendor Answer    : yes\n\nProduce a JSON evaluation plan with the following keys:\n\n{\n  \"steps\": [\n    \"Step 1: ...\",\n    \"Step 2: ...\",\n    \"Step 3: ...\"\n  ],\n  \"expected_evidence_type\": \"<what good evidence looks like, e.g. policy doc, certification, process description>\",\n  \"compliance_risk_level\": \"<low | medium | high> \u2014 how critical is a No answer here>\",\n  \"evaluation_focus\": \"<what the evaluator should specifically look for in the vendor comment>\",\n  \"nist_mapping_hint\": \"<relevant NIST 800-53 control family, e.g. AC, SA, SC>\",\n  \"answerability_check\": \"<answerable | needs_clarification | not_applicable>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"steps\": [\n    \"Step 1: Request documentation outlining the organization's process for defining technical and operational metrics.\",\n    \"Step 2: Obtain examples of defined technical and operational metrics, including their objectives, collection methods, and reporting frequency.\",\n    \"Step 3: Verify that the defined metrics explicitly align with stated business objectives, security requirements (e.g., from security policies), and applicable compliance obligations (e.g., regulatory frameworks).\",\n    \"Step 4: Review evidence (e.g., reports, dashboards, meeting minutes) demonstrating the implementation, collection, analysis, and regular review of these metrics, including any actions taken based on metric results.\"\n  ],\n  \"expected_evidence_type\": \"Policy/procedure documents for metric definition and management, examples of defined metrics, metric reports/dashboards, meeting minutes for metric review, evidence of alignment mapping (e.g., cross-reference tables).\",\n  \"compliance_risk_level\": \"high\",\n  \"evaluation_focus\": \"The evaluator should specifically look for clear, measurable metrics that are directly traceable to specific business goals, security controls, and compliance mandates. Evidence should demonstrate active monitoring and utilization of these metrics to inform security posture and decision-making, not just their theoretical existence.\",\n  \"nist_mapping_hint\": \"PM (Program Management), CA (Security Assessment and Authorization), AU (Audit and Accountability)\",\n  \"answerability_check\": \"answerable\"\n}",
+    "parsed": {
+      "steps": [
+        "Step 1: Request documentation outlining the organization's process for defining technical and operational metrics.",
+        "Step 2: Obtain examples of defined technical and operational metrics, including their objectives, collection methods, and reporting frequency.",
+        "Step 3: Verify that the defined metrics explicitly align with stated business objectives, security requirements (e.g., from security policies), and applicable compliance obligations (e.g., regulatory frameworks).",
+        "Step 4: Review evidence (e.g., reports, dashboards, meeting minutes) demonstrating the implementation, collection, analysis, and regular review of these metrics, including any actions taken based on metric results."
+      ],
+      "expected_evidence_type": "Policy/procedure documents for metric definition and management, examples of defined metrics, metric reports/dashboards, meeting minutes for metric review, evidence of alignment mapping (e.g., cross-reference tables).",
+      "compliance_risk_level": "high",
+      "evaluation_focus": "The evaluator should specifically look for clear, measurable metrics that are directly traceable to specific business goals, security controls, and compliance mandates. Evidence should demonstrate active monitoring and utilization of these metrics to inform security posture and decision-making, not just their theoretical existence.",
+      "nist_mapping_hint": "PM (Program Management), CA (Security Assessment and Authorization), AU (Audit and Accountability)",
+      "answerability_check": "answerable"
+    },
+    "parse_error": false
+  },
+  "evaluation": {
+    "prompt": "You are a cloud security compliance auditor evaluating a vendor's CAIQ response.\n\nCAIQ Question ID : AIS-03.1\nCCM Control ID   : AIS-03\nQuestion Text    : Are technical and operational metrics defined and implemented according to\nbusiness objectives, security requirements, and compliance obligations?\nVendor Answer    : yes\nVendor Evidence  : This is tested and verified annually as part of our SOC 2 Type 2 certification.\n\nEvaluation Plan:\n  1. Step 1: Request documentation outlining the organization's process for defining technical and operational metrics.\n  2. Step 2: Obtain examples of defined technical and operational metrics, including their objectives, collection methods, and reporting frequency.\n  3. Step 3: Verify that the defined metrics explicitly align with stated business objectives, security requirements (e.g., from security policies), and applicable compliance obligations (e.g., regulatory frameworks).\n  4. Step 4: Review evidence (e.g., reports, dashboards, meeting minutes) demonstrating the implementation, collection, analysis, and regular review of these metrics, including any actions taken based on metric results.\n\nExpected evidence type : Policy/procedure documents for metric definition and management, examples of defined metrics, metric reports/dashboards, meeting minutes for metric review, evidence of alignment mapping (e.g., cross-reference tables).\nEvaluation focus       : The evaluator should specifically look for clear, measurable metrics that are directly traceable to specific business goals, security controls, and compliance mandates. Evidence should demonstrate active monitoring and utilization of these metrics to inform security posture and decision-making, not just their theoretical existence.\n\n\n\nEvaluate the vendor's compliance and produce a JSON verdict:\n\n{\n  \"verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"confidence\": <0.0 to 1.0>,\n  \"evidence_quality\": \"<strong | adequate | weak | absent>\",\n  \"gap_description\": \"<what is missing or insufficient \u2014 empty string if compliant>\",\n  \"evidence_citation\": \"<exact quote from vendor comment that supports the verdict \u2014 empty string if none>\",\n  \"recommended_followup\": \"<suggested clarification question for procurement team \u2014 empty string if none>\",\n  \"reasoning\": \"<one concise sentence explaining the verdict>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"verdict\": \"partial\",\n  \"confidence\": 0.7,\n  \"evidence_quality\": \"weak\",\n  \"gap_description\": \"The vendor's response refers to SOC 2 Type 2 certification but does not provide specific documentation outlining the process for defining metrics, examples of metrics, evidence of their alignment with business objectives, security requirements, and compliance obligations, or reports demonstrating their implementation and review.\",\n  \"evidence_citation\": \"This is tested and verified annually as part of our SOC 2 Type 2 certification.\",\n  \"recommended_followup\": \"Please provide relevant sections from your most recent SOC 2 Type 2 report that specifically address the definition, implementation, and review of technical and operational metrics, including how they align with business objectives, security requirements, and compliance obligations. Additionally, provide examples of such metrics and their corresponding reports or dashboards.\",\n  \"reasoning\": \"The vendor claims SOC 2 Type 2 certification covers metric definition and implementation, but direct evidence such as policies, metric examples, alignment mapping, or operational reports is missing to fully verify compliance.\"\n}",
+    "parsed": {
+      "verdict": "partial",
+      "confidence": 0.7,
+      "evidence_quality": "weak",
+      "gap_description": "The vendor's response refers to SOC 2 Type 2 certification but does not provide specific documentation outlining the process for defining metrics, examples of metrics, evidence of their alignment with business objectives, security requirements, and compliance obligations, or reports demonstrating their implementation and review.",
+      "evidence_citation": "This is tested and verified annually as part of our SOC 2 Type 2 certification.",
+      "recommended_followup": "Please provide relevant sections from your most recent SOC 2 Type 2 report that specifically address the definition, implementation, and review of technical and operational metrics, including how they align with business objectives, security requirements, and compliance obligations. Additionally, provide examples of such metrics and their corresponding reports or dashboards.",
+      "reasoning": "The vendor claims SOC 2 Type 2 certification covers metric definition and implementation, but direct evidence such as policies, metric examples, alignment mapping, or operational reports is missing to fully verify compliance."
+    },
+    "parse_error": false,
+    "tool_trace": []
+  },
+  "verifier": {
+    "prompt": "You are an independent cloud security compliance reviewer.\n\nA compliance evaluator has assessed the following vendor CAIQ response and produced a draft verdict.\nYour job is to independently re-examine the evidence and either CONFIRM or REVISE the verdict.\n\nCAIQ Question ID : AIS-03.1\nCCM Control ID   : AIS-03\nQuestion Text    : Are technical and operational metrics defined and implemented according to\nbusiness objectives, security requirements, and compliance obligations?\nVendor Answer    : yes\nVendor Evidence  : This is tested and verified annually as part of our SOC 2 Type 2 certification.\n\nDraft Verdict    : partial\nDraft Reasoning  : The vendor claims SOC 2 Type 2 certification covers metric definition and implementation, but direct evidence such as policies, metric examples, alignment mapping, or operational reports is missing to fully verify compliance.\nEvidence Quality : weak\n\nRe-examine the vendor's evidence independently. Then produce a JSON response:\n\n{\n  \"verdict\": \"<confirmed | revised>\",\n  \"final_verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"reasoning\": \"<one sentence: why you confirmed or what you changed and why>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\"verdict\": \"confirmed\", \"final_verdict\": \"partial\", \"reasoning\": \"The vendor's evidence refers to SOC 2 Type 2 certification but does not provide the report or specific details on how it verifies the definition and implementation of metrics, thus direct evidence for full compliance is missing.\"}",
+    "parsed": {
+      "verdict": "confirmed",
+      "final_verdict": "partial",
+      "reasoning": "The vendor's evidence refers to SOC 2 Type 2 certification but does not provide the report or specific details on how it verifies the definition and implementation of metrics, thus direct evidence for full compliance is missing."
+    },
+    "parse_error": false,
+    "verdict": "confirmed"
+  },
+  "timestamps": {
+    "start": "2026-04-28T18:57:37.689179+00:00",
+    "end": "2026-04-28T18:58:04.425019+00:00",
+    "planner_ms": 8628.40986251831,
+    "evaluator_ms": 11603.633880615234,
+    "verifier_ms": 6503.097295761108
+  },
+  "errors": [],
+  "lf_trace_id": "9c8b464dbfdb15206edc377405034725"
+}

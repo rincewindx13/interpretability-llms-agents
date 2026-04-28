@@ -1,0 +1,80 @@
+{
+  "schema_version": "cep.v1",
+  "run_id": "be094cd0-932d-42ab-9645-7beba42ee0a6",
+  "config": {
+    "planner_backend": "gemini",
+    "evaluator_backend": "gemini",
+    "judge_backend": "gemini",
+    "config_name": "gemini_gemini",
+    "planner_model": "gemini-2.5-flash",
+    "evaluator_model": "gemini-2.5-flash"
+  },
+  "sample": {
+    "vendor": "Salesforce Services 2023 05 5",
+    "sample_id": "Salesforce_Services_2023_05_5_AIS-01.1",
+    "question_id": "AIS-01.1",
+    "control_id": "AIS-01",
+    "domain_id": "APPLICATION & INTERFACE \nSECURITY",
+    "question_text": "Are application security policies and procedures established, documented, \napproved, communicated, applied, evaluated, and maintained to guide \nappropriate planning, delivery, and support of the organization's application \nsecurity capabilities?",
+    "vendor_answer": "yes",
+    "vendor_comment": "Salesforce's Information Security Management System (ISMS) and information security policies are based on the ISO 27002 framework of best practices and are ISO 27001 certified. \n\nSalesforce Software Development Lifecycle (SDLC) processes are consistent with industry standards and follow internal SDLC requirements, which address applicable guidance (such as OWASP) to prevent vulnerabilities. As such Salesforce has been evaluated against the following external audit standards: PCI-DSS, NIST, and ISO 27001.",
+    "caiq_version": "4.0.2",
+    "metadata": {
+      "SSRM Control Ownership": "CSP-owned",
+      "CCM Control Specification": "Establish, document, approve, communicate, apply, evaluate and maintain \npolicies and procedures for application security to provide guidance to the \nappropriate planning, delivery and support of the organization's application \nsecurity capabilities. Review and update the policies and procedures at least \nannually.",
+      "CCM Control Title": "Application and \nInterface Security \nPolicy and Procedures"
+    }
+  },
+  "plan": {
+    "prompt": "You are a cloud security compliance expert specialising in the CSA Cloud Controls Matrix (CCM).\n\nYour task is to produce a structured evaluation plan for assessing a vendor's compliance response to a CAIQ question.\n\nCAIQ Question ID : AIS-01.1\nCCM Control ID   : AIS-01\nCCM Domain       : APPLICATION & INTERFACE \nSECURITY\nQuestion Text    : Are application security policies and procedures established, documented, \napproved, communicated, applied, evaluated, and maintained to guide \nappropriate planning, delivery, and support of the organization's application \nsecurity capabilities?\nVendor Answer    : yes\n\nProduce a JSON evaluation plan with the following keys:\n\n{\n  \"steps\": [\n    \"Step 1: ...\",\n    \"Step 2: ...\",\n    \"Step 3: ...\"\n  ],\n  \"expected_evidence_type\": \"<what good evidence looks like, e.g. policy doc, certification, process description>\",\n  \"compliance_risk_level\": \"<low | medium | high> \u2014 how critical is a No answer here>\",\n  \"evaluation_focus\": \"<what the evaluator should specifically look for in the vendor comment>\",\n  \"nist_mapping_hint\": \"<relevant NIST 800-53 control family, e.g. AC, SA, SC>\",\n  \"answerability_check\": \"<answerable | needs_clarification | not_applicable>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"steps\": [\n    \"Step 1: Request and review documented application security policies and procedures, verifying their establishment and formal approval.\",\n    \"Step 2: Seek evidence demonstrating the communication of these policies and procedures to relevant personnel and their practical application within the organization's application security capabilities.\",\n    \"Step 3: Obtain documentation (e.g., review logs, audit reports, meeting minutes) that confirms regular evaluation and maintenance activities for the application security policies and procedures.\"\n  ],\n  \"expected_evidence_type\": \"Application security policy documents, procedure manuals, policy approval records, communication records (e.g., training logs, internal memos), audit reports, policy review schedules and minutes.\",\n  \"compliance_risk_level\": \"high\",\n  \"evaluation_focus\": \"Verify that application security policies and procedures are not only documented but also formally approved, effectively communicated, actively applied, regularly evaluated, and consistently maintained throughout their lifecycle.\",\n  \"nist_mapping_hint\": \"PM (Program Management), SA (System and Services Acquisition), PL (Planning)\",\n  \"answerability_check\": \"answerable\"\n}",
+    "parsed": {
+      "steps": [
+        "Step 1: Request and review documented application security policies and procedures, verifying their establishment and formal approval.",
+        "Step 2: Seek evidence demonstrating the communication of these policies and procedures to relevant personnel and their practical application within the organization's application security capabilities.",
+        "Step 3: Obtain documentation (e.g., review logs, audit reports, meeting minutes) that confirms regular evaluation and maintenance activities for the application security policies and procedures."
+      ],
+      "expected_evidence_type": "Application security policy documents, procedure manuals, policy approval records, communication records (e.g., training logs, internal memos), audit reports, policy review schedules and minutes.",
+      "compliance_risk_level": "high",
+      "evaluation_focus": "Verify that application security policies and procedures are not only documented but also formally approved, effectively communicated, actively applied, regularly evaluated, and consistently maintained throughout their lifecycle.",
+      "nist_mapping_hint": "PM (Program Management), SA (System and Services Acquisition), PL (Planning)",
+      "answerability_check": "answerable"
+    },
+    "parse_error": false
+  },
+  "evaluation": {
+    "prompt": "You are a cloud security compliance auditor evaluating a vendor's CAIQ response.\n\nCAIQ Question ID : AIS-01.1\nCCM Control ID   : AIS-01\nQuestion Text    : Are application security policies and procedures established, documented, \napproved, communicated, applied, evaluated, and maintained to guide \nappropriate planning, delivery, and support of the organization's application \nsecurity capabilities?\nVendor Answer    : yes\nVendor Evidence  : Salesforce's Information Security Management System (ISMS) and information security policies are based on the ISO 27002 framework of best practices and are ISO 27001 certified. \n\nSalesforce Software Development Lifecycle (SDLC) processes are consistent with industry standards and follow internal SDLC requirements, which address applicable guidance (such as OWASP) to prevent vulnerabilities. As such Salesforce has been evaluated against the following external audit standards: PCI-DSS, NIST, and ISO 27001.\n\nEvaluation Plan:\n  1. Step 1: Request and review documented application security policies and procedures, verifying their establishment and formal approval.\n  2. Step 2: Seek evidence demonstrating the communication of these policies and procedures to relevant personnel and their practical application within the organization's application security capabilities.\n  3. Step 3: Obtain documentation (e.g., review logs, audit reports, meeting minutes) that confirms regular evaluation and maintenance activities for the application security policies and procedures.\n\nExpected evidence type : Application security policy documents, procedure manuals, policy approval records, communication records (e.g., training logs, internal memos), audit reports, policy review schedules and minutes.\nEvaluation focus       : Verify that application security policies and procedures are not only documented but also formally approved, effectively communicated, actively applied, regularly evaluated, and consistently maintained throughout their lifecycle.\n\n\n\nEvaluate the vendor's compliance and produce a JSON verdict:\n\n{\n  \"verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"confidence\": <0.0 to 1.0>,\n  \"evidence_quality\": \"<strong | adequate | weak | absent>\",\n  \"gap_description\": \"<what is missing or insufficient \u2014 empty string if compliant>\",\n  \"evidence_citation\": \"<exact quote from vendor comment that supports the verdict \u2014 empty string if none>\",\n  \"recommended_followup\": \"<suggested clarification question for procurement team \u2014 empty string if none>\",\n  \"reasoning\": \"<one concise sentence explaining the verdict>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"verdict\": \"partial\",\n  \"confidence\": 0.8,\n  \"evidence_quality\": \"adequate\",\n  \"gap_description\": \"The vendor's evidence implies the existence and application of application security policies and procedures through their ISO 27001 certified ISMS and SDLC processes. However, it does not explicitly demonstrate formal approval records, communication methods to relevant personnel, or specific documentation of regular maintenance activities for these application security policies and procedures.\",\n  \"evidence_citation\": \"Salesforce's Information Security Management System (ISMS) and information security policies are based on the ISO 27002 framework of best practices and are ISO 27001 certified. Salesforce Software Development Lifecycle (SDLC) processes are consistent with industry standards and follow internal SDLC requirements, which address applicable guidance (such as OWASP) to prevent vulnerabilities. As such Salesforce has been evaluated against the following external audit standards: PCI-DSS, NIST, and ISO 27001.\",\n  \"recommended_followup\": \"Please provide documentation demonstrating the formal approval of application security policies and procedures, evidence of their communication to relevant personnel (e.g., training records), and examples of records confirming their regular review and maintenance.\",\n  \"reasoning\": \"The vendor's ISO 27001 certification and SDLC description indicate established, documented, applied, and evaluated application security policies, but explicit evidence for formal approval, communication, and maintenance activities is not provided.\"\n}",
+    "parsed": {
+      "verdict": "partial",
+      "confidence": 0.8,
+      "evidence_quality": "adequate",
+      "gap_description": "The vendor's evidence implies the existence and application of application security policies and procedures through their ISO 27001 certified ISMS and SDLC processes. However, it does not explicitly demonstrate formal approval records, communication methods to relevant personnel, or specific documentation of regular maintenance activities for these application security policies and procedures.",
+      "evidence_citation": "Salesforce's Information Security Management System (ISMS) and information security policies are based on the ISO 27002 framework of best practices and are ISO 27001 certified. Salesforce Software Development Lifecycle (SDLC) processes are consistent with industry standards and follow internal SDLC requirements, which address applicable guidance (such as OWASP) to prevent vulnerabilities. As such Salesforce has been evaluated against the following external audit standards: PCI-DSS, NIST, and ISO 27001.",
+      "recommended_followup": "Please provide documentation demonstrating the formal approval of application security policies and procedures, evidence of their communication to relevant personnel (e.g., training records), and examples of records confirming their regular review and maintenance.",
+      "reasoning": "The vendor's ISO 27001 certification and SDLC description indicate established, documented, applied, and evaluated application security policies, but explicit evidence for formal approval, communication, and maintenance activities is not provided."
+    },
+    "parse_error": false,
+    "tool_trace": []
+  },
+  "verifier": {
+    "prompt": "You are an independent cloud security compliance reviewer.\n\nA compliance evaluator has assessed the following vendor CAIQ response and produced a draft verdict.\nYour job is to independently re-examine the evidence and either CONFIRM or REVISE the verdict.\n\nCAIQ Question ID : AIS-01.1\nCCM Control ID   : AIS-01\nQuestion Text    : Are application security policies and procedures established, documented, \napproved, communicated, applied, evaluated, and maintained to guide \nappropriate planning, delivery, and support of the organization's application \nsecurity capabilities?\nVendor Answer    : yes\nVendor Evidence  : Salesforce's Information Security Management System (ISMS) and information security policies are based on the ISO 27002 framework of best practices and are ISO 27001 certified. \n\nSalesforce Software Development Lifecycle (SDLC) processes are consistent with industry standards and follow internal SDLC requirements, which address applicable guidance (such as OWASP) to prevent vulnerabilities. As such Salesforce has been evaluated against the following external audit standards: PCI-DSS, NIST, and ISO 27001.\n\nDraft Verdict    : partial\nDraft Reasoning  : The vendor's ISO 27001 certification and SDLC description indicate established, documented, applied, and evaluated application security policies, but explicit evidence for formal approval, communication, and maintenance activities is not provided.\nEvidence Quality : adequate\n\nRe-examine the vendor's evidence independently. Then produce a JSON response:\n\n{\n  \"verdict\": \"<confirmed | revised>\",\n  \"final_verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"reasoning\": \"<one sentence: why you confirmed or what you changed and why>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\"verdict\": \"revised\", \"final_verdict\": \"compliant\", \"reasoning\": \"The ISO 27001 certification inherently implies that policies and procedures are formally approved, communicated, and maintained as part of a certified Information Security Management System, thus addressing all aspects of the question.\"}",
+    "parsed": {
+      "verdict": "revised",
+      "final_verdict": "compliant",
+      "reasoning": "The ISO 27001 certification inherently implies that policies and procedures are formally approved, communicated, and maintained as part of a certified Information Security Management System, thus addressing all aspects of the question."
+    },
+    "parse_error": false,
+    "verdict": "revised"
+  },
+  "timestamps": {
+    "start": "2026-04-28T18:01:36.597550+00:00",
+    "end": "2026-04-28T18:02:09.302836+00:00",
+    "planner_ms": 9051.74446105957,
+    "evaluator_ms": 14041.777849197388,
+    "verifier_ms": 9610.946416854858
+  },
+  "errors": [],
+  "lf_trace_id": "ad0bb0b320dacc0db50538a2f6a1dd64"
+}

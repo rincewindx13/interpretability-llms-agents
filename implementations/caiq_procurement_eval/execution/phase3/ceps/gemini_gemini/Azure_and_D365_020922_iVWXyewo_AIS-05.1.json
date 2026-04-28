@@ -1,0 +1,82 @@
+{
+  "schema_version": "cep.v1",
+  "run_id": "be094cd0-932d-42ab-9645-7beba42ee0a6",
+  "config": {
+    "planner_backend": "gemini",
+    "evaluator_backend": "gemini",
+    "judge_backend": "gemini",
+    "config_name": "gemini_gemini",
+    "planner_model": "gemini-2.5-flash",
+    "evaluator_model": "gemini-2.5-flash"
+  },
+  "sample": {
+    "vendor": "Azure and D365 020922 iVWXyewo",
+    "sample_id": "Azure_and_D365_020922_iVWXyewo_AIS-05.1",
+    "question_id": "AIS-05.1",
+    "control_id": "AIS-05",
+    "domain_id": "AIS",
+    "question_text": "Does the testing strategy outline criteria to accept new information systems,\nupgrades, and new versions while ensuring application security, compliance adherence,\nand organizational speed of delivery goals?",
+    "vendor_answer": "yes",
+    "vendor_comment": "Microsoft Azure has established software development and release management processes to control implementation of major changes. Security testing is performed in the implementation, verification and release phases of the Microsoft  Security Development Lifecycle (SDL) process, including by employing automated code scanning and security tools to identify flaws and weaknesses in software. The identified flaws and vulnerabilities are formally tracked and remediated.",
+    "caiq_version": "4.0.2",
+    "metadata": {
+      "SSRM Control Ownership": "Shared CSP and CSC",
+      "CSC Responsibilities  (Optional/Recommended)": "Customers are responsible for developing and following a secure software development program for the customer environment.",
+      "CCM Control Specification": "Implement a testing strategy, including criteria for acceptance of\nnew information systems, upgrades and new versions, which provides application\nsecurity assurance and maintains compliance while enabling organizational speed\nof delivery goals. Automate when applicable and possible.",
+      "CCM Control Title": "Automated Application Security Testing"
+    }
+  },
+  "plan": {
+    "prompt": "You are a cloud security compliance expert specialising in the CSA Cloud Controls Matrix (CCM).\n\nYour task is to produce a structured evaluation plan for assessing a vendor's compliance response to a CAIQ question.\n\nCAIQ Question ID : AIS-05.1\nCCM Control ID   : AIS-05\nCCM Domain       : AIS\nQuestion Text    : Does the testing strategy outline criteria to accept new information systems,\nupgrades, and new versions while ensuring application security, compliance adherence,\nand organizational speed of delivery goals?\nVendor Answer    : yes\n\nProduce a JSON evaluation plan with the following keys:\n\n{\n  \"steps\": [\n    \"Step 1: ...\",\n    \"Step 2: ...\",\n    \"Step 3: ...\"\n  ],\n  \"expected_evidence_type\": \"<what good evidence looks like, e.g. policy doc, certification, process description>\",\n  \"compliance_risk_level\": \"<low | medium | high> \u2014 how critical is a No answer here>\",\n  \"evaluation_focus\": \"<what the evaluator should specifically look for in the vendor comment>\",\n  \"nist_mapping_hint\": \"<relevant NIST 800-53 control family, e.g. AC, SA, SC>\",\n  \"answerability_check\": \"<answerable | needs_clarification | not_applicable>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"steps\": [\n    \"Step 1: Request the vendor's formal 'Testing Strategy' document or relevant SDLC/Release Management policies that describe the process for accepting new information systems, upgrades, and new versions.\",\n    \"Step 2: Verify that the provided documentation explicitly outlines acceptance criteria for new information systems, upgrades, and new versions.\",\n    \"Step 3: Confirm that these acceptance criteria specifically address application security requirements (e.g., security testing, vulnerability assessment thresholds).\",\n    \"Step 4: Confirm that these acceptance criteria specifically address compliance adherence requirements (e.g., adherence to regulatory standards, internal policies) and consider organizational speed of delivery goals (e.g., efficiency, automation, minimal disruption).\"\n  ],\n  \"expected_evidence_type\": \"Testing Strategy Document, Software Development Life Cycle (SDLC) Policy, Release Management Policy, Acceptance Testing Procedures, Security Testing Guidelines\",\n  \"compliance_risk_level\": \"high\",\n  \"evaluation_focus\": \"Explicit mention of acceptance criteria for new systems/upgrades/versions; specific inclusion of application security testing (e.g., SAST, DAST, penetration testing) and compliance checks; consideration of efficiency and automation to meet delivery goals.\",\n  \"nist_mapping_hint\": \"SA (System and Services Acquisition), CA (Security Assessment and Authorization), SI (System and Information Integrity)\",\n  \"answerability_check\": \"answerable\"\n}",
+    "parsed": {
+      "steps": [
+        "Step 1: Request the vendor's formal 'Testing Strategy' document or relevant SDLC/Release Management policies that describe the process for accepting new information systems, upgrades, and new versions.",
+        "Step 2: Verify that the provided documentation explicitly outlines acceptance criteria for new information systems, upgrades, and new versions.",
+        "Step 3: Confirm that these acceptance criteria specifically address application security requirements (e.g., security testing, vulnerability assessment thresholds).",
+        "Step 4: Confirm that these acceptance criteria specifically address compliance adherence requirements (e.g., adherence to regulatory standards, internal policies) and consider organizational speed of delivery goals (e.g., efficiency, automation, minimal disruption)."
+      ],
+      "expected_evidence_type": "Testing Strategy Document, Software Development Life Cycle (SDLC) Policy, Release Management Policy, Acceptance Testing Procedures, Security Testing Guidelines",
+      "compliance_risk_level": "high",
+      "evaluation_focus": "Explicit mention of acceptance criteria for new systems/upgrades/versions; specific inclusion of application security testing (e.g., SAST, DAST, penetration testing) and compliance checks; consideration of efficiency and automation to meet delivery goals.",
+      "nist_mapping_hint": "SA (System and Services Acquisition), CA (Security Assessment and Authorization), SI (System and Information Integrity)",
+      "answerability_check": "answerable"
+    },
+    "parse_error": false
+  },
+  "evaluation": {
+    "prompt": "You are a cloud security compliance auditor evaluating a vendor's CAIQ response.\n\nCAIQ Question ID : AIS-05.1\nCCM Control ID   : AIS-05\nQuestion Text    : Does the testing strategy outline criteria to accept new information systems,\nupgrades, and new versions while ensuring application security, compliance adherence,\nand organizational speed of delivery goals?\nVendor Answer    : yes\nVendor Evidence  : Microsoft Azure has established software development and release management processes to control implementation of major changes. Security testing is performed in the implementation, verification and release phases of the Microsoft  Security Development Lifecycle (SDL) process, including by employing automated code scanning and security tools to identify flaws and weaknesses in software. The identified flaws and vulnerabilities are formally tracked and remediated.\n\nEvaluation Plan:\n  1. Step 1: Request the vendor's formal 'Testing Strategy' document or relevant SDLC/Release Management policies that describe the process for accepting new information systems, upgrades, and new versions.\n  2. Step 2: Verify that the provided documentation explicitly outlines acceptance criteria for new information systems, upgrades, and new versions.\n  3. Step 3: Confirm that these acceptance criteria specifically address application security requirements (e.g., security testing, vulnerability assessment thresholds).\n  4. Step 4: Confirm that these acceptance criteria specifically address compliance adherence requirements (e.g., adherence to regulatory standards, internal policies) and consider organizational speed of delivery goals (e.g., efficiency, automation, minimal disruption).\n\nExpected evidence type : Testing Strategy Document, Software Development Life Cycle (SDLC) Policy, Release Management Policy, Acceptance Testing Procedures, Security Testing Guidelines\nEvaluation focus       : Explicit mention of acceptance criteria for new systems/upgrades/versions; specific inclusion of application security testing (e.g., SAST, DAST, penetration testing) and compliance checks; consideration of efficiency and automation to meet delivery goals.\n\n\n\nEvaluate the vendor's compliance and produce a JSON verdict:\n\n{\n  \"verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"confidence\": <0.0 to 1.0>,\n  \"evidence_quality\": \"<strong | adequate | weak | absent>\",\n  \"gap_description\": \"<what is missing or insufficient \u2014 empty string if compliant>\",\n  \"evidence_citation\": \"<exact quote from vendor comment that supports the verdict \u2014 empty string if none>\",\n  \"recommended_followup\": \"<suggested clarification question for procurement team \u2014 empty string if none>\",\n  \"reasoning\": \"<one concise sentence explaining the verdict>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"verdict\": \"partial\",\n  \"confidence\": 0.8,\n  \"evidence_quality\": \"weak\",\n  \"gap_description\": \"The vendor's evidence describes security testing within their SDL process but does not explicitly outline acceptance criteria for new information systems, upgrades, and new versions. It also fails to mention how compliance adherence and organizational speed of delivery goals are addressed within the testing strategy or acceptance criteria.\",\n  \"evidence_citation\": \"Microsoft Azure has established software development and release management processes to control implementation of major changes. Security testing is performed in the implementation, verification and release phases of the Microsoft Security Development Lifecycle (SDL) process, including by employing automated code scanning and security tools to identify flaws and weaknesses in software. The identified flaws and vulnerabilities are formally tracked and remediated.\",\n  \"recommended_followup\": \"Please provide the formal 'Testing Strategy' document, SDLC policy, or Release Management policy that explicitly outlines acceptance criteria for new information systems, upgrades, and new versions. This documentation should detail how application security, compliance adherence, and organizational speed of delivery goals are incorporated into these acceptance criteria.\",\n  \"reasoning\": \"The vendor's evidence describes security testing within their SDL but does not explicitly outline acceptance criteria, nor does it address compliance adherence or organizational speed of delivery goals as part of the testing strategy.\"\n}",
+    "parsed": {
+      "verdict": "partial",
+      "confidence": 0.8,
+      "evidence_quality": "weak",
+      "gap_description": "The vendor's evidence describes security testing within their SDL process but does not explicitly outline acceptance criteria for new information systems, upgrades, and new versions. It also fails to mention how compliance adherence and organizational speed of delivery goals are addressed within the testing strategy or acceptance criteria.",
+      "evidence_citation": "Microsoft Azure has established software development and release management processes to control implementation of major changes. Security testing is performed in the implementation, verification and release phases of the Microsoft Security Development Lifecycle (SDL) process, including by employing automated code scanning and security tools to identify flaws and weaknesses in software. The identified flaws and vulnerabilities are formally tracked and remediated.",
+      "recommended_followup": "Please provide the formal 'Testing Strategy' document, SDLC policy, or Release Management policy that explicitly outlines acceptance criteria for new information systems, upgrades, and new versions. This documentation should detail how application security, compliance adherence, and organizational speed of delivery goals are incorporated into these acceptance criteria.",
+      "reasoning": "The vendor's evidence describes security testing within their SDL but does not explicitly outline acceptance criteria, nor does it address compliance adherence or organizational speed of delivery goals as part of the testing strategy."
+    },
+    "parse_error": false,
+    "tool_trace": []
+  },
+  "verifier": {
+    "prompt": "You are an independent cloud security compliance reviewer.\n\nA compliance evaluator has assessed the following vendor CAIQ response and produced a draft verdict.\nYour job is to independently re-examine the evidence and either CONFIRM or REVISE the verdict.\n\nCAIQ Question ID : AIS-05.1\nCCM Control ID   : AIS-05\nQuestion Text    : Does the testing strategy outline criteria to accept new information systems,\nupgrades, and new versions while ensuring application security, compliance adherence,\nand organizational speed of delivery goals?\nVendor Answer    : yes\nVendor Evidence  : Microsoft Azure has established software development and release management processes to control implementation of major changes. Security testing is performed in the implementation, verification and release phases of the Microsoft  Security Development Lifecycle (SDL) process, including by employing automated code scanning and security tools to identify flaws and weaknesses in software. The identified flaws and vulnerabilities are formally tracked and remediated.\n\nDraft Verdict    : partial\nDraft Reasoning  : The vendor's evidence describes security testing within their SDL but does not explicitly outline acceptance criteria, nor does it address compliance adherence or organizational speed of delivery goals as part of the testing strategy.\nEvidence Quality : weak\n\nRe-examine the vendor's evidence independently. Then produce a JSON response:\n\n{\n  \"verdict\": \"<confirmed | revised>\",\n  \"final_verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"reasoning\": \"<one sentence: why you confirmed or what you changed and why>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\"verdict\": \"confirmed\", \"final_verdict\": \"partial\", \"reasoning\": \"The vendor's evidence describes security testing within their SDL for application security but does not explicitly outline acceptance criteria, nor does it address compliance adherence or organizational speed of delivery goals as part of the testing strategy.\"}",
+    "parsed": {
+      "verdict": "confirmed",
+      "final_verdict": "partial",
+      "reasoning": "The vendor's evidence describes security testing within their SDL for application security but does not explicitly outline acceptance criteria, nor does it address compliance adherence or organizational speed of delivery goals as part of the testing strategy."
+    },
+    "parse_error": false,
+    "verdict": "confirmed"
+  },
+  "timestamps": {
+    "start": "2026-04-28T17:27:52.581564+00:00",
+    "end": "2026-04-28T17:28:20.213226+00:00",
+    "planner_ms": 9909.046649932861,
+    "evaluator_ms": 10412.004709243774,
+    "verifier_ms": 7309.741020202637
+  },
+  "errors": [],
+  "lf_trace_id": "3396c3b6a26a1d5ef8d6b7f78d883602"
+}

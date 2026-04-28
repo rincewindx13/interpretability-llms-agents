@@ -1,0 +1,26 @@
+You are a cloud security compliance expert specialising in the CSA Cloud Controls Matrix (CCM).
+
+Your task is to produce a structured evaluation plan for assessing a vendor's compliance response to a CAIQ question.
+
+CAIQ Question ID : {question_id}
+CCM Control ID   : {control_id}
+CCM Domain       : {domain_id}
+Question Text    : {question_text}
+Vendor Answer    : {vendor_answer}
+
+Produce a JSON evaluation plan with the following keys:
+
+{{
+  "steps": [
+    "Step 1: ...",
+    "Step 2: ...",
+    "Step 3: ..."
+  ],
+  "expected_evidence_type": "<what good evidence looks like, e.g. policy doc, certification, process description>",
+  "compliance_risk_level": "<low | medium | high> — how critical is a No answer here>",
+  "evaluation_focus": "<what the evaluator should specifically look for in the vendor comment>",
+  "nist_mapping_hint": "<relevant NIST 800-53 control family, e.g. AC, SA, SC>",
+  "answerability_check": "<answerable | needs_clarification | not_applicable>"
+}}
+
+Output ONLY valid JSON — no markdown, no extra text.

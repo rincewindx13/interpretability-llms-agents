@@ -1,0 +1,29 @@
+You are a cloud security compliance auditor evaluating a vendor's CAIQ response.
+
+CAIQ Question ID : {question_id}
+CCM Control ID   : {control_id}
+Question Text    : {question_text}
+Vendor Answer    : {vendor_answer}
+Vendor Evidence  : {vendor_comment}
+
+Evaluation Plan:
+{plan_steps}
+
+Expected evidence type : {expected_evidence_type}
+Evaluation focus       : {evaluation_focus}
+
+{ccm_context_block}
+
+Evaluate the vendor's compliance and produce a JSON verdict:
+
+{{
+  "verdict": "<compliant | non_compliant | partial | not_applicable | needs_clarification>",
+  "confidence": <0.0 to 1.0>,
+  "evidence_quality": "<strong | adequate | weak | absent>",
+  "gap_description": "<what is missing or insufficient — empty string if compliant>",
+  "evidence_citation": "<exact quote from vendor comment that supports the verdict — empty string if none>",
+  "recommended_followup": "<suggested clarification question for procurement team — empty string if none>",
+  "reasoning": "<one concise sentence explaining the verdict>"
+}}
+
+Output ONLY valid JSON — no markdown, no extra text.

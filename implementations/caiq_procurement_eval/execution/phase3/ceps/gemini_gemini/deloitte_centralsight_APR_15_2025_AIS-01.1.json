@@ -1,0 +1,81 @@
+{
+  "schema_version": "cep.v1",
+  "run_id": "be094cd0-932d-42ab-9645-7beba42ee0a6",
+  "config": {
+    "planner_backend": "gemini",
+    "evaluator_backend": "gemini",
+    "judge_backend": "gemini",
+    "config_name": "gemini_gemini",
+    "planner_model": "gemini-2.5-flash",
+    "evaluator_model": "gemini-2.5-flash"
+  },
+  "sample": {
+    "vendor": "deloitte centralsight APR 15 2025",
+    "sample_id": "deloitte_centralsight_APR_15_2025_AIS-01.1",
+    "question_id": "AIS-01.1",
+    "control_id": "AIS-01",
+    "domain_id": "APPLICATION & INTERFACE SECURITY",
+    "question_text": "Are application security policies and procedures established, documented,\napproved, communicated, applied, evaluated, and maintained to guide appropriate\nplanning, delivery, and support of the organization's application security capabilities?",
+    "vendor_answer": "yes",
+    "vendor_comment": "This is tested and verified annually as part of our SOC 2 Type 2 certification.",
+    "caiq_version": "unknown",
+    "metadata": {
+      "SSRM Control Ownership": "CSP-owned",
+      "CCM Control Specification": "Establish, document, approve, communicate, apply, evaluate and maintain\npolicies and procedures for application security to provide guidance to the\nappropriate planning, delivery and support of the organization's application\nsecurity capabilities. Review and update the policies and procedures at least\nannually.",
+      "CCM Control Title": "Application and Interface Security Policy and Procedures"
+    }
+  },
+  "plan": {
+    "prompt": "You are a cloud security compliance expert specialising in the CSA Cloud Controls Matrix (CCM).\n\nYour task is to produce a structured evaluation plan for assessing a vendor's compliance response to a CAIQ question.\n\nCAIQ Question ID : AIS-01.1\nCCM Control ID   : AIS-01\nCCM Domain       : APPLICATION & INTERFACE SECURITY\nQuestion Text    : Are application security policies and procedures established, documented,\napproved, communicated, applied, evaluated, and maintained to guide appropriate\nplanning, delivery, and support of the organization's application security capabilities?\nVendor Answer    : yes\n\nProduce a JSON evaluation plan with the following keys:\n\n{\n  \"steps\": [\n    \"Step 1: ...\",\n    \"Step 2: ...\",\n    \"Step 3: ...\"\n  ],\n  \"expected_evidence_type\": \"<what good evidence looks like, e.g. policy doc, certification, process description>\",\n  \"compliance_risk_level\": \"<low | medium | high> \u2014 how critical is a No answer here>\",\n  \"evaluation_focus\": \"<what the evaluator should specifically look for in the vendor comment>\",\n  \"nist_mapping_hint\": \"<relevant NIST 800-53 control family, e.g. AC, SA, SC>\",\n  \"answerability_check\": \"<answerable | needs_clarification | not_applicable>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"steps\": [\n    \"Step 1: Request and review the vendor's formal Application Security Policy and associated procedural documents to confirm establishment and documentation.\",\n    \"Step 2: Verify evidence of formal approval (e.g., management sign-off, committee minutes) and communication (e.g., training records, internal announcements) of these policies and procedures.\",\n    \"Step 3: Examine evidence demonstrating the practical application and operationalization of the policies and procedures within the SDLC and application management processes (e.g., secure coding standards, vulnerability management procedures, security testing reports).\",\n    \"Step 4: Seek evidence of regular evaluation, review, and maintenance activities for the application security policies and procedures (e.g., policy review logs, update history, audit findings related to policy adherence).\"\n  ],\n  \"expected_evidence_type\": \"Application Security Policy document, Application Security Procedures document, Policy approval records, Communication records (e.g., training logs), SDLC documentation, Secure coding guidelines, Vulnerability management reports, Policy review and update logs.\",\n  \"compliance_risk_level\": \"high\",\n  \"evaluation_focus\": \"Confirm that the vendor's response and evidence explicitly address all aspects: established, documented, approved, communicated, applied, evaluated, and maintained. Look for a structured, formal process rather than ad-hoc practices, and how these policies guide planning, delivery, and support of application security capabilities.\",\n  \"nist_mapping_hint\": \"PL (Planning), SA (System and Services Acquisition), PM (Program Management)\",\n  \"answerability_check\": \"answerable\"\n}",
+    "parsed": {
+      "steps": [
+        "Step 1: Request and review the vendor's formal Application Security Policy and associated procedural documents to confirm establishment and documentation.",
+        "Step 2: Verify evidence of formal approval (e.g., management sign-off, committee minutes) and communication (e.g., training records, internal announcements) of these policies and procedures.",
+        "Step 3: Examine evidence demonstrating the practical application and operationalization of the policies and procedures within the SDLC and application management processes (e.g., secure coding standards, vulnerability management procedures, security testing reports).",
+        "Step 4: Seek evidence of regular evaluation, review, and maintenance activities for the application security policies and procedures (e.g., policy review logs, update history, audit findings related to policy adherence)."
+      ],
+      "expected_evidence_type": "Application Security Policy document, Application Security Procedures document, Policy approval records, Communication records (e.g., training logs), SDLC documentation, Secure coding guidelines, Vulnerability management reports, Policy review and update logs.",
+      "compliance_risk_level": "high",
+      "evaluation_focus": "Confirm that the vendor's response and evidence explicitly address all aspects: established, documented, approved, communicated, applied, evaluated, and maintained. Look for a structured, formal process rather than ad-hoc practices, and how these policies guide planning, delivery, and support of application security capabilities.",
+      "nist_mapping_hint": "PL (Planning), SA (System and Services Acquisition), PM (Program Management)",
+      "answerability_check": "answerable"
+    },
+    "parse_error": false
+  },
+  "evaluation": {
+    "prompt": "You are a cloud security compliance auditor evaluating a vendor's CAIQ response.\n\nCAIQ Question ID : AIS-01.1\nCCM Control ID   : AIS-01\nQuestion Text    : Are application security policies and procedures established, documented,\napproved, communicated, applied, evaluated, and maintained to guide appropriate\nplanning, delivery, and support of the organization's application security capabilities?\nVendor Answer    : yes\nVendor Evidence  : This is tested and verified annually as part of our SOC 2 Type 2 certification.\n\nEvaluation Plan:\n  1. Step 1: Request and review the vendor's formal Application Security Policy and associated procedural documents to confirm establishment and documentation.\n  2. Step 2: Verify evidence of formal approval (e.g., management sign-off, committee minutes) and communication (e.g., training records, internal announcements) of these policies and procedures.\n  3. Step 3: Examine evidence demonstrating the practical application and operationalization of the policies and procedures within the SDLC and application management processes (e.g., secure coding standards, vulnerability management procedures, security testing reports).\n  4. Step 4: Seek evidence of regular evaluation, review, and maintenance activities for the application security policies and procedures (e.g., policy review logs, update history, audit findings related to policy adherence).\n\nExpected evidence type : Application Security Policy document, Application Security Procedures document, Policy approval records, Communication records (e.g., training logs), SDLC documentation, Secure coding guidelines, Vulnerability management reports, Policy review and update logs.\nEvaluation focus       : Confirm that the vendor's response and evidence explicitly address all aspects: established, documented, approved, communicated, applied, evaluated, and maintained. Look for a structured, formal process rather than ad-hoc practices, and how these policies guide planning, delivery, and support of application security capabilities.\n\n\n\nEvaluate the vendor's compliance and produce a JSON verdict:\n\n{\n  \"verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"confidence\": <0.0 to 1.0>,\n  \"evidence_quality\": \"<strong | adequate | weak | absent>\",\n  \"gap_description\": \"<what is missing or insufficient \u2014 empty string if compliant>\",\n  \"evidence_citation\": \"<exact quote from vendor comment that supports the verdict \u2014 empty string if none>\",\n  \"recommended_followup\": \"<suggested clarification question for procurement team \u2014 empty string if none>\",\n  \"reasoning\": \"<one concise sentence explaining the verdict>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"verdict\": \"needs_clarification\",\n  \"confidence\": 0.8,\n  \"evidence_quality\": \"weak\",\n  \"gap_description\": \"The vendor's evidence is a high-level statement about SOC 2 certification. It does not directly provide or confirm the existence of formal Application Security Policy and procedural documents, nor does it explicitly address their approval, communication, or how they specifically guide planning, delivery, and support of application security capabilities.\",\n  \"evidence_citation\": \"This is tested and verified annually as part of our SOC 2 Type 2 certification.\",\n  \"recommended_followup\": \"Please provide the relevant sections of your latest SOC 2 Type 2 report that specifically address the establishment, documentation, approval, communication, application, evaluation, and maintenance of application security policies and procedures, or provide the Application Security Policy and associated procedural documents directly.\",\n  \"reasoning\": \"The vendor's SOC 2 Type 2 certification provides a general assurance of control effectiveness, but the provided evidence does not directly confirm all specific requirements for application security policies and procedures, such as their explicit documentation, approval, communication, and detailed guidance for planning, delivery, and support.\"\n}",
+    "parsed": {
+      "verdict": "needs_clarification",
+      "confidence": 0.8,
+      "evidence_quality": "weak",
+      "gap_description": "The vendor's evidence is a high-level statement about SOC 2 certification. It does not directly provide or confirm the existence of formal Application Security Policy and procedural documents, nor does it explicitly address their approval, communication, or how they specifically guide planning, delivery, and support of application security capabilities.",
+      "evidence_citation": "This is tested and verified annually as part of our SOC 2 Type 2 certification.",
+      "recommended_followup": "Please provide the relevant sections of your latest SOC 2 Type 2 report that specifically address the establishment, documentation, approval, communication, application, evaluation, and maintenance of application security policies and procedures, or provide the Application Security Policy and associated procedural documents directly.",
+      "reasoning": "The vendor's SOC 2 Type 2 certification provides a general assurance of control effectiveness, but the provided evidence does not directly confirm all specific requirements for application security policies and procedures, such as their explicit documentation, approval, communication, and detailed guidance for planning, delivery, and support."
+    },
+    "parse_error": false,
+    "tool_trace": []
+  },
+  "verifier": {
+    "prompt": "You are an independent cloud security compliance reviewer.\n\nA compliance evaluator has assessed the following vendor CAIQ response and produced a draft verdict.\nYour job is to independently re-examine the evidence and either CONFIRM or REVISE the verdict.\n\nCAIQ Question ID : AIS-01.1\nCCM Control ID   : AIS-01\nQuestion Text    : Are application security policies and procedures established, documented,\napproved, communicated, applied, evaluated, and maintained to guide appropriate\nplanning, delivery, and support of the organization's application security capabilities?\nVendor Answer    : yes\nVendor Evidence  : This is tested and verified annually as part of our SOC 2 Type 2 certification.\n\nDraft Verdict    : needs_clarification\nDraft Reasoning  : The vendor's SOC 2 Type 2 certification provides a general assurance of control effectiveness, but the provided evidence does not directly confirm all specific requirements for application security policies and procedures, such as their explicit documentation, approval, communication, and detailed guidance for planning, delivery, and support.\nEvidence Quality : weak\n\nRe-examine the vendor's evidence independently. Then produce a JSON response:\n\n{\n  \"verdict\": \"<confirmed | revised>\",\n  \"final_verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"reasoning\": \"<one sentence: why you confirmed or what you changed and why>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"verdict\": \"confirmed\",\n  \"final_verdict\": \"needs_clarification\",\n  \"reasoning\": \"The vendor's statement about SOC 2 Type 2 certification provides an assertion of control effectiveness but does not directly provide the specific evidence required to confirm all aspects of application security policies and procedures, such as their explicit documentation, approval, communication, and detailed guidance.\"\n}",
+    "parsed": {
+      "verdict": "confirmed",
+      "final_verdict": "needs_clarification",
+      "reasoning": "The vendor's statement about SOC 2 Type 2 certification provides an assertion of control effectiveness but does not directly provide the specific evidence required to confirm all aspects of application security policies and procedures, such as their explicit documentation, approval, communication, and detailed guidance."
+    },
+    "parse_error": false,
+    "verdict": "confirmed"
+  },
+  "timestamps": {
+    "start": "2026-04-28T18:56:09.059709+00:00",
+    "end": "2026-04-28T18:56:43.082758+00:00",
+    "planner_ms": 12333.545923233032,
+    "evaluator_ms": 14262.677192687988,
+    "verifier_ms": 7426.112174987793
+  },
+  "errors": [],
+  "lf_trace_id": "2fa383cee53bfa816cc67890651f5ad6"
+}

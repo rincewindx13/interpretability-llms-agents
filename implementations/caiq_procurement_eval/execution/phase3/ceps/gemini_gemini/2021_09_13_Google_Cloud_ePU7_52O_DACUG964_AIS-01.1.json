@@ -1,0 +1,81 @@
+{
+  "schema_version": "cep.v1",
+  "run_id": "be094cd0-932d-42ab-9645-7beba42ee0a6",
+  "config": {
+    "planner_backend": "gemini",
+    "evaluator_backend": "gemini",
+    "judge_backend": "gemini",
+    "config_name": "gemini_gemini",
+    "planner_model": "gemini-2.5-flash",
+    "evaluator_model": "gemini-2.5-flash"
+  },
+  "sample": {
+    "vendor": "2021 09 13 Google Cloud ePU7 52O DACUG964",
+    "sample_id": "2021_09_13_Google_Cloud_ePU7_52O_DACUG964_AIS-01.1",
+    "question_id": "AIS-01.1",
+    "control_id": "AIS-01",
+    "domain_id": "APPLICATION & INTERFACE \nSECURITY",
+    "question_text": "Are application security policies and procedures established, documented, \napproved, communicated, applied, evaluated, and maintained to guide \nappropriate planning, delivery, and support of the organization's application \nsecurity capabilities?",
+    "vendor_answer": "yes",
+    "vendor_comment": "Google has an Applications, Systems, and Services Security Policy, which supports the system development lifecycle.",
+    "caiq_version": "4.0.1",
+    "metadata": {
+      "SSRM Control Ownership": "CSP-owned",
+      "CCM Control Specification": "Establish, document, approve, communicate, apply, evaluate and maintain \npolicies and procedures for application security to provide guidance to the \nappropriate planning, delivery and support of the organization's application \nsecurity capabilities. Review and update the policies and procedures at least \nannually.",
+      "CCM Control Title": "Application and \nInterface Security \nPolicy and Procedures"
+    }
+  },
+  "plan": {
+    "prompt": "You are a cloud security compliance expert specialising in the CSA Cloud Controls Matrix (CCM).\n\nYour task is to produce a structured evaluation plan for assessing a vendor's compliance response to a CAIQ question.\n\nCAIQ Question ID : AIS-01.1\nCCM Control ID   : AIS-01\nCCM Domain       : APPLICATION & INTERFACE \nSECURITY\nQuestion Text    : Are application security policies and procedures established, documented, \napproved, communicated, applied, evaluated, and maintained to guide \nappropriate planning, delivery, and support of the organization's application \nsecurity capabilities?\nVendor Answer    : yes\n\nProduce a JSON evaluation plan with the following keys:\n\n{\n  \"steps\": [\n    \"Step 1: ...\",\n    \"Step 2: ...\",\n    \"Step 3: ...\"\n  ],\n  \"expected_evidence_type\": \"<what good evidence looks like, e.g. policy doc, certification, process description>\",\n  \"compliance_risk_level\": \"<low | medium | high> \u2014 how critical is a No answer here>\",\n  \"evaluation_focus\": \"<what the evaluator should specifically look for in the vendor comment>\",\n  \"nist_mapping_hint\": \"<relevant NIST 800-53 control family, e.g. AC, SA, SC>\",\n  \"answerability_check\": \"<answerable | needs_clarification | not_applicable>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"steps\": [\n    \"Step 1: Request and review the formal Application Security Policy and associated procedures to confirm establishment, documentation, and approval by relevant management.\",\n    \"Step 2: Seek evidence demonstrating the communication of these policies and procedures to relevant personnel (e.g., training records, communication logs, internal portal links).\",\n    \"Step 3: Look for evidence that the policies and procedures are actively applied in application planning, delivery, and support processes (e.g., secure development lifecycle documentation, change management records).\",\n    \"Step 4: Verify the existence of a process for regular evaluation, review, and maintenance of the application security policies and procedures (e.g., review schedules, version control, audit findings).\"\n  ],\n  \"expected_evidence_type\": \"Application Security Policy document, Application Security Procedures document, Policy approval records, Training materials/records, Communication logs, Secure Software Development Lifecycle (SSDLC) documentation, Audit reports, Policy review logs, Version control records.\",\n  \"compliance_risk_level\": \"high\",\n  \"evaluation_focus\": \"The evaluator should specifically look for explicit evidence covering all aspects mentioned in the question: established, documented, approved, communicated, applied, evaluated, and maintained. Focus on how these policies and procedures specifically guide 'planning, delivery, and support' of application security capabilities.\",\n  \"nist_mapping_hint\": \"PM (Program Management), PL (Planning), SA (System and Services Acquisition), CA (Security Assessment and Authorization)\",\n  \"answerability_check\": \"answerable\"\n}",
+    "parsed": {
+      "steps": [
+        "Step 1: Request and review the formal Application Security Policy and associated procedures to confirm establishment, documentation, and approval by relevant management.",
+        "Step 2: Seek evidence demonstrating the communication of these policies and procedures to relevant personnel (e.g., training records, communication logs, internal portal links).",
+        "Step 3: Look for evidence that the policies and procedures are actively applied in application planning, delivery, and support processes (e.g., secure development lifecycle documentation, change management records).",
+        "Step 4: Verify the existence of a process for regular evaluation, review, and maintenance of the application security policies and procedures (e.g., review schedules, version control, audit findings)."
+      ],
+      "expected_evidence_type": "Application Security Policy document, Application Security Procedures document, Policy approval records, Training materials/records, Communication logs, Secure Software Development Lifecycle (SSDLC) documentation, Audit reports, Policy review logs, Version control records.",
+      "compliance_risk_level": "high",
+      "evaluation_focus": "The evaluator should specifically look for explicit evidence covering all aspects mentioned in the question: established, documented, approved, communicated, applied, evaluated, and maintained. Focus on how these policies and procedures specifically guide 'planning, delivery, and support' of application security capabilities.",
+      "nist_mapping_hint": "PM (Program Management), PL (Planning), SA (System and Services Acquisition), CA (Security Assessment and Authorization)",
+      "answerability_check": "answerable"
+    },
+    "parse_error": false
+  },
+  "evaluation": {
+    "prompt": "You are a cloud security compliance auditor evaluating a vendor's CAIQ response.\n\nCAIQ Question ID : AIS-01.1\nCCM Control ID   : AIS-01\nQuestion Text    : Are application security policies and procedures established, documented, \napproved, communicated, applied, evaluated, and maintained to guide \nappropriate planning, delivery, and support of the organization's application \nsecurity capabilities?\nVendor Answer    : yes\nVendor Evidence  : Google has an Applications, Systems, and Services Security Policy, which supports the system development lifecycle.\n\nEvaluation Plan:\n  1. Step 1: Request and review the formal Application Security Policy and associated procedures to confirm establishment, documentation, and approval by relevant management.\n  2. Step 2: Seek evidence demonstrating the communication of these policies and procedures to relevant personnel (e.g., training records, communication logs, internal portal links).\n  3. Step 3: Look for evidence that the policies and procedures are actively applied in application planning, delivery, and support processes (e.g., secure development lifecycle documentation, change management records).\n  4. Step 4: Verify the existence of a process for regular evaluation, review, and maintenance of the application security policies and procedures (e.g., review schedules, version control, audit findings).\n\nExpected evidence type : Application Security Policy document, Application Security Procedures document, Policy approval records, Training materials/records, Communication logs, Secure Software Development Lifecycle (SSDLC) documentation, Audit reports, Policy review logs, Version control records.\nEvaluation focus       : The evaluator should specifically look for explicit evidence covering all aspects mentioned in the question: established, documented, approved, communicated, applied, evaluated, and maintained. Focus on how these policies and procedures specifically guide 'planning, delivery, and support' of application security capabilities.\n\n\n\nEvaluate the vendor's compliance and produce a JSON verdict:\n\n{\n  \"verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"confidence\": <0.0 to 1.0>,\n  \"evidence_quality\": \"<strong | adequate | weak | absent>\",\n  \"gap_description\": \"<what is missing or insufficient \u2014 empty string if compliant>\",\n  \"evidence_citation\": \"<exact quote from vendor comment that supports the verdict \u2014 empty string if none>\",\n  \"recommended_followup\": \"<suggested clarification question for procurement team \u2014 empty string if none>\",\n  \"reasoning\": \"<one concise sentence explaining the verdict>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"verdict\": \"partial\",\n  \"confidence\": 0.7,\n  \"evidence_quality\": \"weak\",\n  \"gap_description\": \"The vendor's evidence confirms the existence of an 'Applications, Systems, and Services Security Policy' and its support for the system development lifecycle, addressing 'established', 'documented' (for policy), and partially 'applied'. However, there is no explicit evidence for the establishment and documentation of associated *procedures*, formal approval of the policy and procedures, communication to relevant personnel, specific examples of application in planning, delivery, and support, or processes for regular evaluation and maintenance.\",\n  \"evidence_citation\": \"Google has an Applications, Systems, and Services Security Policy, which supports the system development lifecycle.\",\n  \"recommended_followup\": \"Please provide the formal Application Security Policy and associated procedures, evidence of their approval, communication records (e.g., training logs), examples of their application within the SSDLC, and documentation of the policy review and maintenance process.\",\n  \"reasoning\": \"The vendor's evidence confirms the existence of a policy and its general support for the SDLC, but lacks specific evidence for procedures, approval, communication, evaluation, and maintenance as required by the control.\"\n}",
+    "parsed": {
+      "verdict": "partial",
+      "confidence": 0.7,
+      "evidence_quality": "weak",
+      "gap_description": "The vendor's evidence confirms the existence of an 'Applications, Systems, and Services Security Policy' and its support for the system development lifecycle, addressing 'established', 'documented' (for policy), and partially 'applied'. However, there is no explicit evidence for the establishment and documentation of associated *procedures*, formal approval of the policy and procedures, communication to relevant personnel, specific examples of application in planning, delivery, and support, or processes for regular evaluation and maintenance.",
+      "evidence_citation": "Google has an Applications, Systems, and Services Security Policy, which supports the system development lifecycle.",
+      "recommended_followup": "Please provide the formal Application Security Policy and associated procedures, evidence of their approval, communication records (e.g., training logs), examples of their application within the SSDLC, and documentation of the policy review and maintenance process.",
+      "reasoning": "The vendor's evidence confirms the existence of a policy and its general support for the SDLC, but lacks specific evidence for procedures, approval, communication, evaluation, and maintenance as required by the control."
+    },
+    "parse_error": false,
+    "tool_trace": []
+  },
+  "verifier": {
+    "prompt": "You are an independent cloud security compliance reviewer.\n\nA compliance evaluator has assessed the following vendor CAIQ response and produced a draft verdict.\nYour job is to independently re-examine the evidence and either CONFIRM or REVISE the verdict.\n\nCAIQ Question ID : AIS-01.1\nCCM Control ID   : AIS-01\nQuestion Text    : Are application security policies and procedures established, documented, \napproved, communicated, applied, evaluated, and maintained to guide \nappropriate planning, delivery, and support of the organization's application \nsecurity capabilities?\nVendor Answer    : yes\nVendor Evidence  : Google has an Applications, Systems, and Services Security Policy, which supports the system development lifecycle.\n\nDraft Verdict    : partial\nDraft Reasoning  : The vendor's evidence confirms the existence of a policy and its general support for the SDLC, but lacks specific evidence for procedures, approval, communication, evaluation, and maintenance as required by the control.\nEvidence Quality : weak\n\nRe-examine the vendor's evidence independently. Then produce a JSON response:\n\n{\n  \"verdict\": \"<confirmed | revised>\",\n  \"final_verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"reasoning\": \"<one sentence: why you confirmed or what you changed and why>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"verdict\": \"confirmed\",\n  \"final_verdict\": \"partial\",\n  \"reasoning\": \"The draft verdict is confirmed because the vendor's evidence only confirms the existence of a policy and its general support for the SDLC, failing to provide specific evidence for procedures, approval, communication, application, evaluation, and maintenance as required by the control.\"\n}",
+    "parsed": {
+      "verdict": "confirmed",
+      "final_verdict": "partial",
+      "reasoning": "The draft verdict is confirmed because the vendor's evidence only confirms the existence of a policy and its general support for the SDLC, failing to provide specific evidence for procedures, approval, communication, application, evaluation, and maintenance as required by the control."
+    },
+    "parse_error": false,
+    "verdict": "confirmed"
+  },
+  "timestamps": {
+    "start": "2026-04-28T17:16:10.331127+00:00",
+    "end": "2026-04-28T17:16:34.253740+00:00",
+    "planner_ms": 8439.754486083984,
+    "evaluator_ms": 9891.427993774414,
+    "verifier_ms": 5590.723514556885
+  },
+  "errors": [],
+  "lf_trace_id": "bb2f339126b571830b10a420cf8aa784"
+}

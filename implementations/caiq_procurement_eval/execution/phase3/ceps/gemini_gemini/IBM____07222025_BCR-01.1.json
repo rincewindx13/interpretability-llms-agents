@@ -1,0 +1,81 @@
+{
+  "schema_version": "cep.v1",
+  "run_id": "be094cd0-932d-42ab-9645-7beba42ee0a6",
+  "config": {
+    "planner_backend": "gemini",
+    "evaluator_backend": "gemini",
+    "judge_backend": "gemini",
+    "config_name": "gemini_gemini",
+    "planner_model": "gemini-2.5-flash",
+    "evaluator_model": "gemini-2.5-flash"
+  },
+  "sample": {
+    "vendor": "IBM    07222025",
+    "sample_id": "IBM____07222025_BCR-01.1",
+    "question_id": "BCR-01.1",
+    "control_id": "BCR-01",
+    "domain_id": "BUSINESS CONTINUITY MANAGEMENT AND OPERATIONAL RESILIENCE",
+    "question_text": "Are business continuity management and operational resilience policies and\nprocedures established, documented, approved, communicated, applied, evaluated,\nand maintained?",
+    "vendor_answer": "yes",
+    "vendor_comment": "At least annually, policies and standards are reviewed and updated to ensure that the most current policy is available to company employees via dissemination by management for viewing and commitment. In addition to these annual reviews and updates, policies are updated ad hoc with administrative and content changes.",
+    "caiq_version": "4.0.2",
+    "metadata": {
+      "SSRM Control Ownership": "Shared CSP and CSC",
+      "CCM Control Specification": "Establish, document, approve, communicate, apply, evaluate and maintain\nbusiness continuity management and operational resilience policies and procedures.\nReview and update the policies and procedures at least annually.",
+      "CCM Control Title": "Business Continuity Management Policy and Procedures"
+    }
+  },
+  "plan": {
+    "prompt": "You are a cloud security compliance expert specialising in the CSA Cloud Controls Matrix (CCM).\n\nYour task is to produce a structured evaluation plan for assessing a vendor's compliance response to a CAIQ question.\n\nCAIQ Question ID : BCR-01.1\nCCM Control ID   : BCR-01\nCCM Domain       : BUSINESS CONTINUITY MANAGEMENT AND OPERATIONAL RESILIENCE\nQuestion Text    : Are business continuity management and operational resilience policies and\nprocedures established, documented, approved, communicated, applied, evaluated,\nand maintained?\nVendor Answer    : yes\n\nProduce a JSON evaluation plan with the following keys:\n\n{\n  \"steps\": [\n    \"Step 1: ...\",\n    \"Step 2: ...\",\n    \"Step 3: ...\"\n  ],\n  \"expected_evidence_type\": \"<what good evidence looks like, e.g. policy doc, certification, process description>\",\n  \"compliance_risk_level\": \"<low | medium | high> \u2014 how critical is a No answer here>\",\n  \"evaluation_focus\": \"<what the evaluator should specifically look for in the vendor comment>\",\n  \"nist_mapping_hint\": \"<relevant NIST 800-53 control family, e.g. AC, SA, SC>\",\n  \"answerability_check\": \"<answerable | needs_clarification | not_applicable>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"steps\": [\n    \"Step 1: Request and review the Business Continuity Management (BCM) and Operational Resilience Policy to confirm its existence, documentation, and formal approval by management.\",\n    \"Step 2: Request and review associated BCM and Operational Resilience Procedures to verify they are established, documented, and align with the policy.\",\n    \"Step 3: Seek evidence of communication and application of these policies and procedures, such as training records, awareness campaigns, or incident response activation logs.\",\n    \"Step 4: Look for evidence of regular evaluation and maintenance, including BCM plan review records, test results (e.g., tabletop exercises, full-scale drills), and records of updates or improvements.\"\n  ],\n  \"expected_evidence_type\": \"Business Continuity Management Policy, Operational Resilience Policy, BCM Procedures, Operational Resilience Procedures, Management Approval Records, Training Records, Communication Logs, BCM Plan, Disaster Recovery Plan, Test Reports (e.g., tabletop exercise reports, DR test results), Review Meeting Minutes, Change Logs for BCM documents.\",\n  \"compliance_risk_level\": \"high\",\n  \"evaluation_focus\": \"The evaluator should specifically look for comprehensive evidence covering all aspects mentioned in the question: establishment, documentation, approval, communication, application, regular evaluation, and maintenance of both policies and procedures related to business continuity and operational resilience. Verify that the program is active and regularly tested, not just a set of static documents.\",\n  \"nist_mapping_hint\": \"CP (Contingency Planning)\",\n  \"answerability_check\": \"answerable\"\n}",
+    "parsed": {
+      "steps": [
+        "Step 1: Request and review the Business Continuity Management (BCM) and Operational Resilience Policy to confirm its existence, documentation, and formal approval by management.",
+        "Step 2: Request and review associated BCM and Operational Resilience Procedures to verify they are established, documented, and align with the policy.",
+        "Step 3: Seek evidence of communication and application of these policies and procedures, such as training records, awareness campaigns, or incident response activation logs.",
+        "Step 4: Look for evidence of regular evaluation and maintenance, including BCM plan review records, test results (e.g., tabletop exercises, full-scale drills), and records of updates or improvements."
+      ],
+      "expected_evidence_type": "Business Continuity Management Policy, Operational Resilience Policy, BCM Procedures, Operational Resilience Procedures, Management Approval Records, Training Records, Communication Logs, BCM Plan, Disaster Recovery Plan, Test Reports (e.g., tabletop exercise reports, DR test results), Review Meeting Minutes, Change Logs for BCM documents.",
+      "compliance_risk_level": "high",
+      "evaluation_focus": "The evaluator should specifically look for comprehensive evidence covering all aspects mentioned in the question: establishment, documentation, approval, communication, application, regular evaluation, and maintenance of both policies and procedures related to business continuity and operational resilience. Verify that the program is active and regularly tested, not just a set of static documents.",
+      "nist_mapping_hint": "CP (Contingency Planning)",
+      "answerability_check": "answerable"
+    },
+    "parse_error": false
+  },
+  "evaluation": {
+    "prompt": "You are a cloud security compliance auditor evaluating a vendor's CAIQ response.\n\nCAIQ Question ID : BCR-01.1\nCCM Control ID   : BCR-01\nQuestion Text    : Are business continuity management and operational resilience policies and\nprocedures established, documented, approved, communicated, applied, evaluated,\nand maintained?\nVendor Answer    : yes\nVendor Evidence  : At least annually, policies and standards are reviewed and updated to ensure that the most current policy is available to company employees via dissemination by management for viewing and commitment. In addition to these annual reviews and updates, policies are updated ad hoc with administrative and content changes.\n\nEvaluation Plan:\n  1. Step 1: Request and review the Business Continuity Management (BCM) and Operational Resilience Policy to confirm its existence, documentation, and formal approval by management.\n  2. Step 2: Request and review associated BCM and Operational Resilience Procedures to verify they are established, documented, and align with the policy.\n  3. Step 3: Seek evidence of communication and application of these policies and procedures, such as training records, awareness campaigns, or incident response activation logs.\n  4. Step 4: Look for evidence of regular evaluation and maintenance, including BCM plan review records, test results (e.g., tabletop exercises, full-scale drills), and records of updates or improvements.\n\nExpected evidence type : Business Continuity Management Policy, Operational Resilience Policy, BCM Procedures, Operational Resilience Procedures, Management Approval Records, Training Records, Communication Logs, BCM Plan, Disaster Recovery Plan, Test Reports (e.g., tabletop exercise reports, DR test results), Review Meeting Minutes, Change Logs for BCM documents.\nEvaluation focus       : The evaluator should specifically look for comprehensive evidence covering all aspects mentioned in the question: establishment, documentation, approval, communication, application, regular evaluation, and maintenance of both policies and procedures related to business continuity and operational resilience. Verify that the program is active and regularly tested, not just a set of static documents.\n\n\n\nEvaluate the vendor's compliance and produce a JSON verdict:\n\n{\n  \"verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"confidence\": <0.0 to 1.0>,\n  \"evidence_quality\": \"<strong | adequate | weak | absent>\",\n  \"gap_description\": \"<what is missing or insufficient \u2014 empty string if compliant>\",\n  \"evidence_citation\": \"<exact quote from vendor comment that supports the verdict \u2014 empty string if none>\",\n  \"recommended_followup\": \"<suggested clarification question for procurement team \u2014 empty string if none>\",\n  \"reasoning\": \"<one concise sentence explaining the verdict>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"verdict\": \"needs_clarification\",\n  \"confidence\": 0.6,\n  \"evidence_quality\": \"weak\",\n  \"gap_description\": \"The vendor's evidence mentions 'policies and standards' but does not explicitly confirm the existence of specific Business Continuity Management (BCM) and Operational Resilience policies and *procedures*. It also lacks evidence of formal approval and the *application* of these policies and procedures (e.g., through training, drills, or incident response activation logs).\",\n  \"evidence_citation\": \"At least annually, policies and standards are reviewed and updated to ensure that the most current policy is available to company employees via dissemination by management for viewing and commitment. In addition to these annual reviews and updates, policies are updated ad hoc with administrative and content changes.\",\n  \"recommended_followup\": \"Please provide the Business Continuity Management and Operational Resilience Policies and Procedures. Additionally, provide evidence of their formal approval, and how they are applied, such as training records, awareness campaigns, or records of BCM/DR tests and drills.\",\n  \"reasoning\": \"The vendor's evidence indicates policies are reviewed, updated, and communicated, but it lacks specific mention of Business Continuity Management and Operational Resilience *procedures*, formal approval, and evidence of their active *application*.\"\n}",
+    "parsed": {
+      "verdict": "needs_clarification",
+      "confidence": 0.6,
+      "evidence_quality": "weak",
+      "gap_description": "The vendor's evidence mentions 'policies and standards' but does not explicitly confirm the existence of specific Business Continuity Management (BCM) and Operational Resilience policies and *procedures*. It also lacks evidence of formal approval and the *application* of these policies and procedures (e.g., through training, drills, or incident response activation logs).",
+      "evidence_citation": "At least annually, policies and standards are reviewed and updated to ensure that the most current policy is available to company employees via dissemination by management for viewing and commitment. In addition to these annual reviews and updates, policies are updated ad hoc with administrative and content changes.",
+      "recommended_followup": "Please provide the Business Continuity Management and Operational Resilience Policies and Procedures. Additionally, provide evidence of their formal approval, and how they are applied, such as training records, awareness campaigns, or records of BCM/DR tests and drills.",
+      "reasoning": "The vendor's evidence indicates policies are reviewed, updated, and communicated, but it lacks specific mention of Business Continuity Management and Operational Resilience *procedures*, formal approval, and evidence of their active *application*."
+    },
+    "parse_error": false,
+    "tool_trace": []
+  },
+  "verifier": {
+    "prompt": "You are an independent cloud security compliance reviewer.\n\nA compliance evaluator has assessed the following vendor CAIQ response and produced a draft verdict.\nYour job is to independently re-examine the evidence and either CONFIRM or REVISE the verdict.\n\nCAIQ Question ID : BCR-01.1\nCCM Control ID   : BCR-01\nQuestion Text    : Are business continuity management and operational resilience policies and\nprocedures established, documented, approved, communicated, applied, evaluated,\nand maintained?\nVendor Answer    : yes\nVendor Evidence  : At least annually, policies and standards are reviewed and updated to ensure that the most current policy is available to company employees via dissemination by management for viewing and commitment. In addition to these annual reviews and updates, policies are updated ad hoc with administrative and content changes.\n\nDraft Verdict    : needs_clarification\nDraft Reasoning  : The vendor's evidence indicates policies are reviewed, updated, and communicated, but it lacks specific mention of Business Continuity Management and Operational Resilience *procedures*, formal approval, and evidence of their active *application*.\nEvidence Quality : weak\n\nRe-examine the vendor's evidence independently. Then produce a JSON response:\n\n{\n  \"verdict\": \"<confirmed | revised>\",\n  \"final_verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"reasoning\": \"<one sentence: why you confirmed or what you changed and why>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\"verdict\": \"confirmed\", \"final_verdict\": \"needs_clarification\", \"reasoning\": \"The vendor's evidence is generic, failing to specifically mention Business Continuity Management and Operational Resilience policies *and procedures*, and lacks details on formal approval, active application, or explicit evaluation.\"}",
+    "parsed": {
+      "verdict": "confirmed",
+      "final_verdict": "needs_clarification",
+      "reasoning": "The vendor's evidence is generic, failing to specifically mention Business Continuity Management and Operational Resilience policies *and procedures*, and lacks details on formal approval, active application, or explicit evaluation."
+    },
+    "parse_error": false,
+    "verdict": "confirmed"
+  },
+  "timestamps": {
+    "start": "2026-04-28T18:52:05.276771+00:00",
+    "end": "2026-04-28T18:52:30.045675+00:00",
+    "planner_ms": 7185.581207275391,
+    "evaluator_ms": 10598.588466644287,
+    "verifier_ms": 6983.936309814453
+  },
+  "errors": [],
+  "lf_trace_id": "2d059df9dc1d1d7bb8beb86e9b53f60a"
+}

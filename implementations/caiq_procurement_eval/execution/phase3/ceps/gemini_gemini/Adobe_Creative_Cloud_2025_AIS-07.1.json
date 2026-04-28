@@ -1,0 +1,81 @@
+{
+  "schema_version": "cep.v1",
+  "run_id": "be094cd0-932d-42ab-9645-7beba42ee0a6",
+  "config": {
+    "planner_backend": "gemini",
+    "evaluator_backend": "gemini",
+    "judge_backend": "gemini",
+    "config_name": "gemini_gemini",
+    "planner_model": "gemini-2.5-flash",
+    "evaluator_model": "gemini-2.5-flash"
+  },
+  "sample": {
+    "vendor": "Adobe Creative Cloud 2025",
+    "sample_id": "Adobe_Creative_Cloud_2025_AIS-07.1",
+    "question_id": "AIS-07.1",
+    "control_id": "AIS-07",
+    "domain_id": "AIS",
+    "question_text": "Are application security vulnerabilities remediated following defined \nprocesses?",
+    "vendor_answer": "yes",
+    "vendor_comment": "Adobe conducts vulnerability detection over all hosts on Adobe products and services' production network using real-time and scheduled scan tools. Scan tools deliver result reports that enumerate identified vulnerabilities and assigns them a score. Tickets are created and assigned to appropriate personnel for vulnerabilities, which are prioritized based on risk and used to document and track the patching of vulnerabilities. The tools' databases of known vulnerabilities are updated on an ongoing basis to ensure the latest known exploitable vulnerabilities are identified and removed from Adobe\u2019s environment.",
+    "caiq_version": "4.0.2",
+    "metadata": {
+      "SSRM Control Ownership": "CSP-owned",
+      "CCM Control Specification": "Define and implement a process to remediate application security \nvulnerabilities, automating remediation when possible.",
+      "CCM Control Title": "Application \nVulnerability \nRemediation"
+    }
+  },
+  "plan": {
+    "prompt": "You are a cloud security compliance expert specialising in the CSA Cloud Controls Matrix (CCM).\n\nYour task is to produce a structured evaluation plan for assessing a vendor's compliance response to a CAIQ question.\n\nCAIQ Question ID : AIS-07.1\nCCM Control ID   : AIS-07\nCCM Domain       : AIS\nQuestion Text    : Are application security vulnerabilities remediated following defined \nprocesses?\nVendor Answer    : yes\n\nProduce a JSON evaluation plan with the following keys:\n\n{\n  \"steps\": [\n    \"Step 1: ...\",\n    \"Step 2: ...\",\n    \"Step 3: ...\"\n  ],\n  \"expected_evidence_type\": \"<what good evidence looks like, e.g. policy doc, certification, process description>\",\n  \"compliance_risk_level\": \"<low | medium | high> \u2014 how critical is a No answer here>\",\n  \"evaluation_focus\": \"<what the evaluator should specifically look for in the vendor comment>\",\n  \"nist_mapping_hint\": \"<relevant NIST 800-53 control family, e.g. AC, SA, SC>\",\n  \"answerability_check\": \"<answerable | needs_clarification | not_applicable>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"steps\": [\n    \"Step 1: Request and review the vendor's documented policy or procedure for application security vulnerability management and remediation.\",\n    \"Step 2: Examine the documented process for clarity, completeness, defined roles, responsibilities, timelines (e.g., SLAs), and escalation paths for vulnerability remediation.\",\n    \"Step 3: Request evidence of actual remediation activities, such as vulnerability scan reports (pre/post remediation), penetration test reports, remediation tickets, change logs, or incident response records, to confirm adherence to the defined process.\",\n    \"Step 4: Assess the mechanisms for tracking, verifying, and reporting on the closure of application vulnerabilities, including any metrics or dashboards used.\"\n  ],\n  \"expected_evidence_type\": \"Vulnerability Management Policy, Application Security Remediation Procedure, Incident Response Plan (if applicable), Change Management Records, Vulnerability Scan Reports, Penetration Test Reports, Remediation Tracking Logs/Tickets, Service Level Agreements (SLAs) for remediation.\",\n  \"compliance_risk_level\": \"high\",\n  \"evaluation_focus\": \"The existence and maturity of a formal, documented process for application vulnerability remediation. Specific attention should be paid to defined roles, responsibilities, timelines, and evidence of consistent execution and verification of remediation activities.\",\n  \"nist_mapping_hint\": \"RA (Risk Assessment), IR (Incident Response), CM (Configuration Management), CA (Security Assessment and Authorization)\",\n  \"answerability_check\": \"answerable\"\n}",
+    "parsed": {
+      "steps": [
+        "Step 1: Request and review the vendor's documented policy or procedure for application security vulnerability management and remediation.",
+        "Step 2: Examine the documented process for clarity, completeness, defined roles, responsibilities, timelines (e.g., SLAs), and escalation paths for vulnerability remediation.",
+        "Step 3: Request evidence of actual remediation activities, such as vulnerability scan reports (pre/post remediation), penetration test reports, remediation tickets, change logs, or incident response records, to confirm adherence to the defined process.",
+        "Step 4: Assess the mechanisms for tracking, verifying, and reporting on the closure of application vulnerabilities, including any metrics or dashboards used."
+      ],
+      "expected_evidence_type": "Vulnerability Management Policy, Application Security Remediation Procedure, Incident Response Plan (if applicable), Change Management Records, Vulnerability Scan Reports, Penetration Test Reports, Remediation Tracking Logs/Tickets, Service Level Agreements (SLAs) for remediation.",
+      "compliance_risk_level": "high",
+      "evaluation_focus": "The existence and maturity of a formal, documented process for application vulnerability remediation. Specific attention should be paid to defined roles, responsibilities, timelines, and evidence of consistent execution and verification of remediation activities.",
+      "nist_mapping_hint": "RA (Risk Assessment), IR (Incident Response), CM (Configuration Management), CA (Security Assessment and Authorization)",
+      "answerability_check": "answerable"
+    },
+    "parse_error": false
+  },
+  "evaluation": {
+    "prompt": "You are a cloud security compliance auditor evaluating a vendor's CAIQ response.\n\nCAIQ Question ID : AIS-07.1\nCCM Control ID   : AIS-07\nQuestion Text    : Are application security vulnerabilities remediated following defined \nprocesses?\nVendor Answer    : yes\nVendor Evidence  : Adobe conducts vulnerability detection over all hosts on Adobe products and services' production network using real-time and scheduled scan tools. Scan tools deliver result reports that enumerate identified vulnerabilities and assigns them a score. Tickets are created and assigned to appropriate personnel for vulnerabilities, which are prioritized based on risk and used to document and track the patching of vulnerabilities. The tools' databases of known vulnerabilities are updated on an ongoing basis to ensure the latest known exploitable vulnerabilities are identified and removed from Adobe\u2019s environment.\n\nEvaluation Plan:\n  1. Step 1: Request and review the vendor's documented policy or procedure for application security vulnerability management and remediation.\n  2. Step 2: Examine the documented process for clarity, completeness, defined roles, responsibilities, timelines (e.g., SLAs), and escalation paths for vulnerability remediation.\n  3. Step 3: Request evidence of actual remediation activities, such as vulnerability scan reports (pre/post remediation), penetration test reports, remediation tickets, change logs, or incident response records, to confirm adherence to the defined process.\n  4. Step 4: Assess the mechanisms for tracking, verifying, and reporting on the closure of application vulnerabilities, including any metrics or dashboards used.\n\nExpected evidence type : Vulnerability Management Policy, Application Security Remediation Procedure, Incident Response Plan (if applicable), Change Management Records, Vulnerability Scan Reports, Penetration Test Reports, Remediation Tracking Logs/Tickets, Service Level Agreements (SLAs) for remediation.\nEvaluation focus       : The existence and maturity of a formal, documented process for application vulnerability remediation. Specific attention should be paid to defined roles, responsibilities, timelines, and evidence of consistent execution and verification of remediation activities.\n\n\n\nEvaluate the vendor's compliance and produce a JSON verdict:\n\n{\n  \"verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"confidence\": <0.0 to 1.0>,\n  \"evidence_quality\": \"<strong | adequate | weak | absent>\",\n  \"gap_description\": \"<what is missing or insufficient \u2014 empty string if compliant>\",\n  \"evidence_citation\": \"<exact quote from vendor comment that supports the verdict \u2014 empty string if none>\",\n  \"recommended_followup\": \"<suggested clarification question for procurement team \u2014 empty string if none>\",\n  \"reasoning\": \"<one concise sentence explaining the verdict>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"verdict\": \"needs_clarification\",\n  \"confidence\": 0.9,\n  \"evidence_quality\": \"weak\",\n  \"gap_description\": \"The vendor's evidence describes a process for vulnerability detection, prioritization, and tracking, but does not explicitly confirm the existence of a formal, documented policy or procedure for application security vulnerability management and remediation. Specific details regarding defined roles, responsibilities, remediation timelines (e.g., SLAs), escalation paths, and mechanisms for verifying closure are not provided. No actual evidence of remediation activities (e.g., scan reports, remediation tickets, change logs) was included.\",\n  \"evidence_citation\": \"Adobe conducts vulnerability detection over all hosts on Adobe products and services' production network using real-time and scheduled scan tools. Scan tools deliver result reports that enumerate identified vulnerabilities and assigns them a score. Tickets are created and assigned to appropriate personnel for vulnerabilities, which are prioritized based on risk and used to document and track the patching of vulnerabilities. The tools' databases of known vulnerabilities are updated on an ongoing basis to ensure the latest known exploitable vulnerabilities are identified and removed from Adobe\u2019s environment.\",\n  \"recommended_followup\": \"Please provide the documented policy or procedure for application security vulnerability management and remediation, including details on defined roles, responsibilities, remediation timelines (SLAs), and escalation paths. Additionally, provide examples of vulnerability scan reports (pre/post remediation) and remediation tracking logs/tickets to demonstrate consistent execution.\",\n  \"reasoning\": \"The vendor describes a vulnerability remediation process but lacks explicit confirmation of a formally documented process with defined roles, responsibilities, and timelines, and does not provide concrete evidence of remediation activities.\"\n}",
+    "parsed": {
+      "verdict": "needs_clarification",
+      "confidence": 0.9,
+      "evidence_quality": "weak",
+      "gap_description": "The vendor's evidence describes a process for vulnerability detection, prioritization, and tracking, but does not explicitly confirm the existence of a formal, documented policy or procedure for application security vulnerability management and remediation. Specific details regarding defined roles, responsibilities, remediation timelines (e.g., SLAs), escalation paths, and mechanisms for verifying closure are not provided. No actual evidence of remediation activities (e.g., scan reports, remediation tickets, change logs) was included.",
+      "evidence_citation": "Adobe conducts vulnerability detection over all hosts on Adobe products and services' production network using real-time and scheduled scan tools. Scan tools deliver result reports that enumerate identified vulnerabilities and assigns them a score. Tickets are created and assigned to appropriate personnel for vulnerabilities, which are prioritized based on risk and used to document and track the patching of vulnerabilities. The tools' databases of known vulnerabilities are updated on an ongoing basis to ensure the latest known exploitable vulnerabilities are identified and removed from Adobe\u2019s environment.",
+      "recommended_followup": "Please provide the documented policy or procedure for application security vulnerability management and remediation, including details on defined roles, responsibilities, remediation timelines (SLAs), and escalation paths. Additionally, provide examples of vulnerability scan reports (pre/post remediation) and remediation tracking logs/tickets to demonstrate consistent execution.",
+      "reasoning": "The vendor describes a vulnerability remediation process but lacks explicit confirmation of a formally documented process with defined roles, responsibilities, and timelines, and does not provide concrete evidence of remediation activities."
+    },
+    "parse_error": false,
+    "tool_trace": []
+  },
+  "verifier": {
+    "prompt": "You are an independent cloud security compliance reviewer.\n\nA compliance evaluator has assessed the following vendor CAIQ response and produced a draft verdict.\nYour job is to independently re-examine the evidence and either CONFIRM or REVISE the verdict.\n\nCAIQ Question ID : AIS-07.1\nCCM Control ID   : AIS-07\nQuestion Text    : Are application security vulnerabilities remediated following defined \nprocesses?\nVendor Answer    : yes\nVendor Evidence  : Adobe conducts vulnerability detection over all hosts on Adobe products and services' production network using real-time and scheduled scan tools. Scan tools deliver result reports that enumerate identified vulnerabilities and assigns them a score. Tickets are created and assigned to appropriate personnel for vulnerabilities, which are prioritized based on risk and used to document and track the patching of vulnerabilities. The tools' databases of known vulnerabilities are updated on an ongoing basis to ensure the latest known exploitable vulnerabilities are identified and removed from Adobe\u2019s environment.\n\nDraft Verdict    : needs_clarification\nDraft Reasoning  : The vendor describes a vulnerability remediation process but lacks explicit confirmation of a formally documented process with defined roles, responsibilities, and timelines, and does not provide concrete evidence of remediation activities.\nEvidence Quality : weak\n\nRe-examine the vendor's evidence independently. Then produce a JSON response:\n\n{\n  \"verdict\": \"<confirmed | revised>\",\n  \"final_verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"reasoning\": \"<one sentence: why you confirmed or what you changed and why>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"verdict\": \"confirmed\",\n  \"final_verdict\": \"needs_clarification\",\n  \"reasoning\": \"The vendor describes a vulnerability remediation process, but lacks explicit confirmation of a formally documented process, defined remediation timelines, and concrete evidence of remediation activities.\"\n}",
+    "parsed": {
+      "verdict": "confirmed",
+      "final_verdict": "needs_clarification",
+      "reasoning": "The vendor describes a vulnerability remediation process, but lacks explicit confirmation of a formally documented process, defined remediation timelines, and concrete evidence of remediation activities."
+    },
+    "parse_error": false,
+    "verdict": "confirmed"
+  },
+  "timestamps": {
+    "start": "2026-04-28T17:47:35.313296+00:00",
+    "end": "2026-04-28T17:48:10.731255+00:00",
+    "planner_ms": 8828.609466552734,
+    "evaluator_ms": 13647.89366722107,
+    "verifier_ms": 12940.614223480225
+  },
+  "errors": [],
+  "lf_trace_id": "773c3ce2ec6421843b81531bd821202d"
+}

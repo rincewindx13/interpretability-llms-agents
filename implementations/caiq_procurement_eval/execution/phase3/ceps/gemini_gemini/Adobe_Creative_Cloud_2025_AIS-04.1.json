@@ -1,0 +1,81 @@
+{
+  "schema_version": "cep.v1",
+  "run_id": "be094cd0-932d-42ab-9645-7beba42ee0a6",
+  "config": {
+    "planner_backend": "gemini",
+    "evaluator_backend": "gemini",
+    "judge_backend": "gemini",
+    "config_name": "gemini_gemini",
+    "planner_model": "gemini-2.5-flash",
+    "evaluator_model": "gemini-2.5-flash"
+  },
+  "sample": {
+    "vendor": "Adobe Creative Cloud 2025",
+    "sample_id": "Adobe_Creative_Cloud_2025_AIS-04.1",
+    "question_id": "AIS-04.1",
+    "control_id": "AIS-04",
+    "domain_id": "AIS",
+    "question_text": "Is an SDLC process defined and implemented for application design, \ndevelopment, deployment, and operation per organizationally designed security \nrequirements?",
+    "vendor_answer": "yes",
+    "vendor_comment": "See AIS-01.1",
+    "caiq_version": "4.0.2",
+    "metadata": {
+      "SSRM Control Ownership": "CSP-owned",
+      "CCM Control Specification": "Define and implement a SDLC process for application design, development, \ndeployment, and operation in accordance with security requirements defined by \nthe organization.",
+      "CCM Control Title": "Secure Application \nDesign and Development"
+    }
+  },
+  "plan": {
+    "prompt": "You are a cloud security compliance expert specialising in the CSA Cloud Controls Matrix (CCM).\n\nYour task is to produce a structured evaluation plan for assessing a vendor's compliance response to a CAIQ question.\n\nCAIQ Question ID : AIS-04.1\nCCM Control ID   : AIS-04\nCCM Domain       : AIS\nQuestion Text    : Is an SDLC process defined and implemented for application design, \ndevelopment, deployment, and operation per organizationally designed security \nrequirements?\nVendor Answer    : yes\n\nProduce a JSON evaluation plan with the following keys:\n\n{\n  \"steps\": [\n    \"Step 1: ...\",\n    \"Step 2: ...\",\n    \"Step 3: ...\"\n  ],\n  \"expected_evidence_type\": \"<what good evidence looks like, e.g. policy doc, certification, process description>\",\n  \"compliance_risk_level\": \"<low | medium | high> \u2014 how critical is a No answer here>\",\n  \"evaluation_focus\": \"<what the evaluator should specifically look for in the vendor comment>\",\n  \"nist_mapping_hint\": \"<relevant NIST 800-53 control family, e.g. AC, SA, SC>\",\n  \"answerability_check\": \"<answerable | needs_clarification | not_applicable>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"steps\": [\n    \"Step 1: Request the documented Secure Software Development Life Cycle (SSDLC) policy or procedure, including its scope and version.\",\n    \"Step 2: Verify that the SSDLC explicitly integrates security activities and requirements across all phases: design, development, deployment, and operation.\",\n    \"Step 3: Seek evidence of implementation, such as security requirements specifications, threat modeling reports, security architecture review outputs, secure coding guidelines, security testing (SAST/DAST/Penetration Testing) reports, and change management records demonstrating security gates.\",\n    \"Step 4: Confirm that the security requirements are 'organizationally designed' and tailored to the specific applications and their risk profiles, rather than generic.\"\n  ],\n  \"expected_evidence_type\": \"SSDLC policy/procedure document, Secure Coding Guidelines, Threat Modeling reports, Security Architecture Review documentation, SAST/DAST reports, Penetration Test reports, Code review logs, Change Management records, Security training records.\",\n  \"compliance_risk_level\": \"high\",\n  \"evaluation_focus\": \"The integration of security into every phase of the SDLC, not just as an afterthought. Specific evidence of security activities being performed and documented, and that security requirements are tailored and enforced.\",\n  \"nist_mapping_hint\": \"SA (System and Services Acquisition), RA (Risk Assessment), SC (System and Communications Protection)\",\n  \"answerability_check\": \"answerable\"\n}",
+    "parsed": {
+      "steps": [
+        "Step 1: Request the documented Secure Software Development Life Cycle (SSDLC) policy or procedure, including its scope and version.",
+        "Step 2: Verify that the SSDLC explicitly integrates security activities and requirements across all phases: design, development, deployment, and operation.",
+        "Step 3: Seek evidence of implementation, such as security requirements specifications, threat modeling reports, security architecture review outputs, secure coding guidelines, security testing (SAST/DAST/Penetration Testing) reports, and change management records demonstrating security gates.",
+        "Step 4: Confirm that the security requirements are 'organizationally designed' and tailored to the specific applications and their risk profiles, rather than generic."
+      ],
+      "expected_evidence_type": "SSDLC policy/procedure document, Secure Coding Guidelines, Threat Modeling reports, Security Architecture Review documentation, SAST/DAST reports, Penetration Test reports, Code review logs, Change Management records, Security training records.",
+      "compliance_risk_level": "high",
+      "evaluation_focus": "The integration of security into every phase of the SDLC, not just as an afterthought. Specific evidence of security activities being performed and documented, and that security requirements are tailored and enforced.",
+      "nist_mapping_hint": "SA (System and Services Acquisition), RA (Risk Assessment), SC (System and Communications Protection)",
+      "answerability_check": "answerable"
+    },
+    "parse_error": false
+  },
+  "evaluation": {
+    "prompt": "You are a cloud security compliance auditor evaluating a vendor's CAIQ response.\n\nCAIQ Question ID : AIS-04.1\nCCM Control ID   : AIS-04\nQuestion Text    : Is an SDLC process defined and implemented for application design, \ndevelopment, deployment, and operation per organizationally designed security \nrequirements?\nVendor Answer    : yes\nVendor Evidence  : See AIS-01.1\n\nEvaluation Plan:\n  1. Step 1: Request the documented Secure Software Development Life Cycle (SSDLC) policy or procedure, including its scope and version.\n  2. Step 2: Verify that the SSDLC explicitly integrates security activities and requirements across all phases: design, development, deployment, and operation.\n  3. Step 3: Seek evidence of implementation, such as security requirements specifications, threat modeling reports, security architecture review outputs, secure coding guidelines, security testing (SAST/DAST/Penetration Testing) reports, and change management records demonstrating security gates.\n  4. Step 4: Confirm that the security requirements are 'organizationally designed' and tailored to the specific applications and their risk profiles, rather than generic.\n\nExpected evidence type : SSDLC policy/procedure document, Secure Coding Guidelines, Threat Modeling reports, Security Architecture Review documentation, SAST/DAST reports, Penetration Test reports, Code review logs, Change Management records, Security training records.\nEvaluation focus       : The integration of security into every phase of the SDLC, not just as an afterthought. Specific evidence of security activities being performed and documented, and that security requirements are tailored and enforced.\n\n\n\nEvaluate the vendor's compliance and produce a JSON verdict:\n\n{\n  \"verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"confidence\": <0.0 to 1.0>,\n  \"evidence_quality\": \"<strong | adequate | weak | absent>\",\n  \"gap_description\": \"<what is missing or insufficient \u2014 empty string if compliant>\",\n  \"evidence_citation\": \"<exact quote from vendor comment that supports the verdict \u2014 empty string if none>\",\n  \"recommended_followup\": \"<suggested clarification question for procurement team \u2014 empty string if none>\",\n  \"reasoning\": \"<one concise sentence explaining the verdict>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"verdict\": \"needs_clarification\",\n  \"confidence\": 0.8,\n  \"evidence_quality\": \"absent\",\n  \"gap_description\": \"The vendor's response refers to evidence for another control (AIS-01.1) which is not provided, preventing verification of the defined and implemented SDLC process with integrated and organizationally designed security requirements across all phases (design, development, deployment, and operation).\",\n  \"evidence_citation\": \"See AIS-01.1\",\n  \"recommended_followup\": \"Please provide the specific documentation and evidence for AIS-04.1, including the SSDLC policy/procedure, examples of security requirements specifications, threat modeling reports, security testing reports (SAST/DAST/Penetration Testing), and change management records, or provide the content of AIS-01.1 and explain how it directly addresses the requirements of AIS-04.1.\",\n  \"reasoning\": \"The vendor's response refers to evidence for another control not provided, preventing evaluation of the SDLC process's definition, implementation, and integrated security requirements.\"\n}",
+    "parsed": {
+      "verdict": "needs_clarification",
+      "confidence": 0.8,
+      "evidence_quality": "absent",
+      "gap_description": "The vendor's response refers to evidence for another control (AIS-01.1) which is not provided, preventing verification of the defined and implemented SDLC process with integrated and organizationally designed security requirements across all phases (design, development, deployment, and operation).",
+      "evidence_citation": "See AIS-01.1",
+      "recommended_followup": "Please provide the specific documentation and evidence for AIS-04.1, including the SSDLC policy/procedure, examples of security requirements specifications, threat modeling reports, security testing reports (SAST/DAST/Penetration Testing), and change management records, or provide the content of AIS-01.1 and explain how it directly addresses the requirements of AIS-04.1.",
+      "reasoning": "The vendor's response refers to evidence for another control not provided, preventing evaluation of the SDLC process's definition, implementation, and integrated security requirements."
+    },
+    "parse_error": false,
+    "tool_trace": []
+  },
+  "verifier": {
+    "prompt": "You are an independent cloud security compliance reviewer.\n\nA compliance evaluator has assessed the following vendor CAIQ response and produced a draft verdict.\nYour job is to independently re-examine the evidence and either CONFIRM or REVISE the verdict.\n\nCAIQ Question ID : AIS-04.1\nCCM Control ID   : AIS-04\nQuestion Text    : Is an SDLC process defined and implemented for application design, \ndevelopment, deployment, and operation per organizationally designed security \nrequirements?\nVendor Answer    : yes\nVendor Evidence  : See AIS-01.1\n\nDraft Verdict    : needs_clarification\nDraft Reasoning  : The vendor's response refers to evidence for another control not provided, preventing evaluation of the SDLC process's definition, implementation, and integrated security requirements.\nEvidence Quality : absent\n\nRe-examine the vendor's evidence independently. Then produce a JSON response:\n\n{\n  \"verdict\": \"<confirmed | revised>\",\n  \"final_verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"reasoning\": \"<one sentence: why you confirmed or what you changed and why>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\"verdict\": \"confirmed\", \"final_verdict\": \"needs_clarification\", \"reasoning\": \"The draft verdict is confirmed because the vendor's evidence refers to a control (AIS-01.1) that was not provided, preventing any evaluation of the SDLC process or its integrated security requirements.\"}",
+    "parsed": {
+      "verdict": "confirmed",
+      "final_verdict": "needs_clarification",
+      "reasoning": "The draft verdict is confirmed because the vendor's evidence refers to a control (AIS-01.1) that was not provided, preventing any evaluation of the SDLC process or its integrated security requirements."
+    },
+    "parse_error": false,
+    "verdict": "confirmed"
+  },
+  "timestamps": {
+    "start": "2026-04-28T17:45:09.733960+00:00",
+    "end": "2026-04-28T17:45:37.890558+00:00",
+    "planner_ms": 8754.876375198364,
+    "evaluator_ms": 12134.041547775269,
+    "verifier_ms": 7266.68119430542
+  },
+  "errors": [],
+  "lf_trace_id": "4fb0a4f1f5bd7b76ddb41fb210b528f3"
+}

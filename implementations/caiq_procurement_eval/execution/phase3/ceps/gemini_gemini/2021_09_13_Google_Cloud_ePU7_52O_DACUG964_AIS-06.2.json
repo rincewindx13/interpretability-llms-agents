@@ -1,0 +1,79 @@
+{
+  "schema_version": "cep.v1",
+  "run_id": "be094cd0-932d-42ab-9645-7beba42ee0a6",
+  "config": {
+    "planner_backend": "gemini",
+    "evaluator_backend": "gemini",
+    "judge_backend": "gemini",
+    "config_name": "gemini_gemini",
+    "planner_model": "gemini-2.5-flash",
+    "evaluator_model": "gemini-2.5-flash"
+  },
+  "sample": {
+    "vendor": "2021 09 13 Google Cloud ePU7 52O DACUG964",
+    "sample_id": "2021_09_13_Google_Cloud_ePU7_52O_DACUG964_AIS-06.2",
+    "question_id": "AIS-06.2",
+    "control_id": "AIS-06",
+    "domain_id": "AIS",
+    "question_text": "Is the deployment and integration of application code automated where \npossible?",
+    "vendor_answer": "yes",
+    "vendor_comment": "Google follows a structured code development and release process that includes considerations for security defects and all code is peer reviewed. Google makes purpose built code analysis tools available for engineers to deploy against application code and performs continuous post-production monitoring based on real-time threats.",
+    "caiq_version": "4.0.1",
+    "metadata": {
+      "SSRM Control Ownership": "CSP-owned"
+    }
+  },
+  "plan": {
+    "prompt": "You are a cloud security compliance expert specialising in the CSA Cloud Controls Matrix (CCM).\n\nYour task is to produce a structured evaluation plan for assessing a vendor's compliance response to a CAIQ question.\n\nCAIQ Question ID : AIS-06.2\nCCM Control ID   : AIS-06\nCCM Domain       : AIS\nQuestion Text    : Is the deployment and integration of application code automated where \npossible?\nVendor Answer    : yes\n\nProduce a JSON evaluation plan with the following keys:\n\n{\n  \"steps\": [\n    \"Step 1: ...\",\n    \"Step 2: ...\",\n    \"Step 3: ...\"\n  ],\n  \"expected_evidence_type\": \"<what good evidence looks like, e.g. policy doc, certification, process description>\",\n  \"compliance_risk_level\": \"<low | medium | high> \u2014 how critical is a No answer here>\",\n  \"evaluation_focus\": \"<what the evaluator should specifically look for in the vendor comment>\",\n  \"nist_mapping_hint\": \"<relevant NIST 800-53 control family, e.g. AC, SA, SC>\",\n  \"answerability_check\": \"<answerable | needs_clarification | not_applicable>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"steps\": [\n    \"Step 1: Request documentation outlining the vendor's CI/CD (Continuous Integration/Continuous Deployment) pipeline processes and tools used for application code deployment and integration.\",\n    \"Step 2: Seek evidence such as screenshots of CI/CD pipeline configurations, deployment scripts, or workflow diagrams that demonstrate automation in action.\",\n    \"Step 3: Review recent deployment logs or audit trails for a sample application to verify the automated execution of deployment and integration steps.\",\n    \"Step 4: Inquire about any exceptions or specific scenarios where manual intervention is required in the deployment process and the controls in place for such instances.\"\n  ],\n  \"expected_evidence_type\": \"CI/CD pipeline documentation, deployment scripts, configuration screenshots of CI/CD tools (e.g., Jenkins, GitLab CI, Azure DevOps, AWS CodePipeline), deployment logs, change management policies related to automated deployments.\",\n  \"compliance_risk_level\": \"high\",\n  \"evaluation_focus\": \"Verify the actual implementation and scope of automation for application code deployment and integration, not just policy statements. Look for evidence of automated testing, security scanning, and approval gates within the pipeline. Assess the consistency and reliability of the automated process.\",\n  \"nist_mapping_hint\": \"SA (System and Services Acquisition), CM (Configuration Management), SI (System and Information Integrity)\",\n  \"answerability_check\": \"answerable\"\n}",
+    "parsed": {
+      "steps": [
+        "Step 1: Request documentation outlining the vendor's CI/CD (Continuous Integration/Continuous Deployment) pipeline processes and tools used for application code deployment and integration.",
+        "Step 2: Seek evidence such as screenshots of CI/CD pipeline configurations, deployment scripts, or workflow diagrams that demonstrate automation in action.",
+        "Step 3: Review recent deployment logs or audit trails for a sample application to verify the automated execution of deployment and integration steps.",
+        "Step 4: Inquire about any exceptions or specific scenarios where manual intervention is required in the deployment process and the controls in place for such instances."
+      ],
+      "expected_evidence_type": "CI/CD pipeline documentation, deployment scripts, configuration screenshots of CI/CD tools (e.g., Jenkins, GitLab CI, Azure DevOps, AWS CodePipeline), deployment logs, change management policies related to automated deployments.",
+      "compliance_risk_level": "high",
+      "evaluation_focus": "Verify the actual implementation and scope of automation for application code deployment and integration, not just policy statements. Look for evidence of automated testing, security scanning, and approval gates within the pipeline. Assess the consistency and reliability of the automated process.",
+      "nist_mapping_hint": "SA (System and Services Acquisition), CM (Configuration Management), SI (System and Information Integrity)",
+      "answerability_check": "answerable"
+    },
+    "parse_error": false
+  },
+  "evaluation": {
+    "prompt": "You are a cloud security compliance auditor evaluating a vendor's CAIQ response.\n\nCAIQ Question ID : AIS-06.2\nCCM Control ID   : AIS-06\nQuestion Text    : Is the deployment and integration of application code automated where \npossible?\nVendor Answer    : yes\nVendor Evidence  : Google follows a structured code development and release process that includes considerations for security defects and all code is peer reviewed. Google makes purpose built code analysis tools available for engineers to deploy against application code and performs continuous post-production monitoring based on real-time threats.\n\nEvaluation Plan:\n  1. Step 1: Request documentation outlining the vendor's CI/CD (Continuous Integration/Continuous Deployment) pipeline processes and tools used for application code deployment and integration.\n  2. Step 2: Seek evidence such as screenshots of CI/CD pipeline configurations, deployment scripts, or workflow diagrams that demonstrate automation in action.\n  3. Step 3: Review recent deployment logs or audit trails for a sample application to verify the automated execution of deployment and integration steps.\n  4. Step 4: Inquire about any exceptions or specific scenarios where manual intervention is required in the deployment process and the controls in place for such instances.\n\nExpected evidence type : CI/CD pipeline documentation, deployment scripts, configuration screenshots of CI/CD tools (e.g., Jenkins, GitLab CI, Azure DevOps, AWS CodePipeline), deployment logs, change management policies related to automated deployments.\nEvaluation focus       : Verify the actual implementation and scope of automation for application code deployment and integration, not just policy statements. Look for evidence of automated testing, security scanning, and approval gates within the pipeline. Assess the consistency and reliability of the automated process.\n\n\n\nEvaluate the vendor's compliance and produce a JSON verdict:\n\n{\n  \"verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"confidence\": <0.0 to 1.0>,\n  \"evidence_quality\": \"<strong | adequate | weak | absent>\",\n  \"gap_description\": \"<what is missing or insufficient \u2014 empty string if compliant>\",\n  \"evidence_citation\": \"<exact quote from vendor comment that supports the verdict \u2014 empty string if none>\",\n  \"recommended_followup\": \"<suggested clarification question for procurement team \u2014 empty string if none>\",\n  \"reasoning\": \"<one concise sentence explaining the verdict>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"verdict\": \"needs_clarification\",\n  \"confidence\": 0.8,\n  \"evidence_quality\": \"weak\",\n  \"gap_description\": \"The vendor's evidence describes secure code development practices, peer review, code analysis tools, and post-production monitoring, but it does not provide specific details, documentation, or examples of automated CI/CD pipelines, deployment scripts, or tools used for the actual *deployment and integration* of application code.\",\n  \"evidence_citation\": \"Google follows a structured code development and release process that includes considerations for security defects and all code is peer reviewed. Google makes purpose built code analysis tools available for engineers to deploy against application code and performs continuous post-production monitoring based on real-time threats.\",\n  \"recommended_followup\": \"Please provide documentation outlining your CI/CD pipeline processes, tools used for automated application code deployment and integration, and examples of deployment scripts or workflow diagrams demonstrating automation in action. Specifically, clarify how application code deployment and integration steps are automated.\",\n  \"reasoning\": \"The vendor's evidence describes secure development and monitoring practices but does not provide specific details or proof of automated application code deployment and integration processes, making it insufficient to confirm compliance with the question.\"\n}",
+    "parsed": {
+      "verdict": "needs_clarification",
+      "confidence": 0.8,
+      "evidence_quality": "weak",
+      "gap_description": "The vendor's evidence describes secure code development practices, peer review, code analysis tools, and post-production monitoring, but it does not provide specific details, documentation, or examples of automated CI/CD pipelines, deployment scripts, or tools used for the actual *deployment and integration* of application code.",
+      "evidence_citation": "Google follows a structured code development and release process that includes considerations for security defects and all code is peer reviewed. Google makes purpose built code analysis tools available for engineers to deploy against application code and performs continuous post-production monitoring based on real-time threats.",
+      "recommended_followup": "Please provide documentation outlining your CI/CD pipeline processes, tools used for automated application code deployment and integration, and examples of deployment scripts or workflow diagrams demonstrating automation in action. Specifically, clarify how application code deployment and integration steps are automated.",
+      "reasoning": "The vendor's evidence describes secure development and monitoring practices but does not provide specific details or proof of automated application code deployment and integration processes, making it insufficient to confirm compliance with the question."
+    },
+    "parse_error": false,
+    "tool_trace": []
+  },
+  "verifier": {
+    "prompt": "You are an independent cloud security compliance reviewer.\n\nA compliance evaluator has assessed the following vendor CAIQ response and produced a draft verdict.\nYour job is to independently re-examine the evidence and either CONFIRM or REVISE the verdict.\n\nCAIQ Question ID : AIS-06.2\nCCM Control ID   : AIS-06\nQuestion Text    : Is the deployment and integration of application code automated where \npossible?\nVendor Answer    : yes\nVendor Evidence  : Google follows a structured code development and release process that includes considerations for security defects and all code is peer reviewed. Google makes purpose built code analysis tools available for engineers to deploy against application code and performs continuous post-production monitoring based on real-time threats.\n\nDraft Verdict    : needs_clarification\nDraft Reasoning  : The vendor's evidence describes secure development and monitoring practices but does not provide specific details or proof of automated application code deployment and integration processes, making it insufficient to confirm compliance with the question.\nEvidence Quality : weak\n\nRe-examine the vendor's evidence independently. Then produce a JSON response:\n\n{\n  \"verdict\": \"<confirmed | revised>\",\n  \"final_verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"reasoning\": \"<one sentence: why you confirmed or what you changed and why>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\"verdict\": \"confirmed\", \"final_verdict\": \"needs_clarification\", \"reasoning\": \"The vendor's evidence describes secure development practices and monitoring but fails to provide any details or proof regarding the automation of application code deployment and integration, thus confirming the need for clarification.\"}",
+    "parsed": {
+      "verdict": "confirmed",
+      "final_verdict": "needs_clarification",
+      "reasoning": "The vendor's evidence describes secure development practices and monitoring but fails to provide any details or proof regarding the automation of application code deployment and integration, thus confirming the need for clarification."
+    },
+    "parse_error": false,
+    "verdict": "confirmed"
+  },
+  "timestamps": {
+    "start": "2026-04-28T17:19:57.995107+00:00",
+    "end": "2026-04-28T17:20:22.905496+00:00",
+    "planner_ms": 8342.350721359253,
+    "evaluator_ms": 10720.824718475342,
+    "verifier_ms": 5846.380710601807
+  },
+  "errors": [],
+  "lf_trace_id": "8e6be78043a7ca41a71b3b602c5dce4b"
+}

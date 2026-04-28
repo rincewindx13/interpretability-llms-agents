@@ -1,0 +1,81 @@
+{
+  "schema_version": "cep.v1",
+  "run_id": "be094cd0-932d-42ab-9645-7beba42ee0a6",
+  "config": {
+    "planner_backend": "gemini",
+    "evaluator_backend": "gemini",
+    "judge_backend": "gemini",
+    "config_name": "gemini_gemini",
+    "planner_model": "gemini-2.5-flash",
+    "evaluator_model": "gemini-2.5-flash"
+  },
+  "sample": {
+    "vendor": "Zoom Document Cloud 2022",
+    "sample_id": "Zoom_Document_Cloud_2022_AIS-02.1",
+    "question_id": "AIS-02.1",
+    "control_id": "AIS-02",
+    "domain_id": "AIS",
+    "question_text": "Are baseline requirements to secure different applications established, documented,\nand maintained?",
+    "vendor_answer": "yes",
+    "vendor_comment": "Information security standards governing the secure baseline application configurations are documented, approved and communicated.\n\nBaseline configurations are reviewed as part of Zoom's SOC 2 Type II annual audit.",
+    "caiq_version": "4.0.2",
+    "metadata": {
+      "SSRM Control Ownership": "CSP-owned",
+      "CCM Control Specification": "Establish, document and maintain baseline requirements for securing\ndifferent applications.",
+      "CCM Control Title": "Application Security Baseline Requirements"
+    }
+  },
+  "plan": {
+    "prompt": "You are a cloud security compliance expert specialising in the CSA Cloud Controls Matrix (CCM).\n\nYour task is to produce a structured evaluation plan for assessing a vendor's compliance response to a CAIQ question.\n\nCAIQ Question ID : AIS-02.1\nCCM Control ID   : AIS-02\nCCM Domain       : AIS\nQuestion Text    : Are baseline requirements to secure different applications established, documented,\nand maintained?\nVendor Answer    : yes\n\nProduce a JSON evaluation plan with the following keys:\n\n{\n  \"steps\": [\n    \"Step 1: ...\",\n    \"Step 2: ...\",\n    \"Step 3: ...\"\n  ],\n  \"expected_evidence_type\": \"<what good evidence looks like, e.g. policy doc, certification, process description>\",\n  \"compliance_risk_level\": \"<low | medium | high> \u2014 how critical is a No answer here>\",\n  \"evaluation_focus\": \"<what the evaluator should specifically look for in the vendor comment>\",\n  \"nist_mapping_hint\": \"<relevant NIST 800-53 control family, e.g. AC, SA, SC>\",\n  \"answerability_check\": \"<answerable | needs_clarification | not_applicable>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"steps\": [\n    \"Step 1: Request the policy or standard document that mandates the establishment and maintenance of baseline security requirements for applications.\",\n    \"Step 2: Obtain specific documentation detailing the established baseline security requirements for various application types (e.g., web, mobile, API, backend services).\",\n    \"Step 3: Seek evidence demonstrating how these baseline requirements are integrated into the application development lifecycle (SDLC) and communicated to relevant teams.\",\n    \"Step 4: Verify the existence of a process and records for regularly reviewing and updating these baseline requirements to ensure their continued relevance and effectiveness.\"\n  ],\n  \"expected_evidence_type\": \"Application Security Policy, Secure Coding Standards, Application Hardening Guidelines, SDLC Security Checklists, Configuration Management Plans for Applications, Change Management Records for Security Baselines\",\n  \"compliance_risk_level\": \"high\",\n  \"evaluation_focus\": \"The existence, comprehensiveness, formal documentation, and evidence of ongoing maintenance and enforcement of application-specific baseline security requirements.\",\n  \"nist_mapping_hint\": \"CM (Configuration Management), SA (System and Services Acquisition), RA (Risk Assessment)\",\n  \"answerability_check\": \"answerable\"\n}",
+    "parsed": {
+      "steps": [
+        "Step 1: Request the policy or standard document that mandates the establishment and maintenance of baseline security requirements for applications.",
+        "Step 2: Obtain specific documentation detailing the established baseline security requirements for various application types (e.g., web, mobile, API, backend services).",
+        "Step 3: Seek evidence demonstrating how these baseline requirements are integrated into the application development lifecycle (SDLC) and communicated to relevant teams.",
+        "Step 4: Verify the existence of a process and records for regularly reviewing and updating these baseline requirements to ensure their continued relevance and effectiveness."
+      ],
+      "expected_evidence_type": "Application Security Policy, Secure Coding Standards, Application Hardening Guidelines, SDLC Security Checklists, Configuration Management Plans for Applications, Change Management Records for Security Baselines",
+      "compliance_risk_level": "high",
+      "evaluation_focus": "The existence, comprehensiveness, formal documentation, and evidence of ongoing maintenance and enforcement of application-specific baseline security requirements.",
+      "nist_mapping_hint": "CM (Configuration Management), SA (System and Services Acquisition), RA (Risk Assessment)",
+      "answerability_check": "answerable"
+    },
+    "parse_error": false
+  },
+  "evaluation": {
+    "prompt": "You are a cloud security compliance auditor evaluating a vendor's CAIQ response.\n\nCAIQ Question ID : AIS-02.1\nCCM Control ID   : AIS-02\nQuestion Text    : Are baseline requirements to secure different applications established, documented,\nand maintained?\nVendor Answer    : yes\nVendor Evidence  : Information security standards governing the secure baseline application configurations are documented, approved and communicated.\n\nBaseline configurations are reviewed as part of Zoom's SOC 2 Type II annual audit.\n\nEvaluation Plan:\n  1. Step 1: Request the policy or standard document that mandates the establishment and maintenance of baseline security requirements for applications.\n  2. Step 2: Obtain specific documentation detailing the established baseline security requirements for various application types (e.g., web, mobile, API, backend services).\n  3. Step 3: Seek evidence demonstrating how these baseline requirements are integrated into the application development lifecycle (SDLC) and communicated to relevant teams.\n  4. Step 4: Verify the existence of a process and records for regularly reviewing and updating these baseline requirements to ensure their continued relevance and effectiveness.\n\nExpected evidence type : Application Security Policy, Secure Coding Standards, Application Hardening Guidelines, SDLC Security Checklists, Configuration Management Plans for Applications, Change Management Records for Security Baselines\nEvaluation focus       : The existence, comprehensiveness, formal documentation, and evidence of ongoing maintenance and enforcement of application-specific baseline security requirements.\n\n\n\nEvaluate the vendor's compliance and produce a JSON verdict:\n\n{\n  \"verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"confidence\": <0.0 to 1.0>,\n  \"evidence_quality\": \"<strong | adequate | weak | absent>\",\n  \"gap_description\": \"<what is missing or insufficient \u2014 empty string if compliant>\",\n  \"evidence_citation\": \"<exact quote from vendor comment that supports the verdict \u2014 empty string if none>\",\n  \"recommended_followup\": \"<suggested clarification question for procurement team \u2014 empty string if none>\",\n  \"reasoning\": \"<one concise sentence explaining the verdict>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"verdict\": \"partial\",\n  \"confidence\": 0.8,\n  \"evidence_quality\": \"adequate\",\n  \"gap_description\": \"The evidence confirms the existence of documented and reviewed information security standards for baseline application configurations, but it lacks specific details on the established baseline security requirements for *different application types* and how these are integrated into the application development lifecycle (SDLC).\",\n  \"evidence_citation\": \"Information security standards governing the secure baseline application configurations are documented, approved and communicated. Baseline configurations are reviewed as part of Zoom's SOC 2 Type II annual audit.\",\n  \"recommended_followup\": \"Please provide specific documentation detailing the established baseline security requirements for various application types (e.g., web, mobile, API, backend services). Additionally, describe how these baseline requirements are integrated into the application development lifecycle (SDLC) and communicated to relevant teams.\",\n  \"reasoning\": \"The vendor confirms documented and reviewed baseline configuration standards, but the evidence lacks specific details on the baselines for different application types and their integration into the SDLC.\"\n}",
+    "parsed": {
+      "verdict": "partial",
+      "confidence": 0.8,
+      "evidence_quality": "adequate",
+      "gap_description": "The evidence confirms the existence of documented and reviewed information security standards for baseline application configurations, but it lacks specific details on the established baseline security requirements for *different application types* and how these are integrated into the application development lifecycle (SDLC).",
+      "evidence_citation": "Information security standards governing the secure baseline application configurations are documented, approved and communicated. Baseline configurations are reviewed as part of Zoom's SOC 2 Type II annual audit.",
+      "recommended_followup": "Please provide specific documentation detailing the established baseline security requirements for various application types (e.g., web, mobile, API, backend services). Additionally, describe how these baseline requirements are integrated into the application development lifecycle (SDLC) and communicated to relevant teams.",
+      "reasoning": "The vendor confirms documented and reviewed baseline configuration standards, but the evidence lacks specific details on the baselines for different application types and their integration into the SDLC."
+    },
+    "parse_error": false,
+    "tool_trace": []
+  },
+  "verifier": {
+    "prompt": "You are an independent cloud security compliance reviewer.\n\nA compliance evaluator has assessed the following vendor CAIQ response and produced a draft verdict.\nYour job is to independently re-examine the evidence and either CONFIRM or REVISE the verdict.\n\nCAIQ Question ID : AIS-02.1\nCCM Control ID   : AIS-02\nQuestion Text    : Are baseline requirements to secure different applications established, documented,\nand maintained?\nVendor Answer    : yes\nVendor Evidence  : Information security standards governing the secure baseline application configurations are documented, approved and communicated.\n\nBaseline configurations are reviewed as part of Zoom's SOC 2 Type II annual audit.\n\nDraft Verdict    : partial\nDraft Reasoning  : The vendor confirms documented and reviewed baseline configuration standards, but the evidence lacks specific details on the baselines for different application types and their integration into the SDLC.\nEvidence Quality : adequate\n\nRe-examine the vendor's evidence independently. Then produce a JSON response:\n\n{\n  \"verdict\": \"<confirmed | revised>\",\n  \"final_verdict\": \"<compliant | non_compliant | partial | not_applicable | needs_clarification>\",\n  \"reasoning\": \"<one sentence: why you confirmed or what you changed and why>\"\n}\n\nOutput ONLY valid JSON \u2014 no markdown, no extra text.\n",
+    "raw_text": "{\n  \"verdict\": \"confirmed\",\n  \"final_verdict\": \"partial\",\n  \"reasoning\": \"The draft verdict is confirmed as the evidence supports documented and reviewed baseline configuration standards, but lacks specific details on how these baselines are established for different application types.\"\n}",
+    "parsed": {
+      "verdict": "confirmed",
+      "final_verdict": "partial",
+      "reasoning": "The draft verdict is confirmed as the evidence supports documented and reviewed baseline configuration standards, but lacks specific details on how these baselines are established for different application types."
+    },
+    "parse_error": false,
+    "verdict": "confirmed"
+  },
+  "timestamps": {
+    "start": "2026-04-28T17:53:31.963314+00:00",
+    "end": "2026-04-28T17:54:00.774183+00:00",
+    "planner_ms": 7662.9393100738525,
+    "evaluator_ms": 10282.776355743408,
+    "verifier_ms": 10864.15147781372
+  },
+  "errors": [],
+  "lf_trace_id": "c054b77ed911722f8f33f793e2aa0ef3"
+}
